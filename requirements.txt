@@ -1,32 +1,11 @@
 asgiref==3.6.0
 cloudinary==1.32.0
+Command==0.1.0
+dj-rest-auth==3.0.0
 Django==3.2
 django-cloudinary-storage==0.3.0
-# django-filter==22.1
+django-filter==22.1
 djangorestframework==3.14.0
 Pillow==8.2.0
 pytz==2022.7.1
 sqlparse==0.4.3
-# 'django.contrib.admin',
-# 'django.contrib.auth',
-# 'django.contrib.contenttypes',
-# 'django.contrib.sessions',
-# 'django.contrib.messages',
-# 'cloudinary_storage',
-# 'django.contrib.staticfiles',
-# 'cloudinary',
-# 'rest_framework',
-# 'django_filters',
-# 'rest_framework.authtoken',
-# 'dj_rest_auth',
-# 'django.contrib.sites',
-# 'allauth',
-# 'allauth.account',
-# 'allauth.socialaccount',
-# 'dj_rest_auth.registration',
-# 'corsheaders',
-# 'profiles',
-# 'posts',
-# 'comments',
-# 'likes',
-# 'followers',
