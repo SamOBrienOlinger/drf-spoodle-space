@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Post
 from .serializers import PostSerializer
+from Spoodle_Space.permissions import IsOwnerOrReadOnly
+from django.db.models import Count
 
 
 class PostList(APIView):
@@ -37,12 +39,12 @@ class PostDetail(APIView):
     """
     Retrieve a post and edit or delete it if you own it.
     """
-    serializer_class = PostSerializer
-    permission_classes = [IsOwnerOrReadOnly]
-    queryset = Post.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_at')
+    # serializer_class = PostSerializer
+    # permission_classes = [IsOwnerOrReadOnly]
+    # queryset = Post.objects.annotate(
+    #     likes_count=Count('likes', distinct=True),
+    #     comments_count=Count('comment', distinct=True)
+    # ).order_by('-created_at')
 
     def delete(self, request, pk):
         post = self.get.object(pk)
