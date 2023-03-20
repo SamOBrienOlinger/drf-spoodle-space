@@ -11,7 +11,6 @@ class PostList(APIView):
         permissions.IsAuthenticatedOrReadOnly
     ]
 
-
     def get(self, request):
         posts = Post.objects.all()
         serializer = PostSerializer(
@@ -31,4 +30,24 @@ class PostList(APIView):
 
         return Response(
             serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
+
+
+class PostDetail(APIView):
+    """
+    Retrieve a post and edit or delete it if you own it.
+    """
+    serializer_class = PostSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+    queryset = Post.objects.annotate(
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
+    ).order_by('-created_at')
+
+    def delete(self, request, pk):
+        post = self.get.object(pk)
+        post.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
         )
