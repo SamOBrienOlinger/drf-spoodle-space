@@ -2,6 +2,8 @@ from rest_framework import generics, permissions
 from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import Like
 from .serializers import LikeSerializer
+from django.http import Http404
+
 
 # Create your views here.
 
