@@ -55,7 +55,7 @@ INSTALLED_APPS = [
 
     'profiles',
     'posts',
-    'comments'
+    'comments',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
