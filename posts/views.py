@@ -1,13 +1,16 @@
+from django.http import Http404
 from rest_framework import status, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Post
 from .serializers import PostSerializer
 from Spoodle_Space.permissions import IsOwnerOrReadOnly
-from django.db.models import Count
 
 
 class PostList(APIView):
+    """
+    List posts or create a post if logged in
+    """
     serializer_class = PostSerializer
     permission_classes = [
         permissions.IsAuthenticatedOrReadOnly
@@ -29,13 +32,15 @@ class PostList(APIView):
             return Response(
                 serializer.data, status=status.HTTP_201_CREATED
             )
-
         return Response(
             serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
 
 
 class PostDetail(APIView):
+    """
+    Retrieve a post and edit or delete it if you own it
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = PostSerializer
 
