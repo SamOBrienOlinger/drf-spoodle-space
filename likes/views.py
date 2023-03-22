@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import Like
-from .serializers import LikeSerializer
+from likes.serializers import LikeSerializer
 
 
 # Create your views here.
@@ -18,9 +18,9 @@ class LikeList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class LikeDetail(generics.RetrieveDestroyAPIView):
-    """ Retrieve a like. No Update view, as users can only like or unlike a post. Destroy a like, i.e. unlike a post if owner of that like """
+# class LikeDetail(generics.RetrieveDestroyAPIView):
+#     """ Retrieve a like. No Update view, as users can only like or unlike a post. Destroy a like, i.e. unlike a post if owner of that like """
 
-    permission_classes = [IsOwnerOrReadOnly]
-    queryset = Like.objects.all()
-    serializer_class = LikeSerializer
+#     permission_classes = [IsOwnerOrReadOnly]
+#     queryset = Like.objects.all()
+#     serializer_class = LikeSerializer
