@@ -8,10 +8,8 @@ class LikeSerializer(serializers.ModelSerializer):
     # is_owner = serializers.SerializerMethodField()
 
     class Meta:
-        model = Like()
-        fields = [
-            'id', 'owner', 'created_at', 'post'
-        ]
+        model = Like
+        fields = ['id', 'created_at', 'owner', 'post']
 
     def create(self, validated_data):
         try:
