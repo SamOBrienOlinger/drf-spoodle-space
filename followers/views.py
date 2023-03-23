@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import Follower
-from followers.serializers import FollowSerializer
+from .serializers import FollowSerializer
 
 # Create your views here.
 
@@ -11,7 +11,7 @@ class FollowerList(generics.ListCreateAPIView):
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = FollowSerializer
-    queryset = Like.objects.all()
+    queryset = Follow.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
@@ -21,5 +21,5 @@ class FollowDetail(generics.RetrieveDestroyAPIView):
     """ Retrieve a like. No Update view, as users can only like or unlike a post. Destroy a like, i.e. unlike a post if owner of that like """
 
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Like.objects.all()
+    queryset = Follower().objects.all()
     serializer_class = FollowSerializer
