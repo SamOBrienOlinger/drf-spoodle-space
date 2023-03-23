@@ -10,7 +10,7 @@ class FollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follower
         fields = [
-            'id', 'created_at', 'followed', 'followed_name'
+            'id', 'owner', 'created_at', 'followed', 'followed_name'
         ]
 
     def create(self, validated_data):
