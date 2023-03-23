@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import Follower
-from followers.serializers import LikeSerializer
+from followers.serializers import FollowSerializer
 
 # Create your views here.
 
