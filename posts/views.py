@@ -25,10 +25,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.all()
 
-
-"""
-Below are the imports and unrefractored to generics views
-"""
+    # Below are the imports and unrefractored to generics views.
 
 # from django.http import Http404
 # from rest_framework import status, permissions

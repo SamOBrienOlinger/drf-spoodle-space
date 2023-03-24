@@ -23,10 +23,7 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
-
-"""
-Below are the imports and unrefractored to generics views
-"""
+    # Below are the imports and unrefractored to generics views.
 
 # from django.http import Http404
 # from django.shortcuts import render
