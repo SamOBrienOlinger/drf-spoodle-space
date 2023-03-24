@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-from drf_api.permissions import IsOwnerOrReadOnly
+from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import Post
 from .serializers import PostSerializer
 
