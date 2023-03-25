@@ -3,6 +3,7 @@ from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
 from django.db.models import Count
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -20,6 +21,11 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
     filter_backends = [
         filters.OrderingFilter
+    ]
+    filterset_fields = [
+        'owner__following__followed__profile',
+        'likes__owner__profile',
+        'owner__profile'
     ]
     ordering_fields = [
         'posts_count',
