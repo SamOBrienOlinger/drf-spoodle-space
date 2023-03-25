@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Comment
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class CommentSerializer(serializers.ModelSerializer):
