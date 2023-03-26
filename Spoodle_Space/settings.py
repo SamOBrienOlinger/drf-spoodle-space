@@ -59,7 +59,9 @@ REST_AUTH_SERIALIZERS = {
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-3t186gmasm(!2pg$*!eb^-h*cg039gi^-%*b7)km#l4_3jz-6z'
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
@@ -78,8 +80,11 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     CORS_ALLOWED_ORIGIN_REGEXES = [
         rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
     ]
+
 CORS_ALLOW_CREDENTIALS = True
 JWT_AUTH_SAMESITE = 'None'
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKE = 'my-refresh-token'
 
 
 # Application definition
@@ -124,6 +129,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN')
+     ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+         r"^https://.*\.gitpod\.io$",
+     ]
+
+CORS_ALLOW_CREDENTIALS = True
+
 ROOT_URLCONF = 'Spoodle_Space.urls'
 
 TEMPLATES = [
@@ -148,14 +164,28 @@ WSGI_APPLICATION = 'Spoodle_Space.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': ({
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }if 'DEV' in os.environ else dj_database_url.parse(
-        os.environ.get('DATABASE_URL')
-    ))
-}
+
+if 'DEV' in os.environ:
+    DATABASES = {
+         'default': {
+             'ENGINE': 'django.db.backends.sqlite3',
+             'NAME': BASE_DIR / 'db.sqlite3',
+         }
+     }
+else:
+    DATABASES = {
+         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+     }
+    # print('connected')
+
+# DATABASES = {
+#     'default': ({
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }if 'DEV' in os.environ else dj_database_url.parse(
+#         os.environ.get('DATABASE_URL')
+#     ))
+# }
 
 
 # Password validation
