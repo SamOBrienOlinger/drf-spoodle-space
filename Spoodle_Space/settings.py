@@ -67,7 +67,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOST = ['localhost', 'spoodle-space.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'spoodle-space.herokuapp.com', '8080-samobrienol-drframework-4pdlw4xmk37.ws-eu92.gitpod.io']
 
 # if 'CLIENT_ORIGIN' in os.environ:
 #     CORS_ALLOWED_ORIGINS = [
