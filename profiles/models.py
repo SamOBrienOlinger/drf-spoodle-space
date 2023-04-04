@@ -18,12 +18,12 @@ class Profile(models.Model):
 #         owner = models.OneToOneField(User, on_delete=models.CASCADE)
 #         created_at = models.DateTimeField(auto_now_add=True)
 #         updated_at = models.DateTimeField(auto_now=True)
-#         DogName	= models.CharField(max_length=255, blank=True)
+#         DogName = models.CharField(max_length=255, blank=True)
 #         DogAge = IntegerField(default=0)
-#         DogColor = charField
-#         DogBio	= models.TextField(blank=True)
+#         DogColor = charField(max_length=255, blank=True)
+#         DogBio = models.TextField(blank=True)
 #         DogImage = Imodels.ImageField(
-#         upload_to='images/', default='../default_dog-profile_gtehul.png'
+#             upload_to='images/', default='../default_dog-profile_gtehul.png'
 #     )
 
     class Meta:
