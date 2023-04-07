@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.db.models import IntegerField
+from django.db.models import CharField
 
 
 class DogProfile(models.Model):
@@ -10,7 +12,7 @@ class DogProfile(models.Model):
 
     dog_name = models.CharField(max_length=255, blank=True)
     dog_age = IntegerField(default=0)
-    dog_color = charField(max_length=255, blank=True)
+    dog_color = CharField(max_length=255, blank=True)
     dog_bio = models.TextField(blank=True)
     dog_image = models.ImageField(
         upload_to='images/', default='../default_dog-profile_gtehul.png'
