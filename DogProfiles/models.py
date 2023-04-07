@@ -7,6 +7,7 @@ class DogProfile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     dog_name = models.CharField(max_length=255, blank=True)
     dog_age = IntegerField(default=0)
     dog_color = charField(max_length=255, blank=True)
@@ -22,9 +23,9 @@ class DogProfile(models.Model):
         return f"{self.owner}'s doggy profile"
 
 
-def create_profile(sender, instance, created, **kwargs):
+def create_dog_profile(sender, instance, created, **kwargs):
     if created:
         DogProfile.objects.create(owner=instance)
 
 
-post_save.connect(create_profile, sender=User)
+post_save.connect(create_dog_profile, sender=User)
