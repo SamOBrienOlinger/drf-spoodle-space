@@ -1,7 +1,6 @@
 from rest_framework import serializers
 # from .models import Profile
 from .models import DogProfile
-# from followers.models import Follower
 
 
 class DogProfileSerializer(serializers.ModelSerializer):
@@ -19,15 +18,15 @@ class DogProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    # def get_following_id(self, obj):
-    #     user = self.context['request'].user
-    #     if user.is_authenticated:
-    #         following = Follower.objects.filter(
+    def get_dog_name(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+    #         dog_name = DogProfile.objects.filter(
     #             owner=user, followed=obj.owner
     #         ).first()
-    #        print(following)
-        #     return following.id if following else None
-        # return None
+    #        print(dog_name)
+    #        return dog_name if following else None
+    #    return None
 
     def get_is_owner(self, obj):
         request = self.context['request']
