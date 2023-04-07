@@ -13,19 +13,6 @@ class Profile(models.Model):
         upload_to='images/', default='../default_profile_qdjgyp'
     )
 
-# class DogProfile(models.Model):
-
-#         owner = models.OneToOneField(User, on_delete=models.CASCADE)
-#         created_at = models.DateTimeField(auto_now_add=True)
-#         updated_at = models.DateTimeField(auto_now=True)
-#         dog_name = models.CharField(max_length=255, blank=True)
-#         dog_age = IntegerField(default=0)
-#         dog_color = charField(max_length=255, blank=True)
-#         dog_bio = models.TextField(blank=True)
-#         dog_image = Imodels.ImageField(
-#             upload_to='images/', default='../default_dog-profile_gtehul.png'
-#     )
-
     class Meta:
         ordering = ['-created_at']
 

@@ -33,19 +33,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             'content', 'image', 'is_owner', 'following_id',
             'posts_count', 'followers_count', 'following_count',
         ]
-
-
-#         Add:
-
-# class DogProfileSerializer(serializers.ModelSerializer):
-    # serializers.ReadOnlyField(source='owner.username')
-
-        # class Meta:
-        #     model = DogProfile
-    #         fields = [
-        #         'dog_name',
-        #         'dog_age',
-        #         'dog_color',
-        #         'dog_bio',
-        #         'dog_image',
-        # ]
