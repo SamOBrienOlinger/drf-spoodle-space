@@ -49,7 +49,3 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
-
-# class DogProfileList(generics.ListAPIView):
-
-# class ProfileDetail(generics.RetrieveUpdateAPIView):
