@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 # from django.db.models import Count
-from rest_framework import generics, filters
+from rest_framework import generics, filters, permissions
 from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import DogProfile
 from .serializers import DogProfileSerializer
