@@ -8,6 +8,7 @@ from Spoodle_Space.permissions import IsOwnerOrReadOnly
 from .models import DogProfile
 from .serializers import DogProfileSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from django.http import Http404
 
 # Create your views here.
 
@@ -39,6 +40,10 @@ class DogProfileList(generics.ListAPIView):
         'owner__following__created_at',
         'owner__followed__created_at',
     ]
+
+
+def perform_create(self, serializer):
+    serializer.save(owner=self.request.user)
 
 
 class DogProfileDetail(generics.RetrieveUpdateAPIView):
