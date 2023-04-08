@@ -43,3 +43,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
                 'dog_image',
                 'id', 'profile_id', 'owner', 'created_at', 'updated_at', 'is_owner',
             ]
+
+
+class DogProfileDetailSerializer(DogProfileSerializer):
+    profile = serializers.ReadOnlyField(source='profile.id')
