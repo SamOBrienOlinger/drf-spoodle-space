@@ -68,8 +68,6 @@ SECRET_KEY = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-# ALLOWED_HOSTS = ['localhost', 'spoodle-space.herokuapp.com', '8080-samobrienol-drframework-4pdlw4xmk37.ws-eu92.gitpod.io']
-
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
    'localhost',
