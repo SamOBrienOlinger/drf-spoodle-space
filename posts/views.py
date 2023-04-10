@@ -17,8 +17,7 @@ class PostList(APIView):
     ]
 
     def get(self, request):
-        posts = self.paginate_queryset(Post.objects.all())
-        # posts = Post.objects.all()
+        posts = Post.objects.all()
         # posts = self.paginate_queryset(Coupons.objects.all())
         serializer = PostSerializer(
             posts, many=True, context={'request': request}
