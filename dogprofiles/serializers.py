@@ -33,16 +33,16 @@ class DogProfileSerializer(serializers.ModelSerializer):
             return dog_profile_id if following else None
         return None
 
-        class Meta:
-            model = DogProfile
-            fields = [
-                'dog_name',
-                'dog_age',
-                'dog_color',
-                'dog_bio',
-                'dog_image',
-                'id', 'profile_id', 'owner', 'created_at', 'updated_at', 'is_owner',
-            ]
+    class Meta:
+        model = DogProfile
+        fields = [
+            'dog_name',
+            'dog_age',
+            'dog_color',
+            'dog_bio',
+            'dog_image',
+            'id', 'profile_id', 'owner', 'created_at', 'updated_at', 'is_owner',
+        ]
 
 
 class DogProfileDetailSerializer(DogProfileSerializer):
