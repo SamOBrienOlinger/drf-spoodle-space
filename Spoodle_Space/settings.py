@@ -66,9 +66,12 @@ SECRET_KEY = {
 # SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+DEBUG = 'DEBUG' in os.environ
+
 # DEBUG = 'DEV' in os.environ
 
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
