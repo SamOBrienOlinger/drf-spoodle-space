@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Profile
-# from .models import DogProfile
+from dogprofiles.models import DogProfile
 from followers.models import Follower
 
 
