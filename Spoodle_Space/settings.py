@@ -134,10 +134,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-JWT_AUTH_SAMESITE = 'None'
-JWT_AUTH_COOKIE = 'my-app-auth'
-JWT_AUTH_REFRESH_COOKE = 'my-refresh-token'
-
 ROOT_URLCONF = 'Spoodle_Space.urls'
 
 TEMPLATES = [
