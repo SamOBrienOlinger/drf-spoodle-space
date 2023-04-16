@@ -50,7 +50,7 @@ class DogProfileDetail(generics.RetrieveUpdateAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
     queryset = DogProfile.objects.all()
-    serializer_class = DogProfileSerializer
+    serializer_class = DogProfileDetailSerializer
 
     # queryset = DogProfile.objects.annotate(
     #     posts_count=Count('owner__post', distinct=True),
