@@ -42,7 +42,6 @@ class DogProfileSerializer(serializers.ModelSerializer):
             dog = DogProfile.objects.filter(
                 owner=user, dog_profile_id=obj.owner
             ).first()
-            # print(dog_name)
             return dog_profile_id.id if following else None
         return None
 
