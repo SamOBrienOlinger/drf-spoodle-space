@@ -33,7 +33,7 @@ urlpatterns = [
     path('', include('likes.urls')),
     path('', include('followers.urls')),
 
-    path('', include('dogprofiles.urls'))
+    path('', include('dogprofiles.urls')),
 ]
 
 # from .views import root_route
