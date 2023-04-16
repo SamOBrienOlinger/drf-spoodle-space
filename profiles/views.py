@@ -1,6 +1,6 @@
 from django.db.models import Count
 from rest_framework import generics, filters
-from Spoodle_Space.permissions import IsOwnerOrReadOnly
+from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
 from django_filters.rest_framework import DjangoFilterBackend

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Post
 from .serializers import PostSerializer
-from Spoodle_Space.permissions import IsOwnerOrReadOnly
+from spoodle_space.permissions import IsOwnerOrReadOnly
 
 
 class PostList(generics.ListCreateAPIView):
@@ -82,7 +82,7 @@ class PostDetail(APIView):
 
 # from django.http import Http404
 # from rest_framework import generics, permissions, filters
-# from Spoodle_Space.permissions import IsOwnerOrReadOnly
+# from spoodle_space.permissions import IsOwnerOrReadOnly
 # from .models import Post
 # from .serializers import PostSerializer
 # from django.db.models import Count

@@ -1,5 +1,5 @@
 from rest_framework import generics, permissions
-from Spoodle_Space.permissions import IsOwnerOrReadOnly
+from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
 

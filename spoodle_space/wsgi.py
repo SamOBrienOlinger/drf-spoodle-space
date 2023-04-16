@@ -1,5 +1,5 @@
 """
-WSGI config for Spoodle_Space project.
+WSGI config for spoodle_space project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Spoodle_Space.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'spoodle_space.settings')
 
 application = get_wsgi_application()

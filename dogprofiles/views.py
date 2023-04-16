@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 # from django.db.models import Count
 from rest_framework import generics, filters, permissions
-from Spoodle_Space.permissions import IsOwnerOrReadOnly
+from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogProfile
 from .serializers import DogProfileSerializer
 from django_filters.rest_framework import DjangoFilterBackend
