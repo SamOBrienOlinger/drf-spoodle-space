@@ -20,6 +20,7 @@ class DogProfile(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        unique_together = ['owner', 'dog_name']
 
     def __str__(self):
         return f"{self.owner}'s doggy profile"
