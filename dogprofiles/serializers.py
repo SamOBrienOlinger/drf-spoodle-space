@@ -1,13 +1,13 @@
 from rest_framework import serializers
-# from .models import Profile
+from profiles.models import Profile
 from .models import DogProfile
-# from DogProfiles.models import DogProfile
+# from dogprofiles.models import DogProfile
 
 
 class DogProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    # dog_profile_id = serializers.SerializerMethodField(source='owner.dog.profile.id')
+    dog_profile_id = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
 
     dog_name = serializers.SerializerMethodField()
@@ -23,19 +23,20 @@ class DogProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_dog_name(self, obj):
+    def get_dog_profile_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            dog_name = DogProfile.objects.filter(
-                owner=user, DogProfile=obj.owner
+            dog = DogProfile.objects.filter(
+                owner=user, dog_profile_id=obj.owner
             ).first()
             # print(dog_name)
-            return dog_profile_id if following else None
+            return dog_profile_id.id if following else None
         return None
 
     class Meta:
         model = DogProfile
         fields = [
+            'dog_profile_id'
             'dog_name',
             'dog_age',
             'dog_color',

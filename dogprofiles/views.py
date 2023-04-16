@@ -6,7 +6,7 @@ from django.shortcuts import render
 from rest_framework import generics, filters, permissions
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogProfile
-from .serializers import DogProfileSerializer
+from .serializers import DogProfileSerializer, DogProfileDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 # from django.http import Http404
 
