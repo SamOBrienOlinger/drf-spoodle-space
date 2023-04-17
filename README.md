@@ -1,9 +1,8 @@
-# **Cockapoo Club**, Dublin Ireland
-![Website on multiple screens](media/README.md-images/README.md-multiple-screens.png)
+# ![**SpoodleSPACE**](Media/README.md-images/README.md-landing-page.png)
 
-**[Cockapoo Club, Dublin Ireland](https://home-cockapoo-club-pp4.herokuapp.com)** was developed and submmitted as my fourth Profile Portfolio Project as part of the Code Institute's Diploma in full-stack software development course. 
+**[SpoodleSPACE](spoodlespace.herokuapp.com)** was developed and submmitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. 
 
-This project introduces a new range of features and funcionalities that offer Users a valuable expansion on my first Profile Portfolio Project, which centred on a fictional webiste for an online community of dog owners called 'Cockapoo Club'. The progress made in this iteration of the original concept includes the addition of Django, CRUD functionality, as well as other new features that evolved out of ideas for delivering signifcant improvements and a fuller experience for Users of this website. 
+This project introduces a new range of features and funcionalities that offer Users a valuable expansion on my previous Portfolio Projects, which centred on a fictional webiste for an online community of dog owners called 'Cockapoo Club'. The progress made in this iteration of the original concept which now includes HTML, CSS, JavaScript, React.js Bootstrap.js, and Django REST Framework. This project evolved out of ideas for delivering signifcant improvements and a fuller experience for Users of the **[Cockapoo Club, Dublin Ireland](https://home-cockapoo-club-pp4.herokuapp.com)** website. 
 
 
 
@@ -29,12 +28,46 @@ The site targets users around the world who:
 
 * will enjoy sharing photographs of their pets online.  
 
-## **[Contents](#contents)**
+## **Contents**
 
-- **[Features](#features)**
-- **[Agile Development and User Stories](#agile-development-and-user-stories)**
-- **[Deployment](#deployment)**
-- **[Unfixable Bugs]
+- **Unfixed Bugs**
+
+Unfortuantely, due to a range of unexpected errors and issues with both gitpod and heroku, the overall negative impact has been that there was not enought time to fully implement all of the planned custom models and forms.
+
+As well as DogProfiles, there was also supposed to be DogHealth and DogPhoto. Each of which offer users more ways to engage with the platform and other users. 
+
+Below are examples of just some of the many challenges faced throughout the development stages. 
+
+- Gitpod Issue Example: installaion of Django 
+
+![Gitpod Issue One](Media/README.md-images/README.md-gitpod-issue-1.png)
+
+- Gitpod Issue Example: incorrect versions in requirements.txt file
+
+![Gitpod Issue Two](Media/README.md-images/README.md-gitpod-issue-2.png)
+
+
+- Gitpod Issue Example: missing various features, most obviously icons to help users navigate the platform
+
+![Gitpod Issue Three](Media/README.md-images/README.md-gitpod-issue-3.png)
+
+
+- Gitpod Issue Example: usage limit exceeded
+
+![Gitpod Issue Four](Media/README.md-images/README.md-gitpod-issue-4.png)
+
+
+- Heroku Issue Example of errors preventing any editing, updating or deleting of Config Vars
+
+![Heroku Issue One](Media/README.md-images/README.md-heroku-issue-1.png)
+
+
+- Heroku Issue Example of errors preventing deployment
+
+![Heroku Issue Two](Media/README.md-images/README.md-heroku-issue-2.png)
+
+
+
 
 
 
