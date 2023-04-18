@@ -47,7 +47,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = DogProfile
         fields = [
-            
+
             'dog_name',
             'dog_age',
             'dog_color',
@@ -55,8 +55,9 @@ class DogProfileSerializer(serializers.ModelSerializer):
             'dog_image',
             'id', 'owner', 'created_at', 'updated_at', 'is_owner',
         ]
-# 'profile_id', 
+# 'profile_id',
 # 'dog_profile_id'
+
 
 class DogProfileDetailSerializer(DogProfileSerializer):
     profile = serializers.ReadOnlyField(source='profile.id')
