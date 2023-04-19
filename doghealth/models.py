@@ -7,6 +7,7 @@ class DogHealth(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     vet_name = models.CharField(max_length=255, blank=True)
     vet_phone = models.CharField(max_length=255, blank=True)
     vet_email = models.CharField(max_length=255, blank=True)
@@ -17,6 +18,7 @@ class DogHealth(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        unique_together = ['owner', 'vet_name']
 
     def __str__(self):
         return f"{self.owner}'s Dog's health status"

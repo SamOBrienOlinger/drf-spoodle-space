@@ -21,6 +21,12 @@ class DogHealthList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DogHealthSerializer
     queryset = DogHealth.objects.all()
+
+    filter_backends = [
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+
     filterset_fields = [
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
