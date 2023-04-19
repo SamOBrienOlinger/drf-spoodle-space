@@ -13,7 +13,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
     # dog_age = serializers.SerializerMethodField()
     # dog_color = serializers.SerializerMethodField()
     # dog_bio = serializers.SerializerMethodField()
-    # dog_image = serializers.ReadOnlyField(source='owner.profile.dog.image.url')
+    dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
 
     # created_at = serializers.SerializerMethodField()
     # updated_at = serializers.SerializerMethodField()
