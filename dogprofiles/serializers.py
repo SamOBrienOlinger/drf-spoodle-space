@@ -13,7 +13,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
     # dog_age = serializers.SerializerMethodField()
     # dog_color = serializers.SerializerMethodField()
     # dog_bio = serializers.SerializerMethodField()
-    # dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
+    dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
 
     # created_at = serializers.SerializerMethodField()
     # updated_at = serializers.SerializerMethodField()
@@ -50,8 +50,8 @@ class DogProfileSerializer(serializers.ModelSerializer):
 
 class DogProfileDetailSerializer(DogProfileSerializer):
     profile = serializers.ReadOnlyField(source='profile.id')
-
     # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+
     class Meta:
         model = DogProfile
         fields = [
@@ -60,7 +60,7 @@ class DogProfileDetailSerializer(DogProfileSerializer):
             'dog_age',
             'dog_color',
             'dog_bio',
-            'dog_image',
+            'dog_profile_image',
             'id', 'owner', 'created_at', 'updated_at', 'is_owner',
             # 'my_dog',
             # 'my_dog_name'
