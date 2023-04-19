@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, permissions, filters
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogHealth
-from doghealth.serializers import DogHealthSerializer
+from doghealth.serializers import DogHealthSerializer, DogHealthDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -38,3 +38,14 @@ class DogHealthList(generics.ListAPIView):
     #     'owner__following__created_at',
     #     'owner__followed__created_at',
     # ]
+
+
+def perform_create(self, serializer):
+    serializer.save(owner=self.request.user)
+
+
+class DogHealthDetail(generics.RetrieveUpdateAPIView):
+
+    permission_classes = [IsOwnerOrReadOnly]
+    serializer_class = DogHealthDetailSerializer
+    queryset = DogHealth.objects.all()

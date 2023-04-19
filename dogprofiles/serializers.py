@@ -61,3 +61,5 @@ class DogProfileSerializer(serializers.ModelSerializer):
 
 class DogProfileDetailSerializer(DogProfileSerializer):
     profile = serializers.ReadOnlyField(source='profile.id')
+
+    # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
