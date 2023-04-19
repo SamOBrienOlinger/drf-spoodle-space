@@ -4,7 +4,7 @@ from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.response import Response
+# from rest_framework.response import Response
 
 
 class ProfileList(generics.ListAPIView):
