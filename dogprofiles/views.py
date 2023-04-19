@@ -6,8 +6,6 @@ from .serializers import DogProfileSerializer, DogProfileDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 # from django.http import Http404
 
-# Create your views here.
-
 
 class DogProfileList(generics.ListAPIView):
 
