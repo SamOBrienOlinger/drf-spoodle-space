@@ -6,17 +6,20 @@ from .models import DogProfile
 class DogProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    # dog_profile_id = serializers.SerializerMethodField()
+    # my_dog_name = serializers.ReadOnlyField(source='my_dog.username')
     # profile_id = serializers.SerializerMethodField(source='owner.profile.id')
 
     # dog_name = serializers.SerializerMethodField()
     # dog_age = serializers.SerializerMethodField()
     # dog_color = serializers.SerializerMethodField()
     # dog_bio = serializers.SerializerMethodField()
-    dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
+    # dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
 
     # created_at = serializers.SerializerMethodField()
     # updated_at = serializers.SerializerMethodField()
+
+# 'profile_id',
+# 'dog_profile_id'
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -41,9 +44,14 @@ class DogProfileSerializer(serializers.ModelSerializer):
             dogprofile = DogProfile.objects.filter(
                 owner=user, dogprofiles=obj.owner
             ).first()
-            return dog_profile_id.id if following else None
+            return dog_profile_id.id if dogprofile else None
         return None
 
+
+class DogProfileDetailSerializer(DogProfileSerializer):
+    profile = serializers.ReadOnlyField(source='profile.id')
+
+    # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
     class Meta:
         model = DogProfile
         fields = [
@@ -54,12 +62,6 @@ class DogProfileSerializer(serializers.ModelSerializer):
             'dog_bio',
             'dog_image',
             'id', 'owner', 'created_at', 'updated_at', 'is_owner',
+            # 'my_dog',
+            # 'my_dog_name'
         ]
-# 'profile_id',
-# 'dog_profile_id'
-
-
-class DogProfileDetailSerializer(DogProfileSerializer):
-    profile = serializers.ReadOnlyField(source='profile.id')
-
-    # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')

@@ -6,8 +6,9 @@ from django.db.models import CharField
 
 
 class DogProfile(models.Model):
-    owner = models.OneToOneField(User, related_name='doggy_profile', on_delete=models.CASCADE)
-    my_dog = models.OneToOneField(User, related_name='my_dog', on_delete=models.CASCADE)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    # owner = models.OneToOneField(User, related_name='doggy_profile', on_delete=models.CASCADE)
+    # my_dog = models.OneToOneField(User, related_name='my_dog', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -21,18 +22,18 @@ class DogProfile(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        unique_together = ['owner', 'my_dog']
+        # unique_together = ['owner', 'my_dog']
 
     def __str__(self):
         return f"{self.owner}'s doggy profile"
 
     # def __str__(self):
-    #     return f"{self.owner} {self.my_dog}"
+        # return f"{self.owner} {self.my_dog}"
 
 
-# def create_dog_profile(sender, instance, created, **kwargs):
-#     if created:
-#         DogProfile.objects.create(owner=instance)
+def create_dog_profile(sender, instance, created, **kwargs):
+    if created:
+        DogProfile.objects.create(owner=instance)
 
 
-# post_save.connect(create_dog_profile, sender=User)
+post_save.connect(create_dog_profile, sender=User)
