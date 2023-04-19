@@ -6,7 +6,8 @@ from .models import DogHealth
 class DogHealthSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    dog_profile_id = serializers.SerializerMethodField()
+    # dog_profile_id = serializers.SerializerMethodField()
+    # dog_profile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
     # profile_id = serializers.SerializerMethodField(source='owner.profile.id')
 
 
@@ -42,6 +43,6 @@ class Meta:
 
 
 class DogHealthDetailSerializer(DogHealthSerializer):
-    profile = serializers.ReadOnlyField(source='dogprofile.id')
+    profile = serializers.ReadOnlyField(source='profile.id')
 
     # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
