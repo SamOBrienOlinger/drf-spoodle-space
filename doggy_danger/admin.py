@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DogProfile
+from .models import DoggyDanger
 
 
-admin.site.register(doggy_danger)
+admin.site.register(DoggyDanger)
