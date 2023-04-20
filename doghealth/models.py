@@ -31,9 +31,9 @@ def create_doghealth(sender, instance, created, **kwargs):
 
 post_save.connect(create_doghealth, sender=User)
 
-    # class Meta:
-    #     ordering = ['-created_at']
-    #     unique_together = ['owner', 'post']
+# class Meta:
+#     ordering = ['-created_at']
+#     unique_together = ['owner', 'post']
 
-    # def __str__(self):
-    #     return f'{self.owner} {self.post}'
+# def __str__(self):
+#     return f'{self.owner} {self.post}'

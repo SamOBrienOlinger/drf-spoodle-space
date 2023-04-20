@@ -16,7 +16,7 @@ class DogProfile(models.Model):
     dog_age = IntegerField(default=0)
     dog_color = CharField(max_length=255, blank=True)
     dog_bio = models.TextField(blank=True)
-    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    # profile_image = models.ImageField(source='owner.profile.image.url')
 
     class Meta:
         ordering = ['-created_at']
