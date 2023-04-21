@@ -35,4 +35,5 @@ urlpatterns = [
 
     path('', include('dogprofiles.urls')),
     path('', include('doghealth.urls')),
+    path('', include('doggydanger.urls')),
 ]
