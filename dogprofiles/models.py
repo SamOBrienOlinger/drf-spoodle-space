@@ -16,6 +16,11 @@ class DogProfile(models.Model):
     dog_age = IntegerField(default=0)
     dog_color = CharField(max_length=255, blank=True)
     dog_bio = models.TextField(blank=True)
+    dog_profile_image = models.ImageField(
+        upload_to='images/', default='../default_profile_qdjgyp'
+    )
+
+#  profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     # profile_image = models.ImageField(source='owner.profile.image.url')
 
     class Meta:
