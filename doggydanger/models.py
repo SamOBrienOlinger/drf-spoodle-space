@@ -8,11 +8,9 @@ class DoggyDanger(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-# bites_babies
-# bites_kids
-# bites_teenagers
-# bites_burglars
-# bites_bono
-# Dangerously_cute
-# Fluffy_threat
+    bites_babies = models.TextField(blank=True)
+    bites_kids = models.TextField(blank=True)
+    bites_teenagers = models.TextField(blank=True)
+    bites_burglars = models.TextField(blank=True)
+    bites_bono = models.TextField(blank=True)
+    dangerously_cute = models.TextField(blank=True)
