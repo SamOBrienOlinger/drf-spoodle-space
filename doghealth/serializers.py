@@ -29,6 +29,12 @@ def get_dog_health_id(self, obj):
 class Meta:
     model = DogHealth
     fields = [
+        'id',
+        'owner',
+        'created_at',
+        'updated_at',
+        'is_owner',
+
         'vet_name'
         'vet_phone'
         'vet_email'
@@ -36,7 +42,7 @@ class Meta:
         'kennel_cough'
         'rabies'
         'allergies'
-        'id', 'owner', 'created_at', 'updated_at', 'is_owner',
+
     ]
 # 'dogprofile_id',
 # 'dog_health_id'
