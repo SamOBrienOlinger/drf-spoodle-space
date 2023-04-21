@@ -14,3 +14,9 @@ class DoggyDanger(models.Model):
     bites_burglars = models.TextField(blank=True)
     bites_bono = models.TextField(blank=True)
     dangerously_cute = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.owner}'s doggy danger level"
