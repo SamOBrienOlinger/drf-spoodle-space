@@ -12,7 +12,7 @@ class DoggyDanger(models.Model):
     bites_kids = models.TextField(blank=True)
     bites_teenagers = models.TextField(blank=True)
     bites_burglars = models.TextField(blank=True)
-    bites_bono = models.TextField(blank=True)
+    bites_bolsonaro = models.TextField(blank=True)
     dangerously_cute = models.TextField(blank=True)
 
     class Meta:
