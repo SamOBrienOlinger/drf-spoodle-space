@@ -49,13 +49,14 @@ class DogProfileDetail(generics.RetrieveUpdateAPIView):
     serializer_class = DogProfileDetailSerializer
     queryset = DogProfile.objects.all()
 
-# class DogProfileDetail(generics.RetrieveUpdateAPIView):
 
-#     permission_classes = [IsOwnerOrReadOnly]
+class DogProfileDetail(generics.RetrieveUpdateAPIView):
+
+    permission_classes = [IsOwnerOrReadOnly]
 #     serializer_class = DogProfileDetailSerializer
 #     queryset = DogProfile.objects.annotate(
 #         posts_count=Count('owner__post', distinct=True),
 #         followers_count=Count('owner__followed', distinct=True),
 #         following_count=Count('owner__following', distinct=True)
 #     ).order_by('-created_at')
-#     serializer_class = DogProfileSerializer
+    serializer_class = DogProfileSerializer
