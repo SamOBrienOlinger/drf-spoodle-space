@@ -11,6 +11,7 @@ class DoggyDangerSerializer(serializers.ModelSerializer):
                 'id',
                 'created_at',
                 'updated_at',
+
                 'bites_babies',
                 'bites_kids',
                 'bites_teenagers',
