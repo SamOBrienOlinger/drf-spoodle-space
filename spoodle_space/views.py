@@ -9,7 +9,7 @@ from .settings import (
 
 @api_view()
 def root_route(request):
-    return Response({"Welcome to Spoodle Space! Our community of Cockapoopers is all about sharing ways of enjoying long ludicrous lives with the lovliest furry fluffy fellas on Earth"})
+    return Response({"message": "Welcome to Spoodle Space! The Spoodliest & Cockapoopy Space you're ever going to sniff out. Our community is all about sharing ways of enjoying long ludicrous lives with the lovliest little furry fellas on Earth, possibly the Universe"})
 
 
 # dj-rest-auth logout view fix
