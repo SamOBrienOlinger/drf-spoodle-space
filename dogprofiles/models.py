@@ -6,9 +6,11 @@ from django.db.models import CharField
 
 
 class DogProfile(models.Model):
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    # owner = models.OneToOneField(User, on_delete=models.CASCADE)
     # owner = models.OneToOneField(User, related_name='doggy_profile', on_delete=models.CASCADE)
     # my_dog = models.OneToOneField(User, related_name='my_dog', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    # post = models.ForeignKey(Post, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -17,11 +19,8 @@ class DogProfile(models.Model):
     dog_color = CharField(max_length=255, blank=True)
     dog_bio = models.TextField(blank=True)
     dog_profile_image = models.ImageField(
-        upload_to='images/', default='../default_profile_qdjgyp'
+        upload_to='images/', default='../default_dog-profile_gtehul.png'
     )
-
-#  profile_id = serializers.ReadOnlyField(source='owner.profile.id')
-    # profile_image = models.ImageField(source='owner.profile.image.url')
 
     class Meta:
         ordering = ['-created_at']
@@ -29,9 +28,6 @@ class DogProfile(models.Model):
 
     def __str__(self):
         return f"{self.owner}'s doggy profile"
-
-    # def __str__(self):
-        # return f"{self.owner} {self.my_dog}"
 
 
 def create_dog_profile(sender, instance, created, **kwargs):

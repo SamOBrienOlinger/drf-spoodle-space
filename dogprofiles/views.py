@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, filters, permissions
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogProfile
-from .serializers import DogProfileSerializer, DogProfileDetailSerializer
+from .serializers import DogProfileSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 # from django.http import Http404
 
@@ -33,30 +33,13 @@ class DogProfileList(generics.ListAPIView):
         '-created_at'
     ]
 
-    # ordering_fields = [
-    #     'owner__following__created_at',
-    #     'owner__followed__created_at',
-    # ]
-
-
-def perform_create(self, serializer):
-    serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class DogProfileDetail(generics.RetrieveUpdateAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = DogProfileDetailSerializer
-    queryset = DogProfile.objects.all()
-
-
-class DogProfileDetail(generics.RetrieveUpdateAPIView):
-
-    permission_classes = [IsOwnerOrReadOnly]
-#     serializer_class = DogProfileDetailSerializer
-#     queryset = DogProfile.objects.annotate(
-#         posts_count=Count('owner__post', distinct=True),
-#         followers_count=Count('owner__followed', distinct=True),
-#         following_count=Count('owner__following', distinct=True)
-#     ).order_by('-created_at')
     serializer_class = DogProfileSerializer
+    # queryset = DogProfile.objects.all()
+    queryset = DogProfile.objects.annotate().order_by('-created_at')

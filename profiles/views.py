@@ -4,7 +4,6 @@ from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
 from django_filters.rest_framework import DjangoFilterBackend
-# from rest_framework.response import Response
 
 
 class ProfileList(generics.ListAPIView):
@@ -25,8 +24,6 @@ class ProfileList(generics.ListAPIView):
     filterset_fields = [
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
-        # 'likes__owner__profile',
-        # 'owner__profile'
     ]
     ordering_fields = [
         'posts_count',
