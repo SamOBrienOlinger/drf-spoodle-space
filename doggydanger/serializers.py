@@ -17,5 +17,10 @@ class DoggyDangerSerializer(serializers.ModelSerializer):
                 'bites_teenagers',
                 'bites_burglars',
                 'bites_bolsonaro',
-                'dangerously_cute'
+                'bites_trump',
+                'bites_thatcher',
+                'bites_reagan',
+                'bites_bush',
+                'bites_wbush',
+                'dangerously_cute',
             ]
