@@ -1,5 +1,4 @@
 from rest_framework import serializers
-# from profiles.models import Profile
 from dogprofiles.models import DogProfile
 
 
@@ -7,6 +6,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
+    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     # # created_at = serializers.SerializerMethodField()
     # updated_at = serializers.SerializerMethodField()
     # my_dog_name = serializers.ReadOnlyField(source='my_dog.username')
@@ -50,10 +50,11 @@ class DogProfileSerializer(serializers.ModelSerializer):
             'id',
             'owner',
             'is_owner',
-            'created_at',
-            'updated_at',
             'profile_id',
             'profile_image',
+            'created_at',
+            'updated_at',
+
             # 'profiling_id',
 
             'dog_name',
@@ -67,5 +68,5 @@ class DogProfileSerializer(serializers.ModelSerializer):
         ]
 
 
-class DogProfileDetailSerializer(DogProfileSerializer):
-    dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+# class DogProfileDetailSerializer(DogProfileSerializer):
+#     dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
