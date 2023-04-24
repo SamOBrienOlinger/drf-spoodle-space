@@ -10,12 +10,12 @@ class DogProfileSerializer(serializers.ModelSerializer):
     # # created_at = serializers.SerializerMethodField()
     # updated_at = serializers.SerializerMethodField()
     # my_dog_name = serializers.ReadOnlyField(source='my_dog.username')
-
+    # dogprofiling_id = serializers.SerializerMethodField()
     dog_name = serializers.SerializerMethodField()
     dog_age = serializers.SerializerMethodField()
     dog_color = serializers.SerializerMethodField()
     dog_bio = serializers.SerializerMethodField()
-    dog_profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+    dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -34,13 +34,13 @@ class DogProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    # def get_dog_profile_id(self, obj):
+    # def get_profiling_id(self, obj):
     #     user = self.context['request'].user
     #     if user.is_authenticated:
-    #         dogprofile = DogProfile.objects.filter(
-    #             owner=user, dogprofiles=obj.owner
+    #         profiling = Profile.objects.filter(
+    #             owner=user, profiled=obj.owner
     #         ).first()
-    #         return dog_profile_id.id if dogprofile else None
+    #         return profiling_id if profiling else None
     #     return None
 
     class Meta:
@@ -53,6 +53,8 @@ class DogProfileSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
             'profile_id',
+            'profile_image',
+            # 'profiling_id',
 
             'dog_name',
             'dog_age',
@@ -66,5 +68,4 @@ class DogProfileSerializer(serializers.ModelSerializer):
 
 
 class DogProfileDetailSerializer(DogProfileSerializer):
-    profile = serializers.ReadOnlyField(source='profile.id')
-    # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+    dogprofile = serializers.ReadOnlyField(source='dogprofile.id')

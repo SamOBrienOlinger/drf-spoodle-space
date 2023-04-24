@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, filters, permissions
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogProfile
-from .serializers import DogProfileSerializer
+from .serializers import DogProfileSerializer, DogProfileDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 # from django.http import Http404
 
@@ -21,6 +21,7 @@ class DogProfileList(generics.ListAPIView):
 # serializer_class = DogProfileSerializer(dogprofiles, many = 'True')
     filter_backends = [
         filters.OrderingFilter,
+        filters.OrderingFilter,
         DjangoFilterBackend,
     ]
 
@@ -28,7 +29,10 @@ class DogProfileList(generics.ListAPIView):
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
     ]
-
+    search_fields = [
+        'owner__username',
+        'dog_name',
+    ]
     ordering_fields = [
         '-created_at'
     ]

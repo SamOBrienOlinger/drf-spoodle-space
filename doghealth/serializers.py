@@ -49,6 +49,4 @@ class Meta:
 
 
 class DogHealthDetailSerializer(DogHealthSerializer):
-    profile = serializers.ReadOnlyField(source='profile.id')
-
-    # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+    dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
