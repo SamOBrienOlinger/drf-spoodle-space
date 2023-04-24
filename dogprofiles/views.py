@@ -7,7 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 # from django.http import Http404
 
 
-class DogProfileList(generics.ListAPIView):
+# class DogProfileList(generics.ListAPIView):
+class DogProfileList(generics.ListCreateAPIView):
 
     # def get(self, request):
     #     queryset = DogProfile.objects.annotate(
