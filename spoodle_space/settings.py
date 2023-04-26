@@ -73,7 +73,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = 'DEV' in os.environ
 
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),

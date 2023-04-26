@@ -7,7 +7,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    # # created_at = serializers.SerializerMethodField()
+    # created_at = serializers.SerializerMethodField()
     # updated_at = serializers.SerializerMethodField()
     # my_dog_name = serializers.ReadOnlyField(source='my_dog.username')
     # dogprofiling_id = serializers.SerializerMethodField()
@@ -34,14 +34,34 @@ class DogProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    # def get_profiling_id(self, obj):
-    #     user = self.context['request'].user
-    #     if user.is_authenticated:
-    #         profiling = Profile.objects.filter(
-    #             owner=user, profiled=obj.owner
-    #         ).first()
-    #         return profiling_id if profiling else None
-    #     return None
+    def get_profile_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            profiling = Profile.objects.filter(
+                owner=user, profiled=obj.owner
+            ).first()
+            return profiling_id if profiling else None
+        return None
+
+    def get_dog_name(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
+    def get_dog_age(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
+    def get_dog_color(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
+    def get_dog_bio(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
+    def get_dog_profile_image(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = DogProfile
