@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from dogprofiles.models import DogProfile
+# from profiles.models import Profile
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class DogProfileSerializer(serializers.ModelSerializer):
@@ -7,8 +9,8 @@ class DogProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    # created_at = serializers.SerializerMethodField()
-    # updated_at = serializers.SerializerMethodField()
+    created_at = serializers.SerializerMethodField()
+    updated_at = serializers.SerializerMethodField()
     # my_dog_name = serializers.ReadOnlyField(source='my_dog.username')
     # dogprofiling_id = serializers.SerializerMethodField()
     dog_name = serializers.SerializerMethodField()
@@ -35,13 +37,23 @@ class DogProfileSerializer(serializers.ModelSerializer):
         return request.user == obj.owner
 
     def get_profile_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            profiling = Profile.objects.filter(
-                owner=user, profiled=obj.owner
-            ).first()
-            return profiling_id if profiling else None
-        return None
+        request = self.context['request']
+        return request.user == obj.owner
+
+    # def get_profile_id(self, obj):
+    #     user = self.context['request'].user
+    #     if user.is_authenticated:
+    #         profiling = Profile.objects.filter(
+    #             owner=user, profiled=obj.owner
+    #         ).first()
+    #         return profiling_id if profiling else None
+    #     return None
+
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
+
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
 
     def get_dog_name(self, obj):
         request = self.context['request']
