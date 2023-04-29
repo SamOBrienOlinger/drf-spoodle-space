@@ -8,13 +8,18 @@ class DogProfileSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    created_at = serializers.SerializerMethodField()
-    updated_at = serializers.SerializerMethodField()
-    dog_name = serializers.SerializerMethodField()
-    dog_age = serializers.SerializerMethodField()
-    dog_color = serializers.SerializerMethodField()
-    dog_bio = serializers.SerializerMethodField()
+    # created_at = serializers.SerializerMethodField()
+    # updated_at = serializers.SerializerMethodField()
+    # dog_name = serializers.SerializerMethodField()
+    # dog_age = serializers.SerializerMethodField()
+    # dog_color = serializers.SerializerMethodField()
+    # dog_bio = serializers.SerializerMethodField()
     dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
+
+    # dogs_name = serializers.SerializerMethodField()
+    # dogs_age = serializers.SerializerMethodField()
+    # dogs_color = serializers.SerializerMethodField()
+    # dogs_bio = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -37,29 +42,29 @@ class DogProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_created_at(self, obj):
-        return naturaltime(obj.created_at)
+    # def get_created_at(self, obj):
+    #     return naturaltime(obj.created_at)
 
-    def get_updated_at(self, obj):
-        return naturaltime(obj.updated_at)
+    # def get_updated_at(self, obj):
+    #     return naturaltime(obj.updated_at)
 
-    def get_dog_name(self, obj):
+    def get_dogs_name(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_dog_age(self, obj):
+    def get_dogs_age(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_dog_color(self, obj):
+    def get_dogs_color(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_dog_bio(self, obj):
+    def get_dogs_bio(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_dog_profile_image(self, obj):
+    def get_dogs_profile_image(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
@@ -70,10 +75,12 @@ class DogProfileSerializer(serializers.ModelSerializer):
             'id',
             'owner',
             'is_owner',
-            'profile_id',
-            'profile_image',
             'created_at',
             'updated_at',
+            
+            'profile_id',
+            'profile_image',
+
             'dog_name',
             'dog_age',
             'dog_color',
