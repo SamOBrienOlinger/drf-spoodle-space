@@ -9,8 +9,10 @@ class DogProfile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     # owner = models.OneToOneField(User, related_name='doggy_profile', on_delete=models.CASCADE)
     # my_dog = models.OneToOneField(User, related_name='my_dog', on_delete=models.CASCADE)
+
     # owner = models.ForeignKey(User, on_delete=models.CASCADE)
     # post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -30,9 +32,9 @@ class DogProfile(models.Model):
         return f"{self.owner}'s doggy profile"
 
 
-# def create_dog_profile(sender, instance, created, **kwargs):
-#     if created:
-#         DogProfile.objects.create(owner=instance)
+def create_dog_profile(sender, instance, created, **kwargs):
+    if created:
+        DogProfile.objects.create(owner=instance)
 
 
 # post_save.connect(create_dog_profile, sender=User)

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from dogprofiles.models import DogProfile
+from profiles.models import Profile
 from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
@@ -14,12 +15,13 @@ class DogProfileSerializer(serializers.ModelSerializer):
     # dog_age = serializers.SerializerMethodField()
     # dog_color = serializers.SerializerMethodField()
     # dog_bio = serializers.SerializerMethodField()
-    dogs_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
+    dogprofile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
+    dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
 
-    # dogs_name = serializers.SerializerMethodField()
-    # dogs_age = serializers.SerializerMethodField()
-    # dogs_color = serializers.SerializerMethodField()
-    # dogs_bio = serializers.SerializerMethodField()
+    # dogs_name = serializers.ReadOnlyField()
+    # dogs_age = serializers.ReadOnlyField()
+    # dogs_color = serializers.ReadOnlyField()
+    # dogs_bio = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
@@ -38,35 +40,53 @@ class DogProfileSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
+    def get_dogprofile_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            dogprofile = DogProfile.objects.filter(
+                owner=user, post=obj
+            ).first()
+            return dogprofile.id if dogprofile else None
+        return None
+
     def get_profile_id(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    # def get_created_at(self, obj):
-    #     return naturaltime(obj.created_at)
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
 
-    # def get_updated_at(self, obj):
-    #     return naturaltime(obj.updated_at)
+    def get_updated_at(self, obj):
+        return naturaltime(obj.updated_at)
 
-    def get_dogs_name(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+    # def get_dog_name(self, obj):
+    #     user = self.context['request'].user
+    #     if user.is_authenticated:
+    #         like = Like.objects.filter(
+    #             owner=user, post=obj
+    #         ).first()
+    #         return like.id if like else None
+    #     return None
 
-    def get_dogs_age(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+    # def get_dogs_name(self, obj):
+    #     request = self.context['request']
+    #     return request.user == obj.owner
 
-    def get_dogs_color(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+    # def get_dogs_age(self, obj):
+    #     request = self.context['request']
+    #     return request.user == obj.owner
 
-    def get_dogs_bio(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+    # def get_dogs_color(self, obj):
+    #     request = self.context['request']
+    #     return request.user == obj.owner
 
-    def get_dogs_profile_image(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
+    # def get_dogs_bio(self, obj):
+    #     request = self.context['request']
+    #     return request.user == obj.owner
+
+    # def get_dogs_profile_image(self, obj):
+    #     request = self.context['request']
+    #     return request.user == obj.owner
 
     class Meta:
         model = DogProfile
@@ -77,9 +97,11 @@ class DogProfileSerializer(serializers.ModelSerializer):
             'is_owner',
             'created_at',
             'updated_at',
-            
+
             'profile_id',
             'profile_image',
+
+            'dogprofile_id',
 
             'dog_name',
             'dog_age',
