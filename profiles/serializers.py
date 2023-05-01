@@ -11,7 +11,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
-    # doggyprofiling_id = serializers.SerializerMethodField()
+    # dog_name = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -26,13 +26,13 @@ class ProfileSerializer(serializers.ModelSerializer):
             return following.id if following else None
         return None
 
-    # def get_dogprofiling_id(self, obj):
+    # def get_dog_name(self, obj):
     #     user = self.context['request'].user
     #     if user.is_authenticated:
-    #         dogprofiling = DogProfile.objects.filter(
-    #             owner=user, my_dog=obj.owner
+    #         dogprofile = DogProfile.objects.filter(
+    #             owner=user, dogprofile=obj.owner
     #         ).first()
-    #         return dogprofiling.id if dogrofiling else None
+    #         return dogprofile if dogrofile else None
     #     return None
 
     class Meta:
@@ -50,5 +50,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             'posts_count',
             'followers_count',
             'following_count',
-            # 'dogprofile_id ',
+            # 'dog_name',
         ]

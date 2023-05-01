@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models import Count, Value
 from rest_framework import generics, filters
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import Profile
@@ -14,7 +14,8 @@ class ProfileList(generics.ListAPIView):
     queryset = Profile.objects.annotate(
         posts_count=Count('owner__post', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
-        following_count=Count('owner__following', distinct=True)
+        following_count=Count('owner__following', distinct=True),
+        # dog_name=Value('dog_name')
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
     filter_backends = [
@@ -24,6 +25,7 @@ class ProfileList(generics.ListAPIView):
     filterset_fields = [
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
+        # 'owner__dog_name',
     ]
     ordering_fields = [
         'posts_count',
