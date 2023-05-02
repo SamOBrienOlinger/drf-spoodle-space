@@ -21,12 +21,13 @@ class DogProfileList(generics.ListCreateAPIView):
 # serializer_class = DogProfileSerializer(dogprofiles, many = 'True')
     filter_backends = [
         filters.OrderingFilter,
-        filters.OrderingFilter,
+        # filters.OrderingFilter,
         DjangoFilterBackend,
     ]
     filterset_fields = [
-        'owner__following__followed__profile',
-        'owner__followed__owner__profile',
+        # 'owner__following__followed__profile',
+        # 'owner__followed__owner__profile',
+        'owner__profile'
     ]
     search_fields = [
         'owner__username',
@@ -44,5 +45,5 @@ class DogProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DogProfileSerializer
-    # queryset = DogProfile.objects.all()
-    queryset = DogProfile.objects.annotate().order_by('-created_at')
+    queryset = DogProfile.objects.all().order_by('-created_at')
+    # queryset = DogProfile.objects.annotate().order_by('-created_at')
