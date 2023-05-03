@@ -41,7 +41,8 @@ class DogProfileList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class DogProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+# class DogProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+class DogProfileDetail(generics.RetrieveUpdateAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DogProfileSerializer
