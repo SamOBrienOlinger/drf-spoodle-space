@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# from django.db.models.signals import post_save
+from django.db.models.signals import post_save
 from django.db.models import IntegerField
 from django.db.models import CharField
 
@@ -37,4 +37,4 @@ def create_dog_profile(sender, instance, created, **kwargs):
         DogProfile.objects.create(owner=instance)
 
 
-# post_save.connect(create_dog_profile, sender=User)
+post_save.connect(create_dog_profile, sender=User)
