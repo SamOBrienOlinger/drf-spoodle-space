@@ -17,8 +17,10 @@ class DogProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     dog_name = models.CharField(max_length=255, blank=True)
-    dog_age = IntegerField(default=0)
-    dog_color = CharField(max_length=255, blank=True)
+    # dog_age = IntegerField(default=0)
+    dog_age = models.TextField(blank=True)
+    # dog_color = CharField(max_length=255, blank=True)
+    dog_color = models.TextField(blank=True)
     dog_bio = models.TextField(blank=True)
     dog_profile_image = models.ImageField(
         upload_to='images/', default='../default_dog-profile_gtehul.png', blank=True
