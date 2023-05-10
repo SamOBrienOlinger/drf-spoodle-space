@@ -6,37 +6,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dogdanger', '0001_initial'),
+        ('DogDanger', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_babies',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_bono',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_burglars',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_kids',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_teenagers',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='dangerously_cute',
             field=models.TextField(blank=True),
         ),

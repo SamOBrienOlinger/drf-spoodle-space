@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, permissions, filters
 from spoodle_space.permissions import IsOwnerOrReadOnly
-from .models import DogHealth
+from .models import DogDanger
 from dogdanger.serializers import DogDangerSerializer, DogDangerDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 

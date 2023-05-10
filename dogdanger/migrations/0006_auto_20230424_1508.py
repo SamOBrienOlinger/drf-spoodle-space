@@ -11,27 +11,27 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_bush',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_reagan',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_thatcher',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_trump',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='dogdanger',
+            model_name='DogDanger',
             name='bites_wbush',
             field=models.TextField(blank=True),
         ),
