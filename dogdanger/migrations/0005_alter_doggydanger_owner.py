@@ -9,12 +9,12 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('doggydanger', '0004_rename_bites_bono_doggydanger_bites_bolsonaro'),
+        ('dogdanger', '0004_rename_bites_bono_dogdanger_bites_bolsonaro'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='doggydanger',
+            model_name='dogdanger',
             name='owner',
             field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
         ),

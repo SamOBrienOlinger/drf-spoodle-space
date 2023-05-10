@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from .models import DoggyDanger
+from .models import DogDanger
 
 
-class DoggyDangerSerializer(serializers.ModelSerializer):
+class DogDangerSerializer(serializers.ModelSerializer):
 
     class meta:
-        model = DoggyDanger
+        model = dogDanger
         fields = [
             'owner',
             'id',

@@ -6,32 +6,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('doggydanger', '0005_alter_doggydanger_owner'),
+        ('dogdanger', '0005_alter_dogdanger_owner'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='doggydanger',
+            model_name='dogdanger',
             name='bites_bush',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='doggydanger',
+            model_name='dogdanger',
             name='bites_reagan',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='doggydanger',
+            model_name='dogdanger',
             name='bites_thatcher',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='doggydanger',
+            model_name='dogdanger',
             name='bites_trump',
             field=models.TextField(blank=True),
         ),
         migrations.AddField(
-            model_name='doggydanger',
+            model_name='dogdanger',
             name='bites_wbush',
             field=models.TextField(blank=True),
         ),

@@ -3,7 +3,7 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
-class DoggyDanger(models.Model):
+class DogDanger(models.Model):
 
     # owner = models.ForeignKey(User, on_delete=models.CASCADE)
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
