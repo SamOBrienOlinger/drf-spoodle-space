@@ -5,7 +5,7 @@ from .models import DogDanger
 class DogDangerSerializer(serializers.ModelSerializer):
 
     class meta:
-        model = dogDanger
+        model = DogDanger
         fields = [
             'owner',
             'id',
