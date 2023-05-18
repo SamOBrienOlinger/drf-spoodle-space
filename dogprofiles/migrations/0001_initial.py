@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('dog_age', models.TextField(blank=True)),
                 ('dog_color', models.TextField(blank=True)),
                 ('dog_bio', models.TextField(blank=True)),
-                ('dog_profile_image', models.ImageField(blank=True, default='../default_dog-profile_gtehul.png', upload_to='images/')),
+                ('image', models.ImageField(blank=True, default='../default_dog-profile_gtehul.png', upload_to='images/')),
                 ('owner', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
