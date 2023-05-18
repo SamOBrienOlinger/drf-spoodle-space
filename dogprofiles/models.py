@@ -16,7 +16,7 @@ class DogProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    dog_name = models.TextField(blank=True)
+    dog_age = models.TextField(blank=True)
     # dog_name = models.CharField(max_length=255, blank=True)
     # dog_age = IntegerField(default=0)
     dog_age = models.TextField(blank=True)
