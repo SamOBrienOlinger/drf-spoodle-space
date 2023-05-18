@@ -22,7 +22,7 @@ class DogProfile(models.Model):
     # dog_color = CharField(max_length=255, blank=True)
     dog_color = models.TextField(blank=True)
     dog_bio = models.TextField(blank=True)
-    image = models.ImageField(
+    dog_profile_image = models.ImageField(
         upload_to='images/', default='../default_dog-profile_gtehul.png', blank=True
     )
 
