@@ -21,8 +21,12 @@ class DogProfile(models.Model):
         return f"{self.owner}'s doggy profile"
 
 
+# def create_dog_profile(sender, instance, created, **kwargs):
+#     if created:
+#         DogProfile.objects.create(owner=instance)
+
 def create_dog_profile(sender, instance, created, **kwargs):
-    if created:
+    if created and not DogProfile.objects.filter(owner=instance).exists():
         DogProfile.objects.create(owner=instance)
 
 
