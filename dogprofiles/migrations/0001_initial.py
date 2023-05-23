@@ -11,19 +11,21 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('posts', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name='DogProfile',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('content', models.TextField()),
+                ('dog_name', models.TextField(blank=True, max_length=255)),
+                ('dog_age', models.TextField(blank=True)),
+                ('dog_color', models.TextField(blank=True)),
+                ('dog_bio', models.TextField(blank=True)),
+                ('dog_profile_image', models.ImageField(blank=True, default='../default_dog-profile_gtehul.png', upload_to='images/')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posts.post')),
             ],
             options={
                 'ordering': ['-created_at'],
