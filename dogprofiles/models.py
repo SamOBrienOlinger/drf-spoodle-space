@@ -43,7 +43,7 @@ def create_dog_profile(sender, instance, created, **kwargs):
 
         with open('path/to/image.jpg', 'rb') as image_file:
             dog_profile.dog_profile_image.save('image.jpg', File(image_file))
-        
+
         dog_profile.save()
 
 
