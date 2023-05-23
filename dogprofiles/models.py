@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 
 
 class DogProfile(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -25,9 +25,26 @@ class DogProfile(models.Model):
 #     if created:
 #         DogProfile.objects.create(owner=instance)
 
+# def create_dog_profile(sender, instance, created, **kwargs):
+#     if created and not DogProfile.objects.filter(owner=instance).exists():
+#         DogProfile.objects.create(owner=instance)
+
+
+# post_save.connect(create_dog_profile, sender=User)
+
 def create_dog_profile(sender, instance, created, **kwargs):
-    if created and not DogProfile.objects.filter(owner=instance).exists():
-        DogProfile.objects.create(owner=instance)
+    if created:
+        dog_profile, _ = DogProfile.objects.get_or_create(owner=instance)
+        dog_profile.dog_name = "Updated Dog Name"
+        dog_profile.dog_age = "Updated Dog Age"
+        dog_profile.dog_color = "Updated Dog Color"
+        dog_profile.dog_bio = "Updated Dog Bio"
+        # dog_profile.dog_profile_image = "Updated Dog image"
+
+        with open('path/to/image.jpg', 'rb') as image_file:
+            dog_profile.dog_profile_image.save('image.jpg', File(image_file))
+        
+        dog_profile.save()
 
 
 post_save.connect(create_dog_profile, sender=User)
