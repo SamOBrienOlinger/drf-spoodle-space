@@ -75,6 +75,8 @@ DEBUG = 'DEV' in os.environ
 
 DEBUG = True
 
+# DEBUG = False
+
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
    'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu97.gitpod.io'
