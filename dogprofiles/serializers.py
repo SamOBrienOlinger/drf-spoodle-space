@@ -50,3 +50,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
 
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
+
+    class Meta:
+        model = DogProfile
+        fields = '__all__'
