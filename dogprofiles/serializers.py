@@ -13,16 +13,6 @@ class DogProfileSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     dogprofile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
     dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
-    image = serializers.ImageField(max_length=None, allow_empty_file=False, use_url=True)
-
-    def validate_image(self, value):
-        if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Image size larger than 2MB!')
-        if value.image.height > 4096:
-            raise serializers.ValidationError('Image height larger than 4096px!')
-        if value.image.width > 4096:
-            raise serializers.ValidationError('Image width larger than 4096px!')
-        return value
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -55,3 +45,57 @@ class DogProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = DogProfile
         fields = '__all__'
+
+
+
+
+# class DogProfileSerializer(serializers.ModelSerializer):
+#     owner = serializers.ReadOnlyField(source='owner.username')
+#     is_owner = serializers.SerializerMethodField()
+#     following_id = serializers.SerializerMethodField()
+#     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
+#     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
+#     dogprofile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
+#     dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
+#     image = serializers.ImageField(max_length=None, allow_empty_file=False, use_url=True)
+
+#     def validate_image(self, value):
+#         if value.size > 2 * 1024 * 1024:
+#             raise serializers.ValidationError('Image size larger than 2MB!')
+#         if value.image.height > 4096:
+#             raise serializers.ValidationError('Image height larger than 4096px!')
+#         if value.image.width > 4096:
+#             raise serializers.ValidationError('Image width larger than 4096px!')
+#         return value
+
+#     def get_is_owner(self, obj):
+#         request = self.context['request']
+#         return request.user == obj.owner
+
+#     def get_following_id(self, obj):
+#         user = self.context['request'].user
+#         if user.is_authenticated:
+#             following = Follower.objects.filter(owner=user, followed=obj.owner).first()
+#             return following.id if following else None
+#         return None
+
+#     def get_dogprofile_id(self, obj):
+#         user = self.context['request'].user
+#         if user.is_authenticated:
+#             dogprofile = DogProfile.objects.filter(owner=user).first()
+#             return dogprofile.id if dogprofile else None
+#         return None
+
+#     def get_profile_id(self, obj):
+#         request = self.context['request']
+#         return request.user == obj.owner
+
+#     def get_created_at(self, obj):
+#         return naturaltime(obj.created_at)
+
+#     def get_updated_at(self, obj):
+#         return naturaltime(obj.updated_at)
+
+#     class Meta:
+#         model = DogProfile
+#         fields = '__all__'
