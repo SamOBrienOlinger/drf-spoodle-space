@@ -13,6 +13,7 @@ class DogProfileSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     dogprofile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
     dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
+    image = serializers.ImageField(max_length=None, allow_empty_file=False, use_url=True)
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
