@@ -4,7 +4,7 @@ from .models import DogDanger
 
 class DogDangerSerializer(serializers.ModelSerializer):
 
-    class meta:
+    class Meta:
         model = DogDanger
         fields = [
             'owner',
@@ -24,3 +24,9 @@ class DogDangerSerializer(serializers.ModelSerializer):
             'bites_wbush',
             'dangerously_cute',
         ]
+
+
+class DogDangerDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DogDanger
+        fields = '__all__'
