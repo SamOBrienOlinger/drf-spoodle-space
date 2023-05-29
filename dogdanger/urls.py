@@ -1,5 +1,5 @@
 from django.urls import path
-from DogDanger import views
+from dogdanger import views
 
 urlpatterns = [
     path('dogdanger/', views.DogDangerList.as_view()),
