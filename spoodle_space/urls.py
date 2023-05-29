@@ -34,6 +34,6 @@ urlpatterns = [
     path('', include('followers.urls')),
 
     path('', include('dogprofiles.urls')),
-    # path('', include('doghealth.urls')),
-    # path('', include('dogdanger.urls')),
+    path('', include('doghealth.urls')),
+    path('', include('dogdanger.urls')),
 ]
