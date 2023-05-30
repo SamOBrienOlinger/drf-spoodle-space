@@ -54,4 +54,4 @@ class DogDangerDetail(generics.RetrieveUpdateAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DogDangerDetailSerializer
-    queryset = DogDangerDetail().objects.all()
+    queryset = DogDanger.objects.all()
