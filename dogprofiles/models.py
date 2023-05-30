@@ -39,10 +39,6 @@ def create_dog_profile(sender, instance, created, **kwargs):
         dog_profile.dog_age = "Updated Dog Age"
         dog_profile.dog_color = "Updated Dog Color"
         dog_profile.dog_bio = "Updated Dog Bio"
-        # dog_profile.dog_profile_image = "Updated Dog image"
-
-        with open('path/to/image.jpg', 'rb') as image_file:
-            dog_profile.dog_profile_image.save('image.jpg', File(image_file))
 
         dog_profile.save()
 
