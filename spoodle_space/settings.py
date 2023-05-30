@@ -73,7 +73,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu97.gitpod.io'
+   'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu98.gitpod.io'
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
