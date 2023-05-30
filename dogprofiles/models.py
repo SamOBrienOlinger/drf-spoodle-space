@@ -39,7 +39,6 @@ def create_dog_profile(sender, instance, created, **kwargs):
         dog_profile.dog_age = "Updated Dog Age"
         dog_profile.dog_color = "Updated Dog Color"
         dog_profile.dog_bio = "Updated Dog Bio"
-
         dog_profile.save()
 
 
