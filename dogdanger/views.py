@@ -7,16 +7,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 class DogDangerList(generics.ListAPIView):
-    #     queryset = DogHealth.objects.annotate(
-    #     posts_count=Count('owner__post', distinct=True),
-    #     followers_count=Count('owner__followed', distinct=True),
-    #     following_count=Count('owner__following', distinct=True)
-    # ).order_by('-created_at')
-    # serializer_class = ProfileSerializer
-    # filter_backends = [
-    #     filters.OrderingFilter,
-    #     DjangoFilterBackend,
-    # ]
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DogDangerSerializer
@@ -30,8 +20,6 @@ class DogDangerList(generics.ListAPIView):
     filterset_fields = [
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
-        # 'likes__owner__profile',
-        # 'owner__profile'
     ]
     ordering_fields = [
          '-created_at'

@@ -26,15 +26,6 @@ class ProfileSerializer(serializers.ModelSerializer):
             return following.id if following else None
         return None
 
-    # def get_dog_name(self, obj):
-    #     user = self.context['request'].user
-    #     if user.is_authenticated:
-    #         dogprofile = DogProfile.objects.filter(
-    #             owner=user, dogprofile=obj.owner
-    #         ).first()
-    #         return dogprofile if dogrofile else None
-    #     return None
-
     class Meta:
         model = Profile
         fields = [
