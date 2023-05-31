@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import Profile
-# from dogprofiles.models import DogProfile
 from followers.models import Follower
 
 
@@ -11,7 +10,6 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
-    # dog_name = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -23,23 +21,14 @@ class ProfileSerializer(serializers.ModelSerializer):
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
             ).first()
+            # print(following)
             return following.id if following else None
         return None
 
     class Meta:
         model = Profile
         fields = [
-            'id',
-            'owner',
-            'created_at',
-            'updated_at',
-            'name',
-            'content',
-            'image',
-            'is_owner',
-            'following_id',
-            'posts_count',
-            'followers_count',
-            'following_count',
-            # 'dog_name',
+            'id', 'owner', 'created_at', 'updated_at', 'name',
+            'content', 'image', 'is_owner', 'following_id',
+            'posts_count', 'followers_count', 'following_count',
         ]
