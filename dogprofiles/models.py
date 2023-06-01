@@ -35,10 +35,10 @@ class DogProfile(models.Model):
 def create_dog_profile(sender, instance, created, **kwargs):
     if created:
         dog_profile, _ = DogProfile.objects.get_or_create(owner=instance)
-        dog_profile.dog_name = "Updated Dog Name"
-        dog_profile.dog_age = "Updated Dog Age"
-        dog_profile.dog_color = "Updated Dog Color"
-        dog_profile.dog_bio = "Updated Dog Bio"
+        dog_profile.dog_name = ""
+        dog_profile.dog_age = ""
+        dog_profile.dog_color = ""
+        dog_profile.dog_bio = ""
         dog_profile.save()
 
 
