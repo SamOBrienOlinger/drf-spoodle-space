@@ -43,7 +43,7 @@ REST_FRAMEWORK = {
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20,
+    'PAGE_SIZE': 10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
 
@@ -75,7 +75,7 @@ DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
    os.environ.get('ALLOWED_HOST'),
-   'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu98.gitpod.io'
+   'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu99.gitpod.io'
 ]
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -168,14 +168,32 @@ WSGI_APPLICATION = 'spoodle_space.wsgi.application'
 #     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 # }
 
+# DATABASES = {
+#     'default': ({
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     } if 'DEV' in os.environ else dj_database_url.parse(
+#         os.environ.get('DATABASE_URL')
+#     ))
+# }
+
+# if 'DEV' in os.environ:
+#     print('IN LOCAL')
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+# else:
+#     print('IN POSTGRES')
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#     }
+
 DATABASES = {
-    'default': ({
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    } if 'DEV' in os.environ else dj_database_url.parse(
-        os.environ.get('DATABASE_URL')
-    ))
-}
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 
 
 # Password validation

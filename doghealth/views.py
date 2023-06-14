@@ -6,7 +6,7 @@ from doghealth.serializers import DogHealthSerializer, DogHealthDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-class DogHealthList(generics.ListAPIView):
+class DogHealthList(generics.ListCreateAPIView):
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DogHealthSerializer
@@ -21,13 +21,17 @@ class DogHealthList(generics.ListAPIView):
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
     ]
+    search_fields = [
+        'owner__username',
+        # 'vet_name',
+    ]
     ordering_fields = [
          '-created_at'
     ]
 
-
-def perform_create(self, serializer):
-    serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        print("running?")
+        serializer.save(owner=self.request.user)
 
 
 class DogHealthDetail(generics.RetrieveUpdateAPIView):

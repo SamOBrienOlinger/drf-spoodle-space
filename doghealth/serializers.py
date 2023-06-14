@@ -6,47 +6,40 @@ from .models import DogHealth
 class DogHealthSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    # dog_profile_id = serializers.SerializerMethodField()
-    # dog_profile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
-    # profile_id = serializers.SerializerMethodField(source='owner.profile.id')
 
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
-def get_is_owner(self, obj):
-    request = self.context['request']
-    return request.user == obj.owner
+    def get_dog_health_id(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            doghealth = DogHealth.objects.filter(
+                owner=user, doghealth=obj.owner
+            ).first()
+            return doghealth.id if following else None
+        return None
 
-
-def get_dog_health_id(self, obj):
-    user = self.context['request'].user
-    if user.is_authenticated:
-        doghealth = DogHealth.objects.filter(
-            owner=user, doghealth=obj.owner
-        ).first()
-        return dog_health_id.id if following else None
-    return None
-
-
-class Meta:
-    model = DogHealth
-    fields = [
-        'id',
-        'owner',
-        'created_at',
-        'updated_at',
-        'is_owner',
-
-        'vet_name'
-        'vet_phone'
-        'vet_email'
-        'chipped'
-        'kennel_cough'
-        'rabies'
-        'allergies'
-
-    ]
-# 'dogprofile_id',
-# 'dog_health_id'
+    class Meta:
+        model = DogHealth
+        fields = [
+            'id',
+            'owner',
+            'created_at',
+            'updated_at',
+            'is_owner',
+            'vet_name',
+            'vet_phone',
+            'vet_email',
+            'kennel_cough',
+            'rabies',
+            'allergies',
+            # 'dogprofile_id',
+        ]
 
 
 class DogHealthDetailSerializer(DogHealthSerializer):
-    dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+    # dogprofile_id = serializers.ReadOnlyField(source='dogprofile.id')
+    class Meta:
+        model = DogHealth
+        fields = '__all__'

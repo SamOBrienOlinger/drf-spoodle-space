@@ -7,12 +7,12 @@ from followers.models import Follower
 
 class DogProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    owner_id = serializers.ReadOnlyField(source='owner.id')
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     dogprofile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
-    dog_profile_image = serializers.ReadOnlyField(source='owner.dogprofile.image.url')
 
     def get_is_owner(self, obj):
         request = self.context['request']

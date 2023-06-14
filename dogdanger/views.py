@@ -6,8 +6,7 @@ from dogdanger.serializers import DogDangerSerializer, DogDangerDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-class DogDangerList(generics.ListAPIView):
-
+class DogDangerList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DogDangerSerializer
     queryset = DogDanger.objects.all()
@@ -21,21 +20,17 @@ class DogDangerList(generics.ListAPIView):
         'owner__following__followed__profile',
         'owner__followed__owner__profile',
     ]
+    search_fields = [
+        'owner__username',
+        # 'dog_name',
+    ]
     ordering_fields = [
          '-created_at'
     ]
 
-    # ordering_fields = [
-    #     'posts_count',
-    #     'followers_count',
-    #     'following_count',
-    #     'owner__following__created_at',
-    #     'owner__followed__created_at',
-    # ]
-
-
-def perform_create(self, serializer):
-    serializer.save(owner=self.request.user)
+    def perform_create(self, serializer):
+        print("running?")
+        serializer.save(owner=self.request.user)
 
 
 class DogDangerDetail(generics.RetrieveUpdateAPIView):
