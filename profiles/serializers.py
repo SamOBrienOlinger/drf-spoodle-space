@@ -36,7 +36,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             return DogProfile.objects.get(owner=obj.pk).pk
         except Exception as e:
             return None
-    
+
     def get_dog_health(self, obj):
         try:
             return DogHealth.objects.get(owner=obj.pk).pk

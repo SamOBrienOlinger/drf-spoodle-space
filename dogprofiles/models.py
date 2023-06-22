@@ -10,7 +10,8 @@ class DogProfile(models.Model):
     dog_age = models.TextField(blank=True)
     dog_color = models.TextField(blank=True)
     dog_bio = models.TextField(blank=True)
-    dog_profile_image = models.ImageField(upload_to='images/', default='../default_dog-profile_gtehul.png', blank=True)
+    dog_profile_image = models.ImageField(
+        upload_to='images/', default='../default_dog-profile_gtehul.png', blank=True)
 
     class Meta:
         ordering = ['-created_at']
@@ -19,6 +20,6 @@ class DogProfile(models.Model):
         return f"{self.owner}'s doggy profile"
 
 
-def create_dogdanger(sender, instance, created, **kwargs):
+def create_dogprofile(sender, instance, created, **kwargs):
     if created:
-        DogDanger.objects.create(owner=instance)
+        DogProfile.objects.create(owner=instance)

@@ -11,6 +11,7 @@ class DogProfileList(generics.ListCreateAPIView):
     queryset = DogProfile.objects.all().order_by('-created_at')
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
     ]
     filterset_fields = [
@@ -29,7 +30,7 @@ class DogProfileList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class DogProfileDetail(generics.RetrieveUpdateAPIView):
+class DogProfileDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DogProfileSerializer
     queryset = DogProfile.objects.all().order_by('-created_at')

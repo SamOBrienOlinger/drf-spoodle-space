@@ -74,8 +74,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
-   os.environ.get('ALLOWED_HOST'),
-   'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu100.gitpod.io'
+    os.environ.get('ALLOWED_HOST'),
+    'localhost', '8000-samobrienol-drfspoodles-t68akmfonum.ws-eu100.gitpod.io'
 ]
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -192,8 +192,8 @@ WSGI_APPLICATION = 'spoodle_space.wsgi.application'
 #     }
 
 DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+}
 
 
 # Password validation

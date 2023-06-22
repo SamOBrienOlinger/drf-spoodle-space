@@ -1,8 +1,9 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from rest_framework import generics, permissions, filters
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogHealth
-from doghealth.serializers import DogHealthSerializer, DogHealthDetailSerializer
+from doghealth.serializers import DogHealthSerializer
+from doghealth.serializers import DogHealthDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
@@ -14,6 +15,7 @@ class DogHealthList(generics.ListCreateAPIView):
 
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
     ]
 
@@ -23,10 +25,10 @@ class DogHealthList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'owner__username',
-        # 'vet_name',
+        'vet_name'
     ]
     ordering_fields = [
-         '-created_at'
+        '-created_at'
     ]
 
     def perform_create(self, serializer):
@@ -34,8 +36,8 @@ class DogHealthList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class DogHealthDetail(generics.RetrieveUpdateAPIView):
-
+class DogHealthDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DogHealthDetailSerializer
-    queryset = DogHealth.objects.all()
+    serializer_class = DogHealthSerializer
+    queryset = DogHealth.objects.all().order_by('-created_at')

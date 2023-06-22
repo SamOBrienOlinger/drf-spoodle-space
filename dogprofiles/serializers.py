@@ -12,7 +12,8 @@ class DogProfileSerializer(serializers.ModelSerializer):
     following_id = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
-    dogprofile_id = serializers.SerializerMethodField(source='owner.dogprofile.id')
+    dogprofile_id = serializers.SerializerMethodField(
+        source='owner.dogprofile.id')
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -21,7 +22,8 @@ class DogProfileSerializer(serializers.ModelSerializer):
     def get_following_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            following = Follower.objects.filter(owner=user, followed=obj.owner).first()
+            following = Follower.objects.filter(
+                owner=user, followed=obj.owner).first()
             return following.id if following else None
         return None
 

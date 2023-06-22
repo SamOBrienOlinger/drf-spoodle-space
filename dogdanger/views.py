@@ -13,6 +13,7 @@ class DogDangerList(generics.ListCreateAPIView):
 
     filter_backends = [
         filters.OrderingFilter,
+        filters.SearchFilter,
         DjangoFilterBackend,
     ]
 
@@ -23,9 +24,10 @@ class DogDangerList(generics.ListCreateAPIView):
     search_fields = [
         'owner__username',
         # 'dog_name',
+        'dangerously_cute',
     ]
     ordering_fields = [
-         '-created_at'
+        '-created_at'
     ]
 
     def perform_create(self, serializer):
@@ -33,8 +35,8 @@ class DogDangerList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
-class DogDangerDetail(generics.RetrieveUpdateAPIView):
+class DogDangerDetail(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = DogDangerDetailSerializer
-    queryset = DogDanger.objects.all()
+    queryset = DogDanger.objects.all().order_by('-created_at')

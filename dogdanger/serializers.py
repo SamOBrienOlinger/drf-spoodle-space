@@ -5,26 +5,25 @@ from .models import DogDanger
 
 class DogDangerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    owner_id = serializers.ReadOnlyField(source='owner.id')
     is_owner = serializers.SerializerMethodField()
+    profile_id = serializers.SerializerMethodField(source='owner.profile.id')
+    profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_dog_danger_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            dogdanger = DogDanger.objects.filter(
-                owner=user, dogdanger=obj.owner
-            ).first()
-            return dogdanger.id if following else None
-        return None
+    def get_profile_id(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
 
     class Meta:
         model = DogDanger
         fields = [
             'id',
             'owner',
+            'owner_id',
             'created_at',
             'updated_at',
             'is_owner',
@@ -33,11 +32,14 @@ class DogDangerSerializer(serializers.ModelSerializer):
             'bites_teenagers',
             'bites_burglars',
             'dangerously_cute',
+            'profile_id',
+            'profile_image',
         ]
 
 
-class DogDangerDetailSerializer(serializers.ModelSerializer):
-    # dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+class DogDangerDetailSerializer(DogDangerSerializer):
+    dogprofile = serializers.ReadOnlyField(source='dogprofile.id')
+
     class Meta:
         model = DogDanger
         fields = '__all__'
