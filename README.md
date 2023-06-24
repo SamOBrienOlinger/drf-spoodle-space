@@ -1,6 +1,6 @@
 # ![**SpoodleSPACE**](Media/README.md-images/README.md-landing-page.png)
 
-**[SpoodleSPACE](spoodlespace.herokuapp.com)** was developed and submmitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. 
+**[SpoodleSpace](spoodlespace.herokuapp.com)** was developed and submmitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. 
 
 This project introduces a new range of features and funcionalities that offer Users a valuable expansion on my previous Portfolio Projects, which centred on a fictional webiste for an online community of dog owners called 'Cockapoo Club'. The progress made in this iteration of the original concept which now includes HTML, CSS, JavaScript, React.js Bootstrap.js, and Django REST Framework. This project evolved out of ideas for delivering signifcant improvements and a fuller experience for Users of the **[Cockapoo Club, Dublin Ireland](https://home-cockapoo-club-pp4.herokuapp.com)** website. 
 
@@ -30,11 +30,17 @@ The site targets users around the world who:
 
 ## **Contents**
 
+
+
+
+
+
+
+
+
 - **Unfixed Bugs**
 
-Unfortuantely, due to a range of unexpected errors and issues with both gitpod and heroku, the overall negative impact has been that there was not enought time to fully implement all of the planned custom models and forms.
-
-As well as DogProfiles, there was also supposed to be DogHealth and DogPhoto. Each of which offer users more ways to engage with the platform and other users. 
+Unfortuantely, due to a range of unexpected errors and issues with both gitpod and Heroku, the overall negative impact has been that there was not enought time to fully implement all of the planned features and functionalites.  
 
 Below are examples of just some of the many challenges faced throughout the development stages. 
 
