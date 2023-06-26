@@ -5,7 +5,6 @@ from django.db import IntegrityError
 
 class LikeSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    # is_owner = serializers.SerializerMethodField()
 
     class Meta:
         model = Like

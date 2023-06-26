@@ -15,7 +15,6 @@ class ProfileList(generics.ListAPIView):
         posts_count=Count('owner__post', distinct=True),
         followers_count=Count('owner__followed', distinct=True),
         following_count=Count('owner__following', distinct=True),
-        # dog_name=Value('dog_name')
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
     filter_backends = [

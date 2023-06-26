@@ -23,7 +23,6 @@ class DogDangerList(generics.ListCreateAPIView):
     ]
     search_fields = [
         'owner__username',
-        # 'dog_name',
         'dangerously_cute',
     ]
     ordering_fields = [

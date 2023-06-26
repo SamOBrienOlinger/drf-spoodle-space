@@ -18,7 +18,7 @@ This project introduces a new range of features and funcionalities that offer Us
   
   Unlike many other social media platforms that provide a similar expereince, this project offers Usersa unique way to create and participate in their own community of likeminded pet owners.    
 
-The site targets Usersaround the world who:
+The site is designed to engage to millions of potential Users around the world who:
 
 * may already have a Cockapoo dog and need more information about taking care of their dog. 
 
@@ -27,6 +27,8 @@ The site targets Usersaround the world who:
  * may already be Cockapoo owners and are interested in connecting with and learning from other Cockapoo owners. 
 
 * will enjoy sharing photographs of their pets online.  
+
+In order to bring value to these Users in alignment with the project's most important goals, the API data is manipulated via the front-end application in a way that enhances both the UI and the UX. 
 
 
    ## [**User Stories**](#user-stories)
@@ -104,7 +106,7 @@ The site targets Usersaround the world who:
 
 
 
-### Entity Relationship Diagram
+### **Entity Relationship Diagram**
 
 - Built-in Django models were used for this project. The three custom models created were:
   - DogProfile
@@ -136,8 +138,8 @@ The site targets Usersaround the world who:
   - [Heroku:](https://heroku.com/)
   
  ### **Testing**
-- All apps behaved as expected. 
-- The three custom apps: **dogprofiles**, **doghealth** and **dogdanger** were tested with a focus on how well they integrated into the platform. The Code Institute's CI Python Linter was used to validate the Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
+- All apps behaved as expected. Every button, link, component, and so on, needed for a complete set of CRUD functionality across the website allows Users to work with data in tteh back-end API.  
+- The three custom apps: **dogprofiles**, **doghealth** and **dogdanger** were tested with a focus on how well they integrated and interatcted with the platform as a whole. The three custom forms, with validation, that allow users to create and edit resources in the back-end API have been manually tested; the Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
 ![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
 
