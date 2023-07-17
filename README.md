@@ -179,6 +179,7 @@ Manual testing was used throughout each stage of development to ensure the funct
   - [Stack Overflow](https://stackoverflow.com/)
   - Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) module.
 
+  - Code Institute Alumnist [Tom Ainsworth](https://github.com/Tom-Ainsworth) was of great support at strategically important stages to tease out certain bugs.   
 
   - The [README template](https://github.com/Code-Institute-Solutions/readme-template) provided by Code Institute was very helpful as a model for developing this README file.  
 
