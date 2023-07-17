@@ -31,78 +31,65 @@ The site is designed to engage to millions of potential Users around the world w
 In order to bring value to these Users in alignment with the project's most important goals, the API data is manipulated via the front-end application in a way that enhances both the UI and the UX. 
 
 
-   ## [**User Stories**](#user-stories)
+## [User Stories](#user-stories)
 
-   **Navigation and authentication**
+**Navigation and authentication**
 
-    - Navigation: As a user I can view a navbar from every page so that I can navigate easily between pages
+- Navigation: As a user, I can view a navbar from every page so that I can navigate easily between pages.
+- Routing: As a user, I can navigate through pages quickly so that I can view content seamlessly without page refresh.
+- Authentication - Sign up: As a user, I can create a new account so that I can access all the features for signed-up users.
+- Authentication - Sign in: As a user, I can sign in to the app so that I can access functionality for logged-in users.
+- Authentication - Logged in Status: As a user, I can tell if I am logged in or not so that I can log in if I need to.
+- Authentication - Refreshing access tokens: As a user, I can maintain my logged-in status until I choose to log out so that my user experience is not compromised.
+- Navigation: Conditional rendering - As a logged-out user, I can see sign-in and sign-up options so that I can sign in/sign up.
+- Avatar: As a user, I can view users' avatars so that I can easily identify users of the application.
 
-    - Routing: As a user I can navigate through pages quickly so that I can view content seamlessly without page refresh
+**Profile**
 
-    - Authentication - Sign up: As a user I can create a new account so that I can access all the features for signed up users
+- Profile page: As a user, I can view other users' profiles so that I can see their posts and learn more about them.
+- Most followed profiles: As a user, I can see a list of the most followed profiles so that I can see which profiles are popular.
+- As a user, I can view data about other users, such as the number of posts, follows, and users followed so that I can learn more about them.
+- Follow/Unfollow a user: As a logged-in user, I can follow and unfollow other users so that I can see and remove posts by specific users in my posts feed.
+- View all posts by a specific user: As a user, I can view all the posts by a specific user so that I can catch up on their latest posts or decide I want to follow them.
+- Update username and password: As a logged-in user, I can update my username and password so that I can change my display name and keep my profile secure.
 
-    - Authentication - Sign in: As a user I can sign in to the app so that I can access functionality for logged in users
+**Posting, liking, and commenting on images**
 
-    - Authentication - Logged in Status: As a user I can tell if I am logged in or not so that I can log in if I need to
+- Create posts: As a logged-in user, I can create posts with images.
+- View a post: As a user, I can view the details of a single post so that I can learn more about it.
+- Like a post: As a logged-in user, I can like a post so that I can show my support for the posts that interest me.
+- Post page: As a user, I can view the posts page so that I can read the comments about the post.
+- Edit post: As a post owner, I can edit my post title and description so that I can make corrections or update my post after it was created.
+- Create a comment: As a logged-in user, I can add comments to a post so that I can share my thoughts about the post.
+- Comment date: As a user, I can see how long ago a comment was made so that I know how old a comment is.
+- View comments: As a user, I can read comments on posts so that I can read what other users think about the posts.
+- Delete comments: As an owner of a comment, I can delete my comment so that I can control the removal of my comment from the application.
+- Edit a comment: As an owner of a comment, I can edit my comment so that I can fix or update my existing comment.
 
-    - Authentication - Refreshing access tokens: As a user I can maintain my logged-in status until I choose to log out so that my user experience is not compromised
+**Dog profile**
 
-    - Navigation: Conditional rendering - As a logged out user I can see sign in and sign up options so that I can sign in/sign up
+- As a logged-in user, I can create and edit my dog profile, including being able to add and change a picture of my dog and information about my dog.
+- As a logged-in user, I can view other users' dog profiles if I am following them.
+- As a user, I can view the most recent dog profiles posted, ordered by most recently created first so that I am up to date with the newest content.
+- As a user, I can search for dog profiles with keywords so that I can find the dog profiles and user profiles I am most interested in.
+- Infinite scroll: As a user, I can keep scrolling through the images on the site that are loaded for me automatically so that I don't have to click on "next page".
 
-    - Avatar: As a user I can view user's avatars so that I can easily identify users of the application
+**Dog health details**
 
-    **Profile**
+- As a logged-in user, I can create and edit health details about my dog.
+- As a logged-in user, I can view the health details of other users' dogs if I am following them.
+- As a user, I can view the most recent details about the health of users' dogs, ordered by most recently created first so that I am up to date with the newest content.
+- As a user, I can search for dog health details with keywords so that I can find the dog health details and user profiles I am most interested in.
+- Infinite scroll: As a user, I can keep scrolling through the images on the site that are loaded for me automatically so that I don't have to click on "next page".
 
-    - Profile page: As a user I can view other users profiles so that I can see their posts and learn more about them
-    - Most followed profiles: As a user I can see a list of the most followed profiles so that I can see which profiles are popular
-    - As a user I can view data about other users, such as the number of posts, follows and users followed so that I can learn more about them.
-    - Follow/Unfollow a user: As a logged in user I can follow and unfollow other users so that I can see and remove posts by specific users in my posts feed
-    - View all posts by a specific user: As a user I can view all the posts by a specific user so that I can catch up on their latest posts, or decide I want to follow them
-    - Update username and password: As a logged in user I can update my username and password so that I can change my display name and keep my profile secure
+**Dog danger details**
 
-  **Posting, liking and commenting on images**
-    
-    -  Create posts: As a logged in user I can create posts with images. 
-    -  View a post: As a user I can view the details of a single post so that I can learn more about it
-    -  Like a post: As a logged in user I can like a post so that I can show my support for the posts that interest me.
-    -  Post page: As a user I can view the posts page so that I can read the comments about the post
-    -  Edit post: As a post owner I can edit my post title and description so that I can make corrections or update my post after it was created
-    -  Create a comment: As a logged in user I can add comments to a post so that I can share my thoughts about the post
-    -  Comment date: As a user I can see how long ago a comment was made so that I know how old a comment is
-    -  View comments: As a user I can read comments on posts so that I can read what other users think about the posts
-    -  Delete comments: As an owner of a comment I can delete my comment so that I can control removal of my comment from the application
-    -  Edit a comment: As an owner of a comment I can edit my comment so that I can fix or update my existing comment
+- As a logged-in user, I can create and edit details about how dangerous my dog is.
+- As a logged-in user, I can view the details of how dangerous other users' dogs are if I am following them.
+- As a user, I can view the most recent details posted about how dangerous other users' dogs are, ordered by most recently created first so that I am up to date with the newest content.
+- As a user, I can search for these details with keywords so that I can find the details and user profiles I am most interested in.
+- Infinite scroll: As a user, I can keep scrolling through the images on the site that are loaded for me automatically so that I don't have to click on "next page".
 
-
-    **Dog profile**
-
-    -  As a logged in user I can create and edit my dog profile, including being able to add and change a picture of my dog and information about my dog. 
-
-    -  As a logged in user I can view other user's dog profiles if I am following them.
-    -  As a user I can view the most recent dog profiles posted, ordered by most recently created first so that I am up to date with the newest content.
-    -  As a user, I can search for dog profiles with keywords, so that I can find the dog profiles and user profiles I am most interested in.
-    -  Infinite scroll: As a user I can keep scrolling through the images on the site, that are loaded for me automatically so that I don't have to click on "next page".
-
-        
-   **Dog health details**
-
-    -  As a logged in user I can create and edit health details about my dog.  
-
-    -  As a logged in user I can view the health details of other user's dogs if I am following them.
-    -  As a user I can view the most recent details about the health of users' dogs, ordered by most recently created first so that I am up to date with the newest content.
-    -  As a user, I can search for dog health details with keywords, so that I can find the dog health details and user profiles I am most interested in.
-    -  Infinite scroll: As a user I can keep scrolling through the images on the site, that are loaded for me automatically so that I don't have to click on "next page".
-
-    
-    **Dog danger details**
-
-    -  As a logged in user I can create and edit details about how dangerous my dog is.  
-
-    -  As a logged in user I can view the details of how dangerous other user's dogs are if I am following them.
-
-    -  As a user I can view the most recent details posted about how dangerous other users' dogs are, ordered by most recently created first so that I am up to date with the newest content.
-    -  As a user, I can search for these details with keywords, so that I can find the details and user profiles I am most interested in.
-    -  Infinite scroll: As a user I can keep scrolling through the images on the site, that are loaded for me automatically so that I don't have to click on "next page".
 
 
 
