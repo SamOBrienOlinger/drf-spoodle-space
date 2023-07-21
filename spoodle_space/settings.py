@@ -85,6 +85,11 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = [
+    'https://3000-samobrienol-spoodlespac-7fcpmdsi1zh.ws-eu102.gitpod.io',
+    'https://spoodle-space-pp5.herokuapp.com',
+]
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
