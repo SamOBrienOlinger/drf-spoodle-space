@@ -1,8 +1,10 @@
+
+
 # ![**SpoodleSPACE**](Media/README.md-images/README.md-paulpuppy.jpg)
 
-**[SpoodleSpace](spoodlespace.herokuapp.com)** was developed and submmitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. Being the Django Rest Framework API, three custom models and forms were designed to interface with its React JavaScript framework and library. 
+**[SpoodleSpace](spoodlespace.herokuapp.com)** was developed and submitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. Being the Django Rest Framework API, three custom models and forms were designed to interface with its React JavaScript framework and library. 
 
-This project introduces a new range of features and funcionalities that offer Usersa valuable expansion on my previous Portfolio Projects, which centred on a fictional webiste for an online community of dog owners called 'Cockapoo Club'. The progress made in this iteration of the original concept which now includes HTML, CSS, JavaScript, React.js Bootstrap.js, and Django REST Framework. This project evolved out of ideas for delivering signifcant improvements and a fuller experience for Usersof the **[Cockapoo Club, Dublin Ireland](https://home-cockapoo-club-pp4.herokuapp.com)** website. 
+This project introduces a new range of features and functionalities that offer Usersa valuable expansion on my previous Portfolio Projects, which centred on a fictional website for an online community of dog owners called 'Cockapoo Club'. The progress made in this iteration of the original concept which now includes HTML, CSS, JavaScript, React.js Bootstrap.js, and Django REST Framework. This project evolved out of ideas for delivering significant improvements and a fuller experience for Users of the **[Cockapoo Club, Dublin Ireland](https://home-cockapoo-club-pp4.herokuapp.com)** website. 
 
 
 
@@ -10,13 +12,13 @@ This project introduces a new range of features and funcionalities that offer Us
 
 - To view the repository on Github **[Click Here](https://github.com/SamOBrienOlinger/drf-spoodle-space)**.
 
-- This website was designed for Desktop Usersfirst and is responsive for Usersof smaller devices.  
+- This website was designed for Desktop Users first and is responsive for Users of smaller devices.  
 
 
 ## **Summary**
-  This social platform provides Userswith an opportunity to connect and share photogpraphs, and even information about owning, training and taking care of a breed of dog called Cockapoos, one of Ireland's newest, most popular and much-loved dog breeds. 
+  This social platform provides Users with an opportunity to connect and share photographs, and even information about owning, training and taking care of a breed of dog called Cockapoos, one of Ireland's newest, most popular and much-loved dog breeds. 
   
-  Unlike many other social media platforms that provide a similar expereince, this project offers Usersa unique way to create and participate in their own community of likeminded pet owners.    
+  Unlike many other social media platforms that provide a similar experience, this project offers Users a unique way to create and participate in their own community of likeminded pet owners.    
 
 The site is designed to engage to millions of potential Users around the world who:
 
@@ -125,8 +127,8 @@ In order to bring value to these Users in alignment with the project's most impo
   - [Heroku:](https://heroku.com/)
   
  ### **Testing**
-- All apps behaved as expected. Every button, link, component, and so on, needed for a complete set of CRUD functionality across the website allows Users to work with data in tteh back-end API.  
-- The three custom apps: **dogprofiles**, **doghealth** and **dogdanger** were tested with a focus on how well they integrated and interatcted with the platform as a whole. The three custom forms, with validation, that allow users to create and edit resources in the back-end API have been manually tested; the Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
+- All apps behaved as expected. Every button, link, component, and so on, needed for a complete set of CRUD functionality across the website allows Users to work with data in the back-end API.  
+- The three custom apps: **dogprofiles**, **doghealth** and **dogdanger** were tested with a focus on how well they integrated and interacted with the platform as a whole. The three custom forms, with validation, that allow users to create and edit resources in the back-end API have been manually tested; the Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
 ![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
 
@@ -134,7 +136,7 @@ Manual testing was used throughout each stage of development to ensure the funct
 
 ### **Fixed Bugs**
 
-  Migrated changes to models.py files caused the most problems. ALthough the data did exist in [Elephant SQL](https://www.elephantsql.com/), delete it entirely, create a new instances needed to be created and connect to the API. The env.py file and Heroku Config Vars had to be updated accordingly. This issue was caused by altering a model to have an owner = ForeignKey, when a OneToOneField was required. 
+  Migrated changes to models.py files caused the most problems. Although the data did exist in [Elephant SQL](https://www.elephantsql.com/), delete it entirely, create a new instances needed to be created and connect to the API. The env.py file and Heroku Config Vars had to be updated accordingly. This issue was caused by altering a model to have an owner = ForeignKey, when a OneToOneField was required. 
 
 
 
@@ -158,7 +160,7 @@ Manual testing was used throughout each stage of development to ensure the funct
 - add Procfile with release and web commands
 - gitignore the env.py file
 - generate requirements.txt
-- deploye to Heroku
+- deployed to Heroku
 
 ### [**Credits**](#credits)
 
@@ -166,26 +168,10 @@ Manual testing was used throughout each stage of development to ensure the funct
   - [Stack Overflow](https://stackoverflow.com/)
   - Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) module.
 
-  - Code Institute Alumnist [Tom Ainsworth](https://github.com/Tom-Ainsworth) was of great support at strategically important stages to tease out certain bugs.   
+  - Code Institute Alumnus [Tom Ainsworth](https://github.com/Tom-Ainsworth) was of great support at strategically important stages to tease out certain bugs.   
 
   - The [README template](https://github.com/Code-Institute-Solutions/readme-template) provided by Code Institute was very helpful as a model for developing this README file.  
 
   - My mentors, [Naoise Gaffney](https://github.com/NaoiseGaffney) and [Antonio Rodriguez](AntonioRodriguez_mentor), provided invaluable support and I learned a lot from them throughout the development of this project. 
   
-  Last but certainly not least, are the Code Institute's [Student Care Team](https://learn.codeinstitute.net/ci_support/diplomainsoftwaredevelopmentadvancedfrontend/studentcare) and all the Tutors on the [Student Support Team](https://learn.codeinstitute.net/ci_support/specializationsamplecontent/troubleshooting). Regardless of the challenge faced, they have provided invaluable support to me in developing my skills, knowledge and expereince. Thank you very much.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  Last but certainly not least, are the Code Institute's [Student Care Team](https://learn.codeinstitute.net/ci_support/diplomainsoftwaredevelopmentadvancedfrontend/studentcare) and all the Tutors on the [Student Support Team](https://learn.codeinstitute.net/ci_support/specializationsamplecontent/troubleshooting). Regardless of the challenge faced, they have provided invaluable support to me in developing my skills, knowledge and experience. Thank you very much.
