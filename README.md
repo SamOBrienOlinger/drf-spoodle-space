@@ -12,11 +12,9 @@ This project evolved out of a previous Portfolio Project, which centred around a
 This iteration of the original concept introduces an entirely new range of features and functionalities. A main site goal for this project was to provide Users with a very different and more engaging interactive experience. 
 This expansion on that original concept has allowed me to combine my understanding of **HTML**, **CSS**, **JavaScript**, **Python**, **React**, **Bootstrap**, and **Django REST Framework**. 
 
-
 - **[Click Here](https://spoodlespace.herokuapp.com/)** to see the deployed website. 
 
 - To view the frontend repository on Github **[Click Here](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**. 
-
 
 ## **Summary**
   This social platform provides Users with an opportunity to connect and share photographs, and even information about owning, training and taking care of a breed of dog called Cockapoos, one of Ireland's newest, most popular and much-loved dog breeds. 
@@ -25,15 +23,15 @@ This expansion on that original concept has allowed me to combine my understandi
 
 The site is designed to engage millions of potential Users around the world who:
 
-* may already have a Cockapoo dog and need to learn about how to best take care of their dog. 
+* May already have a Cockapoo dog and need to learn about how to best take care of their dog. 
 
-* may be thinking about getting a new Cockapoo dog and require more information to make their decision. 
+* May be thinking about getting a new Cockapoo dog and require more information to make their decision. 
 
- * may already be Cockapoo owners and are interested in connecting with and learning from other Cockapoo owners. 
+ * May already be Cockapoo owners and are interested in connecting with and learning from other Cockapoo owners. 
 
-* will enjoy sharing photographs and videos of their pets.  
+* Will enjoy sharing photographs and videos of their pets.  
 
-In order to acheive the project's most important goals of enhancing both the UI and UX, how data is manipulated via the front-end application was of fundamental importance.
+In order to achieve the project's most important goals of enhancing both the UI and UX, how data is manipulated via the front-end application was of fundamental importance.
 
 ## Contents
 
@@ -41,7 +39,7 @@ In order to acheive the project's most important goals of enhancing both the UI 
 - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Technologies](#technologies)
 - [Testing](#testing)
-- [Deployment](#deployment)
+- ### [Deployment](#deployment)
 - [Credits](#credits)
 
 ### [User Stories](#user-stories)
@@ -114,7 +112,6 @@ In order to acheive the project's most important goals of enhancing both the UI 
   
 ![Entity Relationship Diagram](Media/README.md-images/README.md-ERD.jpg)
 
-
 ### [Technologies](#technologies)
 
 - #### Languages
@@ -150,13 +147,30 @@ Manual testing was used throughout each stage of development to ensure the funct
 
 - Fixed Bugs
 
-  Migrated changes to models.py files caused the most problems overall. Although the data did exist in [Elephant SQL](https://www.elephantsql.com/), teh databse was corrupted and had to be delete entirely. A new instances needed to be created and connect to the API. The env.py file and Heroku Config Vars had to be updated accordingly. This issue was caused by a migration that altered a model from having an owner = ForeignKey when a OneToOneField was required. 
-
+  Migrated changes to models.py files caused the most problems overall. Although the data did exist in [Elephant SQL](https://www.elephantsql.com/), the database was corrupted and had to be delete entirely. A new instances needed to be created and connect to the API. The env.py file and Heroku Config Vars had to be updated accordingly. This issue was caused by a migration that altered a model from having an owner = ForeignKey when a OneToOneField was required. 
 
 ### [Deployment](#deployment) 
 
-This project was deployed through Heroku using the following steps:
+Creating a database using ElephantSQL was first required. The following steps were taken to do this: 
 
+- login to ElephantSQL.
+
+- click 'Create new instance' on the dashboard.
+
+- name the 'plan' and select the 'Tiny Turtle' option.
+
+- select 'select region' and choose the nearest data centre to your location.
+
+- click 'Review'.
+
+- then go to the ElephantSQL dashboard and click on the 'database instance name' for this project.
+
+- copy the ElephantSQL database URL to your clipboard.
+
+- Return to the Heroku dashboard.
+
+
+This project was deployed through Heroku using the following steps:
 
 - Log into Heroku
 - Select 'Create New App' from your dashboard
@@ -166,13 +180,12 @@ This project was deployed through Heroku using the following steps:
 
 - On your dashboard, click the 'Deploy' tab
 - Locate 'Deployment Method' and choose 'GitHub'
-- locate your repositorythen click 'Connect'
+- locate your repository then click 'Connect'
 
 - Click the 'Settings' tab
 - Open the 'Config Vars' and click 'Reveal Config Vars'
-- The variables and their values need to be added, they can be found in your env.py file
 
-- The following environment variables need to be matched in Heroku:
+- The following environment variables need to be added and match the same values in your env.py file:
     - CLIENT_ORIGIN
     - CLOUDINARY_URL
     - DATABASE_URL
@@ -183,11 +196,10 @@ This project was deployed through Heroku using the following steps:
 - configured dj-rest-auth library for JWTs
 - set allowed hosts
 - configured CORS:
-	- set allowed_origins
+  - set allowed_origins
 
 - gitignore the env.py file
 - generate a requirements.txt file
-
 
 once all the variables are in place, choose the main branch and click 'Deploy Branch'.
 Once the build is finished, click 'Open App' located at the top of the page. 
