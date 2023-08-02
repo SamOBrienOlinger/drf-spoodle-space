@@ -153,23 +153,44 @@ Manual testing was used throughout each stage of development to ensure the funct
   Migrated changes to models.py files caused the most problems overall. Although the data did exist in [Elephant SQL](https://www.elephantsql.com/), teh databse was corrupted and had to be delete entirely. A new instances needed to be created and connect to the API. The env.py file and Heroku Config Vars had to be updated accordingly. This issue was caused by a migration that altered a model from having an owner = ForeignKey when a OneToOneField was required. 
 
 
-### [Deployment](#deployment)
-- set the following environment variables to match the env.py file:
+### [Deployment](#deployment) 
+
+This project was deployed through Heroku using the following steps:
+
+
+- Log into Heroku
+- Select 'Create New App' from your dashboard
+- Choose an app name
+- Select the appropriate region based on your location
+- Click 'Create App'
+
+- On your dashboard, click the 'Deploy' tab
+- Locate 'Deployment Method' and choose 'GitHub'
+- locate your repositorythen click 'Connect'
+
+- Click the 'Settings' tab
+- Open the 'Config Vars' and click 'Reveal Config Vars'
+- The variables and their values need to be added, they can be found in your env.py file
+
+- The following environment variables need to be matched in Heroku:
     - CLIENT_ORIGIN
     - CLOUDINARY_URL
     - DATABASE_URL
     - DISABLE_COLLECTSTATIC
     - SECRET_KEY
+
 - install psycopg2 and dj-database-urlth libraries to handle database connection.
 - configured dj-rest-auth library for JWTs
 - set allowed hosts
 - configured CORS:
 	- set allowed_origins
-- set default renderer to JSON
-- add Procfile with release and web commands
+
 - gitignore the env.py file
-- generate requirements.txt
-- deployed to Heroku
+- generate a requirements.txt file
+
+
+once all the variables are in place, choose the main branch and click 'Deploy Branch'.
+Once the build is finished, click 'Open App' located at the top of the page. 
 
 ### [Credits](#credits)
 
