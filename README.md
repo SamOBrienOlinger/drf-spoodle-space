@@ -1,8 +1,10 @@
+![dog danger example](Media/README.md-images/README.md-drf-backend.jpg)
 
+
+**[drf-spoodle-space](spoodlespace.herokuapp.com)** was developed using Django and Django Rest Framework to serve as the API for **[SpoodleSpace](spoodle-space-pp5.herokuapp.com)**. 
 
 # ![**SpoodleSPACE**](Media/README.md-images/README.md-paulpuppy.jpg)
-
-**[SpoodleSpace](spoodlespace.herokuapp.com)** was developed and submitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. Being the Django Rest Framework API, three custom models and forms were designed to interface with its React JavaScript framework and library. 
+**SpoodleSpace** was developed and submitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. Being the Django Rest Framework API, three custom models and forms were designed to interface with its React JavaScript framework and library. 
 
 This project introduces a new range of features and functionalities that offer Users a valuable expansion on my previous Portfolio Projects, which centred on a fictional website for an online community of dog owners called 'Cockapoo Club'. The progress made in this iteration of the original concept which now includes HTML, CSS, JavaScript, React.js Bootstrap.js, and Django REST Framework. This project evolved out of ideas for delivering significant improvements and a fuller experience for Users of the **[Cockapoo Club, Dublin Ireland](https://home-cockapoo-club-pp4.herokuapp.com)** website. 
 
@@ -10,9 +12,7 @@ This project introduces a new range of features and functionalities that offer U
 
 - **[Click Here](https://spoodlespace.herokuapp.com/)** to see the deployed website. 
 
-- To view the repository on Github **[Click Here](https://github.com/SamOBrienOlinger/drf-spoodle-space)**.
-
-- This website was designed for Desktop Users first and is responsive for Users of smaller devices.  
+- To view the Frontend repository on Github **[Click Here](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**. 
 
 
 ## **Summary**
@@ -111,7 +111,7 @@ In order to bring value to these Users in alignment with the project's most impo
 
 -   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### Frameworks, Libraries & Programs Used
+### Frameworks, Libraries, Programs and Services Used
   - [Django:](https://www.djangoproject.com/)
 
   - [Django Rest Frameworks](https://www.django-rest-framework.org/).
