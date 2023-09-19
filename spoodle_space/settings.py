@@ -63,11 +63,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = 'DEBUG' in os.environ
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    'localhost', '8000-samobrienol-drfspoodles-ufklcxsviem.ws-eu102.gitpod.io'
+    'localhost',
+    '8000-samobrienol-drfspoodles-0h3n7m2ipr7.ws-eu104.gitpod.io',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -86,7 +87,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    'https://3000-samobrienol-spoodlespac-7fcpmdsi1zh.ws-eu102.gitpod.io',
+    'https://3000-samobrienol-spoodlespac-awbztnkum91.ws-eu104.gitpod.io',
     'https://spoodle-space-pp5.herokuapp.com',
 ]
 
