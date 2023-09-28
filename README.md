@@ -39,7 +39,7 @@ In order to achieve the project's most important goals of enhancing both the UI 
 - [Entity Relationship Diagram](#entity-relationship-diagram)
 - [Technologies](#technologies)
 - [Testing](#testing)
-- ### [Deployment](#deployment)
+- [Deployment](#deployment)
 - [Credits](#credits)
 
 ### [User Stories](#user-stories)
@@ -134,16 +134,191 @@ In order to achieve the project's most important goals of enhancing both the UI 
   - [Heroku:](https://heroku.com/)
   
  ### [Testing](#testing)
-- CRUD functionality across the website was tested manually to ensure that Users can work with data in the backend API.   
-The three custom apps: **dogprofiles**, **doghealth** and **dogdanger** were tested with a focus on how well they integrated and interacted with the platform as a whole. The three custom forms, with validation, that allow users to create and edit resources in the back-end API. 
-
-  Please see the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** for details of all manual testing that cover backend functionality
+- Create, Read, Update and Delete functionality across this API was tested manually to ensure that the database was being updated as expected when creating, reading, updating or deleting data in concert with Users' interactions on the frontend React app. for further details of testing the frontend which are relevant to backend functionality, Please see the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** 
 
 - Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
 ![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
 
-Manual testing was used throughout each stage of development to ensure the functionalities achieved the goals set out in the User Stories. 
+
+
+- Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These can be found in the Github Pages Project [here](https://github.com/users/SamOBrienOlinger/projects/3). 
+
+  The tests conducted for verifying the backend functionality of all apps passed. 
+  The following test cases provide a representative sample demonstrating the achievement of all criteria for each User Story.
+
+    **Dog Profiles**
+
+    Comprehensive manual testing was carried out to guarantee that Users without the necessary permissions would not have Write Access. 
+    It was a fundamental priority to restrict Users from having the ability to create, update, or delete data; or perform actions that could jeopardize sensitive data; or modify the system's state through adding new records, editing existing content, or making changes to configuration settings. 
+
+    Regarding Authentication and Authorization, test cases conducted on the Dog Profile functionaility demonstrated this.
+
+
+  1. **List Dog Profiles (Authenticated User)**
+
+    - **Test Steps:**
+      - Create an authenticated user account.
+      - Create one or more dog profiles.
+      - Send a GET request to `/dogprofiles/` endpoint.
+  
+    - **Expected Result:** 
+      - Successful listing of dog profiles with a status code of 200.
+  
+    - **Actual Result:** 
+      - Successful listing of dog profiles with a status code of 200.
+
+  
+  2. **List Dog Profiles (Guest User)**
+  
+    - **Test Steps:**
+      - Send a GET request to `/dogprofiles/` endpoint.
+  
+    - **Expected Result:** 
+      - Successful listing of dog profiles with a status code of 200.
+  
+    - **Actual Result:** 
+      - Successful listing of dog profiles with a status code of 200.
+
+  
+  3. **Create Dog Profile (Authenticated User)**
+  
+    - **Test Steps:**
+      - Log in with an authenticated user account.
+      - Send a POST request to `/dogprofiles/` endpoint with dog profile data.
+  
+  
+    - **Expected Result:** 
+      - Dog profile creation with a status code of 201.
+  
+    - **Actual Result:** 
+      - Dog profile creation with a status code of 201.
+
+  
+  4. **Create Dog Profile (Guest User)**
+  
+    - **Test Steps:**
+      - Send a POST request to `/dogprofiles/` endpoint with dog profile data.
+  
+    - **Expected Result:** 
+      - Forbidden access with a status code of 403.
+  
+    - **Actual Result:** 
+      - Forbidden access with a status code of 403.
+
+  
+  5. **Retrieve Dog Profile by ID (Valid ID)**
+  
+    - **Test Steps:**
+      - Send a GET request to `/dogprofiles/<valid_dog_profile_id>/` endpoint.
+  
+    - **Expected Result:** 
+      - Successful retrieval of the dog profile with a status code of 200.
+  
+    - **Actual Result:** 
+      - Successful retrieval of the dog profile with a status code of 200.
+
+  
+  6. **Retrieve Dog Profile by ID (Invalid ID)**
+  
+    - **Test Steps:**
+      - Send a GET request to `/dogprofiles/<invalid_dog_profile_id>/` endpoint.
+  
+    - **Expected Result:** 
+      - Dog profile not found with a status code of 404.
+  
+    - **Actual Result:** 
+      - Dog profile not found with a status code of 404.
+
+  
+  7. **Update Own Dog Profile (Authenticated User)**
+  
+    - **Test Steps:**
+      - Log in with an authenticated user account that owns the dog profile.
+      - Send a PUT request to `/dogprofiles/<valid_dog_profile_id>/` endpoint with updated dog profile data.
+  
+    - **Expected Result:** 
+      - Dog profile updated with a status code of 200.
+  
+    - **Actual Result:** 
+      - Dog profile updated with a status code of 200.
+
+  
+  8. **Update Own Dog Profile (Guest User)**
+  
+    - **Test Steps:**
+      - Send a PUT request to `/dogprofiles/<valid_dog_profile_id>/` endpoint with updated dog profile data.
+  
+    - **Expected Result:** 
+      - Forbidden access with a status code of 403.
+  
+    - **Actual Result:** 
+      - Forbidden access with a status code of 403.
+
+  
+  9. **Delete Own Dog Profile (Authenticated User)**
+  
+    - **Test Steps:**
+      - Log in with an authenticated user account that owns the dog profile.
+      - Send a DELETE request to `/dogprofiles/<valid_dog_profile_id>/` endpoint.
+  
+    - **Expected Result:** 
+      - Dog profile deleted with a status code of 204.
+  
+    - **Actual Result:** 
+      - Dog profile deleted with a status code of 204.
+
+  
+  10. **Delete Own Dog Profile (Guest User)**
+  
+      - **Test Steps:**
+        - Send a DELETE request to `/dogprofiles/<valid_dog_profile_id>/` endpoint.
+  
+      - **Expected Result:** 
+        - Forbidden access with a status code of 403.
+  
+      - **Actual Result:** 
+        - Forbidden access with a status code of 403.
+
+    
+    To verify the functionality of API endpoints, the following test cases demonstrated this.
+
+      Test cases
+
+
+   Tests cases to validate database operations are as follows:
+
+      Test cases
+
+  Error Handling Test cases included:
+
+      Test cases
+
+  Test cases for validating user input:
+
+      Test cases
+
+  
+  Pagination Tests:
+
+      Test cases
+
+  Performance Tests
+
+      Test cases
+
+   Integration Tests
+
+      Test cases
+
+  Third-party Service Integration Tests:
+
+      Test cases 
+  
+
+
+
+
 
 - Fixed Bugs
 
