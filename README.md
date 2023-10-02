@@ -1,16 +1,13 @@
 # SpoodleSpace - Backend
-
-![dog danger example](Media/README.md-images/README.md-drf-backend.jpg)
-
-## **[drf-spoodle-space](spoodlespace.herokuapp.com)** was developed using Django and Django Rest Framework to serve as the API for **[SpoodleSpace](spoodle-space-pp5.herokuapp.com)**. 
-
 # ![**SpoodleSPACE**](Media/README.md-images/README.md-paulpuppy.jpg)
-**SpoodleSpace** was developed and submitted as my fifth Profile Portfolio Project as part of specializing in Advanced Front-end Development for the Code Institute's Diploma in full-stack software development course. Being the Django Rest Framework API, three custom models and forms were designed to interface with its frontend React JavaScript library. 
 
-This project evolved out of a previous Portfolio Project, which centred around a fictional online community of dog owners using a website called '**[Cockapoo Club](https://home-cockapoo-club-pp4.herokuapp.com)**'.
 
-This iteration of the original concept introduces an entirely new range of features and functionalities. A main site goal for this project was to provide Users with a very different and more engaging interactive experience. 
-This expansion on that original concept has allowed me to combine my understanding of **HTML**, **CSS**, **JavaScript**, **Python**, **React**, **Bootstrap**, and **Django REST Framework**. 
+[**SpoodleSpace**](spoodle-space-pp5.herokuapp.com) uses [Django Rest Framework](https://www.django-rest-framework.org) to serve as its API to interface with its frontend [React](https://www.npmjs.com) JavaScript library. 
+
+This project evolved out of a project, which centred around a fictional online community of dog owners called '**[Cockapoo Club](https://home-cockapoo-club-pp4.herokuapp.com)**'.
+
+This project introduces an entirely new concept. The main site goal is to provide Users with a really positive, engaging and interactive experience. 
+This expansion combines my proficiencies across **HTML**, **CSS**, **JavaScript**, and **Python**; involving **React**, **Bootstrap**, and **Django REST Framework**. 
 
 - **[Click Here](https://spoodlespace.herokuapp.com/)** to see the deployed website. 
 
@@ -19,19 +16,22 @@ This expansion on that original concept has allowed me to combine my understandi
 ## **Summary**
   This social platform provides Users with an opportunity to connect and share photographs, and even information about owning, training and taking care of a breed of dog called Cockapoos, one of Ireland's newest, most popular and much-loved dog breeds. 
   
-  Unlike many other social media platforms that provide a similar experience, this project offers Users a unique way to create and participate in their own community of likeminded pet owners.    
+  Unlike many other social networking platforms, this project offers Users a unique way to create and participate in their own community of likeminded people with a shared identity that self-sustains itslef. A fundamental intended outcome is to produces a sense of belonging that cannot be found elsewhere.    
 
-The site is designed to engage millions of potential Users around the world who:
+The site is designed to engage as wide a range as possible of millions of potential Users around the world, inculding:
 
-* May already have a Cockapoo dog and need to learn about how to best take care of their dog. 
+* families, couples and individuls who already have a Cockapoo or two that are eager to learn more about the history and nature of the breed of their fun furry companions. 
 
-* May be thinking about getting a new Cockapoo dog and require more information to make their decision. 
+* folks who would like to find out more about taking care of their dog so their hairy little buddy stays happy and healthy. 
 
- * May already be Cockapoo owners and are interested in connecting with and learning from other Cockapoo owners. 
+* anyone considering opening their home to a new companion of this breed of dog and are hoping to gather more information to help make their decision. 
 
-* Will enjoy sharing photographs and videos of their pets.  
+ * Cockapoo owners who enjoy connecting with other Cockapoo owners by sharing funny stories,  photographs and videos of their adventures.
 
-In order to achieve the project's most important goals of enhancing both the UI and UX, how data is manipulated via the front-end application was of fundamental importance.
+* Anyone who is looking for some support and/or who can provide otyher with support related to any challenges they are facing with the behaviour of their loved little clowns!  
+
+
+Given the site goals outlined here, enhancing the UI and UX to achieve the project's most important goals required prioritising the way backend data connected with the front-end application. 
 
 ## Contents
 
@@ -134,15 +134,15 @@ In order to achieve the project's most important goals of enhancing both the UI 
   - [Heroku:](https://heroku.com/)
   
  ### [Testing](#testing)
-- Create, Read, Update and Delete functionality across this API was tested manually to ensure that the database was being updated as expected when creating, reading, updating or deleting data in concert with Users' interactions on the frontend React app. for further details of testing the frontend which are relevant to backend functionality, Please see the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** 
+- Create, Read, Update and Delete functionality across this API was tested manually. This ensured that the database and handling data worked as expected when Users are creating, reading, updating or deleting data on the frontend React app. 
+For further details of testing carried out on the frontend relevant to verifying the backend functionality, please visit the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** 
 
 - Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
 ![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
 
 
-
-- Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These can be found in the Github Pages Project [here](https://github.com/users/SamOBrienOlinger/projects/3). 
+- Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These User Stories can be found [here](https://github.com/users/SamOBrienOlinger/projects/3). 
 
   The tests conducted for verifying the backend functionality of all apps passed. 
   The following test cases provide a representative sample demonstrating the achievement of all criteria for each User Story.
