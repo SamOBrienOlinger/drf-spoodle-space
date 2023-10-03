@@ -29,10 +29,13 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [(
+    #     'rest_framework.authentication.SessionAuthentication'
+    #     if 'DEV' in os.environ
+    #     else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    # )],
     'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEV' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
@@ -63,12 +66,15 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+# DEBUG = False
+
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
-    '8000-samobrienol-drfspoodles-0h3n7m2ipr7.ws-eu104.gitpod.io',
+    # '8000-samobrienol-drfspoodles-0h3n7m2ipr7.ws-eu104.gitpod.io',
+    '8000-samobrienol-drfspoodles-0h3n7m2ipr7.ws-eu105.gitpod.io'
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -87,7 +93,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    'https://3000-samobrienol-spoodlespac-awbztnkum91.ws-eu104.gitpod.io',
+    'https://3000-samobrienol-spoodlespac-cm3x5ysjxgu.ws-eu104.gitpod.io',
     'https://spoodle-space-pp5.herokuapp.com',
 ]
 

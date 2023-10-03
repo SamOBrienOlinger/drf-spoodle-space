@@ -134,17 +134,21 @@ Given the site goals outlined here, enhancing the UI and UX to achieve the proje
   - [Heroku:](https://heroku.com/)
   
  ### [Testing](#testing)
-- Create, Read, Update and Delete functionality across this API was tested manually. This ensured that the database and handling data worked as expected when Users are creating, reading, updating or deleting data on the frontend React app. 
+
+Create, Read, Update and Delete functionality across this API was tested manually. This ensured that the database and handling of data worked as expected when Users manipulated data on the frontend React app.
+
 For further details of testing carried out on the frontend relevant to verifying the backend functionality, please visit the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** 
+
+Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These User Stories can be found **[here](https://github.com/users/SamOBrienOlinger/projects/3)**. 
+
+The tests conducted for verifying the backend functionality of all apps passed. Each of these can be found in the **testing.md** file found **[here](/workspace/drf-spoodle-space/testing.md)**.
 
 - Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
 ![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
 
 
-- Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These User Stories can be found [here](https://github.com/users/SamOBrienOlinger/projects/3). 
 
-  The tests conducted for verifying the backend functionality of all apps passed. 
   The following test cases provide a representative sample demonstrating the achievement of all criteria for each User Story.
 
     **Dog Profiles**
