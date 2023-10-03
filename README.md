@@ -135,13 +135,13 @@ Given the site goals outlined here, enhancing the UI and UX to achieve the proje
   
  ### [Testing](#testing)
 
-Create, Read, Update and Delete functionality across this API was tested manually. This ensured that the database and handling of data worked as expected when Users manipulated data on the frontend React app.
+Create, Read, Update and Delete (CRUD) functionality across this API was tested manually. This ensured that the database and handling of data worked as expected when Users manipulated data on the frontend React app.
 
 For further details of testing carried out on the frontend relevant to verifying the backend functionality, please visit the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** 
 
-Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These User Stories can be found **[here](https://github.com/users/SamOBrienOlinger/projects/3)**. 
+Backend manual testing used throughout each stage of development helped guarantee that the acceptance criteria set out in each of the thirteen User Stories was achieved. These User Stories can be found **[here](https://github.com/users/SamOBrienOlinger/projects/3)**. 
 
-The tests conducted for verifying the backend functionality of all apps passed. Each of these can be found in the **testing.md** file found **[here](/testing.md)**.
+All apps passed the tests conducted for verifying the intended backend functionality. For more details on each test visit the **testing.md** file found **[here](/testing.md)**.
 
 - Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
@@ -149,7 +149,7 @@ The tests conducted for verifying the backend functionality of all apps passed. 
 
 
 
-  The following test cases provide a representative sample demonstrating the achievement of all criteria for each User Story.
+  <!-- The following test cases provide a representative sample demonstrating the achievement of all criteria for each User Story.
 
     **Dog Profiles**
 
@@ -317,7 +317,7 @@ The tests conducted for verifying the backend functionality of all apps passed. 
 
   Third-party Service Integration Tests:
 
-      Test cases 
+      Test cases  -->
   
 
 
