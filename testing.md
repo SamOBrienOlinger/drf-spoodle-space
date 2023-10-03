@@ -643,6 +643,43 @@ This test case verifies the creation of a new `Like` object by sending a POST re
 
 ---
 
+## Like Model CRUD Test Cases
+
+### Test Case 1: Create Like
+
+**Test Case Description:**
+This test case verifies the creation of a new `Like` object by sending a POST request to the appropriate API endpoint.
+
+**Preconditions:**
+- Ensure the Django project and database are properly set up.
+- User authentication and authorization are configured correctly.
+- A user is logged in and has access to create `Like` objects.
+- There is an existing `Post` to be liked.
+
+**Test Steps:**
+1. Send a POST request to the `Like` creation endpoint (`POST /api/likes/`) with valid data, including the ID of the `Post` to be liked.
+2. Verify that the response status code is 201 (Created).
+3. Verify that the created `Like` object exists in the database.
+4. Verify that the `Like` object is associated with the logged-in user as the 'owner' and the selected `Post`.
+
+**Expected Results:**
+- A new `Like` object should be created successfully.
+- The response should include the created `Like` object's data.
+- The `Like` object should be associated with the logged-in user as the 'owner' and the selected `Post`.
+- The `Like` object should be retrievable from the database.
+
+**Test Data:**
+- Valid data for creating a `Like` object (e.g., user ID of the 'owner' and `Post` ID to like).
+
+**Test Environment:**
+- Django development environment with user authentication configured.
+
+**Test Result:**
+- **Outcome:** The test has passed.
+- **Details:** The `Like` object was successfully created, and all expected results were met.
+
+---
+
 ### Test Case 2: Read Like
 
 **Test Case Description:**
@@ -653,7 +690,7 @@ This test case verifies the retrieval of an existing `Like` object by sending a 
 - At least one `Like` object exists in the database.
 
 **Test Steps:**
-1. Send a GET request to the `Like` detail endpoint with the ID of an existing `Like` object.
+1. Send a GET request to the `Like` detail endpoint (`GET /api/likes/{like_id}/`) with the ID of an existing `Like` object.
 2. Verify that the response status code is 200 (OK).
 3. Verify that the response includes the details of the requested `Like` object.
 
@@ -684,7 +721,7 @@ This test case verifies the deletion of an existing `Like` object by sending a D
 - The logged-in user is the owner of the `Like` object.
 
 **Test Steps:**
-1. Send a DELETE request to the `Like` detail endpoint with the ID of the existing `Like` object.
+1. Send a DELETE request to the `Like` detail endpoint (`DELETE /api/likes/{like_id}/`) with the ID of the existing `Like` object.
 2. Verify that the response status code is 204 (No Content).
 3. Attempt to retrieve the `Like` object from the database and verify that it no longer exists.
 
@@ -704,7 +741,6 @@ This test case verifies the deletion of an existing `Like` object by sending a D
 - **Details:** The `Like` object was successfully deleted, and it no longer exists in the database.
 
 
-
 ## Post Model CRUD Test Cases
 
 ### Test Case 1: Create Post
@@ -718,7 +754,7 @@ This test case verifies the creation of a new `Post` object by sending a POST re
 - A user is logged in and has access to create `Post` objects.
 
 **Test Steps:**
-1. Send a POST request to the `Post` creation endpoint with valid data, including the post title and content.
+1. Send a POST request to the `Post` creation endpoint (`POST /api/posts/`) with valid data, including the post title and content.
 2. Verify that the response status code is 201 (Created).
 3. Verify that the created `Post` object exists in the database.
 4. Verify that the `Post` object is associated with the logged-in user as the 'owner'.
@@ -751,7 +787,7 @@ This test case verifies the retrieval of an existing `Post` object by sending a 
 - At least one `Post` object exists in the database.
 
 **Test Steps:**
-1. Send a GET request to the `Post` detail endpoint with the ID of an existing `Post` object.
+1. Send a GET request to the `Post` detail endpoint (`GET /api/posts/{post_id}/`) with the ID of an existing `Post` object.
 2. Verify that the response status code is 200 (OK).
 3. Verify that the response includes the details of the requested `Post` object.
 
@@ -782,7 +818,7 @@ This test case verifies the update of an existing `Post` object by sending a PUT
 - The logged-in user is the owner of the `Post` object.
 
 **Test Steps:**
-1. Send a PUT request to the `Post` detail endpoint with the ID of an existing `Post` object and updated data.
+1. Send a PUT request to the `Post` detail endpoint (`PUT /api/posts/{post_id}/`) with the ID of an existing `Post` object and updated data.
 2. Verify that the response status code is 200 (OK).
 3. Retrieve the `Post` object from the database and verify that its data has been updated.
 
@@ -815,7 +851,7 @@ This test case verifies the deletion of an existing `Post` object by sending a D
 - The logged-in user is the owner of the `Post` object.
 
 **Test Steps:**
-1. Send a DELETE request to the `Post` detail endpoint with the ID of the existing `Post` object.
+1. Send a DELETE request to the `Post` detail endpoint (`DELETE /api/posts/{post_id}/`) with the ID of the existing `Post` object.
 2. Verify that the response status code is 204 (No Content).
 3. Attempt to retrieve the `Post` object from the database and verify that it no longer exists.
 
@@ -877,7 +913,7 @@ This test case verifies the retrieval of an existing `Profile` object by sending
 - At least one `Profile` object exists in the database.
 
 **Test Steps:**
-1. Send a GET request to the `Profile` detail endpoint with the ID of an existing `Profile` object.
+1. Send a GET request to the `Profile` detail endpoint (`GET /api/profiles/{profile_id}/`) with the ID of an existing `Profile` object.
 2. Verify that the response status code is 200 (OK).
 3. Verify that the response includes the details of the requested `Profile` object.
 
@@ -908,7 +944,7 @@ This test case verifies the update of an existing `Profile` object by sending a 
 - The logged-in user is the owner of the `Profile` object.
 
 **Test Steps:**
-1. Send a PUT request to the `Profile` detail endpoint with the ID of an existing `Profile` object and updated data.
+1. Send a PUT request to the `Profile` detail endpoint (`PUT /api/profiles/{profile_id}/`) with the ID of an existing `Profile` object and updated data.
 2. Verify that the response status code is 200 (OK).
 3. Retrieve the `Profile` object from the database and verify that its data has been updated.
 
@@ -941,7 +977,7 @@ This test case verifies the deletion of an existing `Profile` object by sending 
 - The logged-in user is the owner of the `Profile` object.
 
 **Test Steps:**
-1. Send a DELETE request to the `Profile` detail endpoint with the ID of the existing `Profile` object.
+1. Send a DELETE request to the `Profile` detail endpoint (`DELETE /api/profiles/{profile_id}/`) with the ID of the existing `Profile` object.
 2. Verify that the response status code is 204 (No Content).
 3. Attempt to retrieve the `Profile` object from the database and verify that it no longer exists.
 
@@ -959,5 +995,3 @@ This test case verifies the deletion of an existing `Profile` object by sending 
 **Test Result:**
 - **Outcome:** The test has passed.
 - **Details:** The `Profile` object was successfully deleted, and it no longer exists in the database.
-
-
