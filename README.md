@@ -141,7 +141,7 @@ For further details of testing carried out on the frontend relevant to verifying
 
 Manual testing was used throughout each stage of development to ensure that the acceptance criteria set out in each of the thirteen User Stories was achieved. These User Stories can be found **[here](https://github.com/users/SamOBrienOlinger/projects/3)**. 
 
-The tests conducted for verifying the backend functionality of all apps passed. Each of these can be found in the **testing.md** file found **[here](/workspace/drf-spoodle-space/testing.md)**.
+The tests conducted for verifying the backend functionality of all apps passed. Each of these can be found in the **testing.md** file found **[here](/testing.md)**.
 
 - Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings. For example:
 
