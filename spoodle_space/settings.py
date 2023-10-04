@@ -29,11 +29,11 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [(
-    #     'rest_framework.authentication.SessionAuthentication'
-    #     if 'DEV' in os.environ
-    #     else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    # )],
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )],
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
     )],
@@ -68,7 +68,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # DEBUG = False
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
