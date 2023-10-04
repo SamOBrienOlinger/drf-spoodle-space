@@ -63,6 +63,65 @@ This test case verifies user logout by sending a POST request to the logout endp
 - **Outcome:** The test has passed.
 - **Details:** User logout succeeded, and the JWT token was invalidated.
 
+### Test Case 3: User Authentication with Invalid Credentials
+
+**Test Case Description:**
+This test case verifies user authentication by sending a POST request to the login endpoint with invalid user authentication credentials.
+
+**Preconditions:**
+- Ensure the Django project and database are properly set up.
+- User accounts exist for testing.
+- Incorrect authentication credentials (e.g., incorrect username or password) are available for testing.
+
+**Test Steps:**
+1. Send a POST request to the login endpoint (`POST /dj-rest-auth/login/`) with invalid user authentication credentials (e.g., incorrect username or password).
+2. Verify that the response status code is 401 (Unauthorized).
+3. Verify that the response does not include an authentication token.
+4. Ensure that the user remains unauthenticated.
+
+**Expected Results:**
+- User authentication should fail with invalid credentials.
+- The response should indicate unauthorized access (401 status code).
+- No authentication token should be provided.
+- The user should remain unauthenticated.
+
+**Test Data:**
+- Invalid user authentication credentials (e.g., incorrect username or password).
+
+**Test Environment:**
+- Django development environment with user authentication configured.
+
+**Test Result:**
+- **Outcome:** The test has passed.
+- **Details:** User authentication failed with invalid credentials as expected.
+
+### Test Case 4: User Logout without Authentication
+
+**Test Case Description:**
+This test case verifies that a user cannot log out without authentication by sending a POST request to the logout endpoint without a valid JWT token.
+
+**Preconditions:**
+- No user is authenticated.
+
+**Test Steps:**
+1. Send a POST request to the logout endpoint (`POST /dj-rest-auth/logout/`) without including an authenticated JWT token.
+2. Verify that the response status code is 401 (Unauthorized).
+
+**Expected Results:**
+- User logout should not be allowed without authentication.
+- The response should indicate unauthorized access (401 status code).
+
+**Test Data:**
+- No authentication token provided.
+
+**Test Environment:**
+- Django development environment with user authentication configured.
+
+**Test Result:**
+- **Outcome:** The test has passed.
+- **Details:** User logout without authentication is not allowed, and the response indicates unauthorized access.
+
+
 ## Comment Model CRUD Test Cases
 
 ### Test Case 1: Create Comment
