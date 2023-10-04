@@ -1,6 +1,67 @@
-# Create, Read, Update and Delete functionality Testing
+# Create, Read, Update and Delete Functionality Testing
+
+Click **[here](README.md)** to return to the **README.md** file.
 
 A series of manual tests were carried out across every app to verify the Create, Read, Update and Delete (CRUD) functionality. Below are the CRUD test cases.
+
+
+## User Authentication Test Cases
+
+### Test Case 1: User Authentication
+
+**Test Case Description:**
+This test case verifies user authentication by sending a POST request to the login endpoint.
+
+**Preconditions:**
+- Ensure the Django project and database are properly set up.
+- User accounts exist for testing.
+- Correct authentication credentials (username and password) are available for testing.
+
+**Test Steps:**
+1. Send a POST request to the login endpoint (`POST /dj-rest-auth/login/`) with valid user authentication credentials (username and password).
+2. Verify that the response status code is 200 (OK).
+3. Verify that the response includes an authentication token (JWT token) indicating successful login.
+4. Use the obtained token for subsequent requests to test authenticated endpoints.
+
+**Expected Results:**
+- User authentication should succeed, and an authentication token should be provided.
+- The token should be used for authentication in subsequent requests.
+
+**Test Data:**
+- Valid user authentication credentials (username and password).
+
+**Test Environment:**
+- Django development environment with user authentication configured.
+
+**Test Result:**
+- **Outcome:** The test has passed.
+- **Details:** User authentication succeeded, and an authentication token was obtained.
+
+### Test Case 2: User Logout
+
+**Test Case Description:**
+This test case verifies user logout by sending a POST request to the logout endpoint.
+
+**Preconditions:**
+- A user is authenticated and has a valid JWT token.
+
+**Test Steps:**
+1. Send a POST request to the logout endpoint (`POST /dj-rest-auth/logout/`) with the authenticated JWT token.
+2. Verify that the response status code is 200 (OK) or 204 (No Content).
+
+**Expected Results:**
+- User logout should succeed, and the JWT token should be invalidated.
+- Subsequent requests using the invalidated token should fail.
+
+**Test Data:**
+- Authenticated JWT token.
+
+**Test Environment:**
+- Django development environment with user authentication configured.
+
+**Test Result:**
+- **Outcome:** The test has passed.
+- **Details:** User logout succeeded, and the JWT token was invalidated.
 
 ## Comment Model CRUD Test Cases
 
@@ -15,7 +76,7 @@ This test case verifies the creation of a new comment by sending a POST request 
 - A user is logged in and has access to create comments.
 
 **Test Steps:**
-1. Send a POST request to the comment creation endpoint (`POST /api/comments/`) with valid data, including the post ID and comment content.
+1. Send a POST request to the comment creation endpoint (`POST /api/posts/{post_id}/comments/`) with valid data, including the post ID and comment content.
 2. Verify that the response status code is 201 (Created).
 3. Verify that the created comment exists in the database.
 4. Verify that the comment is associated with the logged-in user.
