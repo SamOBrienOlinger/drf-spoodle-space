@@ -124,10 +124,10 @@ This test case verifies that a user cannot log out without authentication by sen
 
 ## Comment Model CRUD Test Cases
 
-### Test Case 1: Create Comment
+### Test Case 1: Create Comment with Valid Data
 
 **Test Case Description:**
-This test case verifies the creation of a new comment by sending a POST request to the appropriate API endpoint.
+This test case verifies the creation of a new comment by sending a POST request to the appropriate API endpoint with valid data.
 
 **Preconditions:**
 - Ensure the Django project and database are properly set up.
@@ -156,7 +156,37 @@ This test case verifies the creation of a new comment by sending a POST request 
 - **Outcome:** The test has passed.
 - **Details:** The comment was successfully created, and all expected results were met.
 
-### Test Case 2: Read Comment
+### Test Case 2: Create Comment with Invalid Data
+
+**Test Case Description:**
+This test case verifies the behavior when creating a comment with invalid data by sending a POST request to the appropriate API endpoint with incomplete or missing data.
+
+**Preconditions:**
+- Ensure the Django project and database are properly set up.
+- User authentication and authorization are configured correctly.
+- A user is logged in and has access to create comments.
+
+**Test Steps:**
+1. Send a POST request to the comment creation endpoint (`POST /api/posts/{post_id}/comments/`) with invalid data, such as missing comment content or an invalid post ID.
+2. Verify that the response status code is 400 (Bad Request).
+3. Ensure that no comment is created in the database.
+
+**Expected Results:**
+- Comment creation should fail with invalid data.
+- The response should indicate a bad request (400 status code).
+- No comment should be created in the database.
+
+**Test Data:**
+- Invalid data for creating a comment (e.g., missing comment content, invalid post ID).
+
+**Test Environment:**
+- Django development environment with user authentication configured.
+
+**Test Result:**
+- **Outcome:** The test has passed.
+- **Details:** Comment creation failed with invalid data as expected.
+
+### Test Case 3: Read Comment
 
 **Test Case Description:**
 This test case verifies the ability to retrieve an existing comment by sending a GET request to the appropriate API endpoint.
@@ -184,7 +214,7 @@ This test case verifies the ability to retrieve an existing comment by sending a
 - **Outcome:** The test has passed.
 - **Details:** The existing comment was successfully retrieved, and the data matches the expected data.
 
-### Test Case 3: Update Comment
+### Test Case 4: Update Comment
 
 **Test Case Description:**
 This test case verifies the ability to update an existing comment by sending a PUT request to the appropriate API endpoint.
@@ -213,7 +243,7 @@ This test case verifies the ability to update an existing comment by sending a P
 - **Outcome:** The test has passed.
 - **Details:** The existing comment was successfully updated with the new content, and the data matches the expected data.
 
-### Test Case 4: Delete Comment
+### Test Case 5: Delete Comment
 
 **Test Case Description:**
 This test case verifies the ability to delete an existing comment by sending a DELETE request to the appropriate API endpoint.
@@ -240,6 +270,7 @@ This test case verifies the ability to delete an existing comment by sending a D
 **Test Result:**
 - **Outcome:** The test has passed.
 - **Details:** The existing comment was successfully deleted, and it no longer exists in the database.
+
 
 
 
