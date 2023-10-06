@@ -12,7 +12,6 @@ def root_route(request):
     return Response({"message": "Welcome to Spoodle Space! The Spoodliest & Cockapoopy Space you're ever going to sniff out. Our community is all about sharing ways of enjoying long ludicrous lives with the lovliest little furry fellas on Earth, possibly the Universe"})
 
 
-# dj-rest-auth logout view fix
 @api_view(['POST'])
 def logout_route(request):
     response = Response()
