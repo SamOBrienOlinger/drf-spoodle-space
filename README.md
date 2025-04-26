@@ -179,6 +179,10 @@ Creating a database using ElephantSQL was first required. The following steps we
 
 - Return to the Heroku dashboard.
 
+**Current Bugs**
+
+- There is a temporary change to the Config Vars in Heroku. 
+The DATABASE_URL requires updating to another database provider. The database is being migrated to Supabase drom ElephantSQL. 
 
 This project was deployed through Heroku using the following steps:
 
