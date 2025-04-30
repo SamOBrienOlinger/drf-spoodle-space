@@ -13,6 +13,14 @@ This expansion combines my proficiencies across **HTML**, **CSS**, **JavaScript*
 
 - To view the frontend repository on Github **[Click Here](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**. 
 
+# NB 🚧 Site Temporarily Unavailable Due to Database Migration 🚧
+
+Users are currently experiencing temporary downtime as I migrate the database from ElephantSQL to a new hosting service. This transition is necessary to improve the stability and performance of the site.
+
+I am actively working to complete this migration and restore full functionality as quickly as possible. I am also evaluating options such as AWS to ensure a robust and scalable infrastructure for the future.
+
+Thank you for your patience. I appreciate your understanding.
+
 ## **Summary**
   This social platform provides Users with an opportunity to connect and share photographs, and even information about owning, training and taking care of a breed of dog called Cockapoos, one of Ireland's newest, most popular and much-loved dog breeds. 
   
