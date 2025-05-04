@@ -52,7 +52,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
-    '8000-samobrienol-drfspoodles-0h3n7m2ipr7.ws-eu105.gitpod.io',
+    '8000-samobrienol-drfspoodles-kiy60ke2q73.ws-eu118.gitpod.io',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
