@@ -15,30 +15,14 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [(
-#         'rest_framework.authentication.SessionAuthentication'
-#         if 'DEV' in os.environ
-#         else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-#     )],
-#     'DEFAULT_AUTHENTICATION_CLASSES': [(
-#         'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-#     )],
-#     'DEFAULT_PAGINATION_CLASS':
-#         'rest_framework.pagination.PageNumberPagination',
-#     'PAGE_SIZE': 10,
-#     'DATETIME_FORMAT': '%d %b %Y',
-# }
-
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEV' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
-    'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        (
+            'rest_framework.authentication.SessionAuthentication'
+            if 'DEV' in os.environ
+            else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+        )
+    ],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -61,41 +45,22 @@ REST_AUTH_SERIALIZERS = {
 }
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-
-DEBUG = False
+DEBUG = False  # Set this to False for production on Heroku
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
     'samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
+    'spoodle-space-pp5.herokuapp.com',  # Add your Heroku domain
 ]
-
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
-
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE
-    ).group(0)
-    CORS_ALLOWED_ORIGIN_REGEXES = [
-        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
-    ]
-
-CORS_ALLOW_CREDENTIALS = True
-
-# CORS_ALLOWED_ORIGINS = [
-#     'https://3000-samobrienol-spoodlespac-cm3x5ysjxgu.ws-eu105.gitpod.io',
-#     'https://spoodle-space-pp5.herokuapp.com',
-# ]
 
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN'),  # If you need this dynamically
-    'http://localhost:3000',          # Add localhost for development
-    'https://3000-samobrienol-spoodlespac-xccm19ucz0e.ws-eu118.gitpod.io', #Your Gitpod URL
-    'https://spoodle-space-pp5.herokuapp.com', # Your Heroku URL
+    os.environ.get('CLIENT_ORIGIN'),
+    'http://localhost:3000',
+    'https://3000-samobrienol-spoodlespac-xccm19ucz0e.ws-eu118.gitpod.io',
+    'https://spoodle-space-pp5.herokuapp.com',
 ]
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -104,7 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'cloudinary_storage',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # Add this
     'cloudinary',
     'rest_framework',
     'django_filters',
@@ -130,6 +95,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this BEFORE SecurityMiddleware
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -185,5 +151,6 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Add this
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
