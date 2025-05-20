@@ -51,14 +51,16 @@ ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
     'samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
-    'spoodle-space-pp5.herokuapp.com',  # Add your Heroku domain
+    '8000-samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io'
+    'spoodle-space-pp5.herokuapp.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     os.environ.get('CLIENT_ORIGIN'),
     'http://localhost:3000',
-    'https://3000-samobrienol-spoodlespac-xccm19ucz0e.ws-eu118.gitpod.io',
+    'https://3000-samobrienol-spoodlespac-qirdygtomme.ws-eu118.gitpod.io',
     'https://spoodle-space-pp5.herokuapp.com',
+    'https://8000-samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
