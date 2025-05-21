@@ -51,7 +51,7 @@ ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
     'samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
-    '8000-samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io'
+    '8000-samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
     'spoodle-space-pp5.herokuapp.com',
 ]
 
