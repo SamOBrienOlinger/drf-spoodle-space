@@ -1,7 +1,8 @@
 from pathlib import Path
 import os
 import re
-import dj_database_url
+import dj_database_url # Make sure this import is present
+import urllib.parse
 
 if os.path.exists('env.py'):
     import env
@@ -19,7 +20,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         (
             'rest_framework.authentication.SessionAuthentication'
-            if 'DEV' in os.environ
+            if os.environ.get('DEV') == 'True' # Check if DEV is explicitly 'True'
             else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
         )
     ],
@@ -29,7 +30,7 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d %b %Y',
 }
 
-if 'DEV' not in os.environ:
+if os.environ.get('DEV') != 'True': # Check if DEV is explicitly NOT 'True'
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
     ]
@@ -45,22 +46,37 @@ REST_AUTH_SERIALIZERS = {
 }
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = False  # Set this to False for production on Heroku
+
+# --- DEBUG SETTING ---
+# Set DEBUG to True if DEV is 'True' in env.py, otherwise False for production.
+DEBUG = os.environ.get('DEV') == 'True'
+
+# --- ALLOWED_HOSTS ---
+# Dynamically pull hosts from env.py and include production Heroku host.
+# Extract only the hostname from CLIENT_ORIGIN_DEV for ALLOWED_HOSTS
+gitpod_host = os.environ.get('CLIENT_ORIGIN_DEV')
+if gitpod_host:
+    # urlparse breaks down the URL. .netloc gets the 'hostname:port' part.
+    # .split(':')[0] removes the port if present (e.g., '8000-...' from the hostname itself)
+    parsed_gitpod_host = urllib.parse.urlparse(gitpod_host).netloc.split(':')[0]
+else:
+    parsed_gitpod_host = None # Set to None if CLIENT_ORIGIN_DEV is not found
 
 ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
-    'localhost',
-    'samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
-    '8000-samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
-    'spoodle-space-pp5.herokuapp.com',
+    os.environ.get('ALLOWED_HOST'),      # 'localhost' from env.py
+    parsed_gitpod_host,                  # The extracted hostname (e.g., '8000-samobrienol-drfspoodles-gxrj9dlvoz2.ws-eu120.gitpod.io')
+    'spoodle-space-pp5.herokuapp.com',   # Your Heroku production app URL
 ]
 
+# Filter out any None or empty string values that might result from missing env vars
+ALLOWED_HOSTS = [host for host in ALLOWED_HOSTS if host]
+
+# --- CORS_ALLOWED_ORIGINS ---
+# Dynamically pull origins from env.py and include production Heroku origin.
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN'),
-    'http://localhost:3000',
-    'https://3000-samobrienol-spoodlespac-qirdygtomme.ws-eu118.gitpod.io',
-    'https://spoodle-space-pp5.herokuapp.com',
-    'https://8000-samobrienol-drfspoodles-xccm19ucz0e.ws-eu118.gitpod.io',
+    os.environ.get('CLIENT_ORIGIN'),      # 'http://localhost:3000' from env.py
+    os.environ.get('CLIENT_ORIGIN_DEV'),  # Your 8000- Gitpod URL from env.py
+    'https://spoodle-space-pp5.herokuapp.com', # Your Heroku production app URL
 ]
 CORS_ALLOW_CREDENTIALS = True
 
@@ -71,7 +87,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'cloudinary_storage',
-    'django.contrib.staticfiles',  # Add this
+    'django.contrib.staticfiles',
     'cloudinary',
     'rest_framework',
     'django_filters',
@@ -97,7 +113,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this BEFORE SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -127,9 +143,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'spoodle_space.wsgi.application'
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+# --- DATABASES CONFIGURATION (CRITICAL FIX) ---
+# Get the DATABASE_URL environment variable
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if DATABASE_URL: # This will be true if env.py loads DATABASE_URL
+    # If DATABASE_URL is set, parse it.
+    # dj_database_url.parse expects a string.
+    DATABASES = {
+        'default': dj_database_url.parse(DATABASE_URL) # <-- REMOVED .encode('utf-8')
+    }
+else:
+    # Fallback to SQLite for local development if DATABASE_URL is not found
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -153,6 +184,6 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Add this
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
