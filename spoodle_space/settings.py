@@ -65,7 +65,7 @@ else:
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),      # 'localhost' from env.py
     parsed_gitpod_host,                  # The extracted hostname (e.g., '8000-samobrienol-drfspoodles-gxrj9dlvoz2.ws-eu120.gitpod.io')
-    'spoodle-space-pp5.herokuapp.com',   # Your Heroku production app URL
+    'spoodle-space-pp5.herokuapp.com',   # Heroku production app URL
 ]
 
 # Filter out any None or empty string values that might result from missing env vars
@@ -75,10 +75,14 @@ ALLOWED_HOSTS = [host for host in ALLOWED_HOSTS if host]
 # Dynamically pull origins from env.py and include production Heroku origin.
 CORS_ALLOWED_ORIGINS = [
     os.environ.get('CLIENT_ORIGIN'),      # 'http://localhost:3000' from env.py
-    os.environ.get('CLIENT_ORIGIN_DEV'),  # Your 8000- Gitpod URL from env.py
-    'https://spoodle-space-pp5.herokuapp.com', # Your Heroku production app URL
+    os.environ.get('CLIENT_ORIGIN_DEV'),  # 8000- Gitpod URL from env.py
+    'https://spoodle-space-pp5.herokuapp.com', # Heroku production app URL
 ]
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://spoodle-space-pp5.herokuapp.com"
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
