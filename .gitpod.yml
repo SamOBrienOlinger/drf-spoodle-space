@@ -1,17 +1,14 @@
 image:
-  file: .gitpod.dockerfile
+  file: .gitpod.Dockerfile
+
 tasks:
-  - init: . ${GITPOD_REPO_ROOT}/.vscode/init_tasks.sh
-    command: /home/gitpod/.pg_ctl/bin/pg_start > /dev/null
-  - command: . ${GITPOD_REPO_ROOT}/.vscode/uptime.sh &
-vscode:
-  extensions:
-    - ms-python.python
-    - formulahendry.auto-close-tag
-    - eventyret.bootstrap-4-cdn-snippet
-    - matt-rudge.auto-open-preview-panel
-    - ms-toolsai.jupyter
-    - ms-toolsai.jupyter-keymap
-    - ms-toolsai.jupyter-renderers
-    - ms-toolsai.vscode-jupyter-cell-tags
-    - ms-toolsai.vscode-jupyter-slideshow
+  - init: |
+      pyenv install 3.10.11 || true
+      pyenv local 3.10.11
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    command: python manage.py runserver 0.0.0.0:8000
+
+ports:
+  - port: 8000
+    onOpen: open-preview
