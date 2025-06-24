@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import re
-import dj_database_url # Make sure this import is present
+import dj_database_url
 import urllib.parse
 
 if os.path.exists('env.py'):
@@ -77,11 +77,14 @@ CORS_ALLOWED_ORIGINS = [
     os.environ.get('CLIENT_ORIGIN'),      # 'http://localhost:3000' from env.py
     os.environ.get('CLIENT_ORIGIN_DEV'),  # 8000- Gitpod URL from env.py
     'https://spoodle-space-pp5.herokuapp.com', # Heroku production app URL
+    "http://localhost:3000",
 ]
+
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://spoodle-space-pp5.herokuapp.com"
+    "https://spoodle-space-pp5.herokuapp.com",
+    "http://localhost:3000",
 ]
 
 INSTALLED_APPS = [
