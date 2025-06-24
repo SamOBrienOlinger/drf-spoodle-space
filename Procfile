@@ -1,1 +1,1 @@
-web: gunicorn drf_spoodle_space.wsgi
+web: gunicorn spoodle_space.wsgi
