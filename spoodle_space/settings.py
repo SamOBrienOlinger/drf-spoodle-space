@@ -81,6 +81,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     os.environ.get('CLIENT_ORIGIN'),
     os.environ.get('CLIENT_ORIGIN_DEV'),
+    "https://3000-samobrienol-spoodlespac-93mpe3hepff.ws-eu120.gitpod.io",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -92,6 +93,7 @@ SESSION_COOKIE_SAMESITE = 'None'
 CSRF_TRUSTED_ORIGINS = [
     "https://spoodle-space-pp5.herokuapp.com",
     "http://localhost:3000",
+    "https://3000-samobrienol-spoodlespac-93mpe3hepff.ws-eu120.gitpod.io",
 ]
 
 INSTALLED_APPS = [
