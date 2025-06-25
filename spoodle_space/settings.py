@@ -77,13 +77,17 @@ ALLOWED_HOSTS = [
 # --- CORS_ALLOWED_ORIGINS ---
 # Dynamically pull origins from env.py and include production Heroku origin.
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN'),      # 'http://localhost:3000' from env.py
-    os.environ.get('CLIENT_ORIGIN_DEV'),  # 8000- Gitpod URL from env.py
-    'https://spoodle-space-pp5.herokuapp.com', # Heroku production app URL
-    "http://localhost:3000",
+    'https://spoodle-space-pp5.herokuapp.com',
+    'http://localhost:3000',
+    os.environ.get('CLIENT_ORIGIN'),
+    os.environ.get('CLIENT_ORIGIN_DEV'),
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
 
 CSRF_TRUSTED_ORIGINS = [
     "https://spoodle-space-pp5.herokuapp.com",
