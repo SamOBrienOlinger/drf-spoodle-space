@@ -1,45 +1,34 @@
-# SpoodleSpace - Backend
-# ![**SpoodleSPACE**](Media/README.md-images/README.md-paulpuppy.jpg)
+# SpoodleSpace–Backend
 
+![SpoodleSPACE](Media/README.md-images/README.md-paulpuppy.jpg)
 
-[**SpoodleSpace**](spoodle-space-pp5.herokuapp.com) uses [Django Rest Framework](https://www.django-rest-framework.org) to serve as its API to interface with its frontend [React](https://www.npmjs.com) JavaScript library. 
+[**SpoodleSpace**](https://spoodle-space-pp5.herokuapp.com) is a Django REST Framework API that powers the frontend React app, delivering a full social platform for Cockapoo dog owners and enthusiasts.
 
-This project evolved out of a project, which centred around a fictional online community of dog owners called '**[Cockapoo Club](https://home-cockapoo-club-pp4.herokuapp.com)**'.
+Originally inspired by [Cockapoo Club](https://home-cockapoo-club-pp4.herokuapp.com), this project expands the idea into a more engaging, interactive, and scalable experience using **HTML**, **CSS**, **JavaScript**, **Python**, **React**, **Bootstrap**, and **Django REST Framework**.
 
-This project introduces an entirely new concept. The main site goal is to provide Users with a really positive, engaging and interactive experience. 
-This expansion combines my proficiencies across **HTML**, **CSS**, **JavaScript**, and **Python**; involving **React**, **Bootstrap**, and **Django REST Framework**. 
+- 🔗 **[Deployed site](https://spoodlespace.herokuapp.com/)**
+- 💻 **[Frontend GitHub repo](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**
 
-- **[Click Here](https://spoodlespace.herokuapp.com/)** to see the deployed website. 
+> 🚧 **Site Temporarily Unavailable Due to Database Migration**  
+> I am currently migrating the database from ElephantSQL to a new provider (e.g. Supabase or AWS RDS). This may cause brief downtime. Thank you for your patience!
 
-- To view the frontend repository on Github **[Click Here](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**. 
+---
 
-# NB 🚧 Site Temporarily Unavailable Due to Database Migration 🚧
+## Summary
 
-Users are currently experiencing temporary downtime as I migrate the database from ElephantSQL to a new hosting service. This transition is necessary to improve the stability and performance of the site.
+This social platform allows users to connect, share photographs, and exchange information about caring for Cockapoos — one of Ireland’s most beloved dog breeds.
 
-I am actively working to complete this migration and restore full functionality as quickly as possible. I am also evaluating options such as AWS to ensure a robust and scalable infrastructure for the future.
+Unlike typical social networks, this project fosters a shared identity and belonging within a niche community. It is designed to attract:
 
-Thank you for your patience. I appreciate your understanding.
+- Families, couples, or individuals who already own Cockapoos.
+- People seeking guidance on training, health, or behaviour.
+- Potential owners researching the breed.
+- Owners wanting to share photos, stories, and adventures.
+- Anyone looking for peer support from fellow dog lovers.
 
-## **Summary**
-  This social platform provides Users with an opportunity to connect and share photographs, and even information about owning, training and taking care of a breed of dog called Cockapoos, one of Ireland's newest, most popular and much-loved dog breeds. 
-  
-  Unlike many other social networking platforms, this project offers Users a unique way to create and participate in their own community of likeminded people with a shared identity that self-sustains itself. A fundamental intended outcome is to produces a sense of belonging that cannot be found elsewhere.    
+The backend plays a critical role in linking frontend components and ensuring smooth user experiences.
 
-The site is designed to engage as wide a range as possible of millions of potential Users around the world, including:
-
-* families, couples and individuals who already have a Cockapoo or two that are eager to learn more about the history and nature of the breed of their fun furry companions. 
-
-* folks who would like to find out more about taking care of their dog so their hairy little buddy stays happy and healthy. 
-
-* anyone considering opening their home to a new companion of this breed of dog and are hoping to gather more information to help make their decision. 
-
- * Cockapoo owners who enjoy connecting with other Cockapoo owners by sharing funny stories,  photographs and videos of their adventures.
-
-* Anyone who is looking for some support and/or who can provide otyher with support related to any challenges they are facing with the behaviour of their loved little clowns!  
-
-
-Given the site goals outlined here, enhancing the UI and UX to achieve the project's most important goals required prioritising the way backend data connected with the front-end application. 
+---
 
 ## Contents
 
@@ -50,181 +39,145 @@ Given the site goals outlined here, enhancing the UI and UX to achieve the proje
 - [Deployment](#deployment)
 - [Credits](#credits)
 
-### [User Stories](#user-stories)
+---
 
-  **Navigation and authentication**
+## User Stories
 
-  - Navigation: As a user, I can view a navbar from every page so that I can navigate easily between pages.
-  - Routing: As a user, I can navigate through pages quickly so that I can view content seamlessly without page refresh.
-  - Authentication - Sign up: As a user, I can create a new account so that I can access all the features for signed-up users.
-  - Authentication - Sign in: As a user, I can sign in to the app so that I can access functionality for logged-in users.
-  - Authentication - Logged in Status: As a user, I can tell if I am logged in or not so that I can log in if I need to.
-  - Authentication - Refreshing access tokens: As a user, I can maintain my logged-in status until I choose to log out so that my user experience is not compromised.
-  - Navigation: Conditional rendering - As a logged-out user, I can see sign-in and sign-up options so that I can sign in/sign up.
-  - Avatar: As a user, I can view users' avatars so that I can easily identify users of the application.
+### Navigation and Authentication
 
-  **Profile**
+- Users can access a navigation bar on all pages.
+- Users can sign up, log in, and stay logged in using JWT.
+- Users can tell whether they're logged in and view avatars.
+- Conditional rendering: signed-in vs. signed-out views.
 
-  - Profile page: As a user, I can view other users' profiles so that I can see their posts and learn more about them.
-  - Most followed profiles: As a user, I can see a list of the most followed profiles so that I can see which profiles are popular.
-  - As a user, I can view data about other users, such as the number of posts, follows, and users followed so that I can learn more about them.
-  - Follow/Unfollow a user: As a logged-in user, I can follow and unfollow other users so that I can see and remove posts by specific users in my posts feed.
-  - View all posts by a specific user: As a user, I can view all the posts by a specific user so that I can catch up on their latest posts or decide I want to follow them.
-  - Update username and password: As a logged-in user, I can update my username and password so that I can change my display name and keep my profile secure.
+### Profile Features
 
-  **Posting, liking, and commenting on images**
+- View other users' profiles.
+- See most followed profiles.
+- View profile stats: post count, followers, etc.
+- Follow/unfollow users.
+- Update username and password.
 
-  - Create posts: As a logged-in user, I can create posts with images.
-  - View a post: As a user, I can view the details of a single post so that I can learn more about it.
-  - Like a post: As a logged-in user, I can like a post so that I can show my support for the posts that interest me.
-  - Post page: As a user, I can view the posts page so that I can read the comments about the post.
-  - Edit post: As a post owner, I can edit my post title and description so that I can make corrections or update my post after it was created.
-  - Create a comment: As a logged-in user, I can add comments to a post so that I can share my thoughts about the post.
-  - Comment date: As a user, I can see how long ago a comment was made so that I know how old a comment is.
-  - View comments: As a user, I can read comments on posts so that I can read what other users think about the posts.
-  - Delete comments: As an owner of a comment, I can delete my comment so that I can control the removal of my comment from the application.
-  - Edit a comment: As an owner of a comment, I can edit my comment so that I can fix or update my existing comment.
+### Posts, Likes, and Comments
 
-  **Dog profile**
+- Create, view, edit, and delete posts.
+- Like/unlike posts.
+- Comment on posts, view timestamps, and edit/delete comments.
+- Infinite scrolling for all post lists.
 
-  - As a logged-in user, I can create and edit my dog profile, including being able to add and change a picture of my dog and information about my dog.
-  - As a logged-in user, I can view other users' dog profiles if I am following them.
-  - As a user, I can view the most recent dog profiles posted, ordered by most recently created first so that I am up to date with the newest content.
-  - As a user, I can search for dog profiles with keywords so that I can find the dog profiles and user profiles I am most interested in.
-  - Infinite scroll: As a user, I can keep scrolling through the images on the site that are loaded for me automatically so that I don't have to click on "next page".
+### Dog Profile
 
-  **Dog health details**
+- Add and edit your dog's profile and photo.
+- View recent and searchable dog profiles.
+- View others’ dog profiles (if following).
 
-  - As a logged-in user, I can create and edit health details about my dog.
-  - As a logged-in user, I can view the health details of other users' dogs if I am following them.
-  - As a user, I can view the most recent details about the health of users' dogs, ordered by most recently created first so that I am up to date with the newest content.
-  - As a user, I can search for dog health details with keywords so that I can find the dog health details and user profiles I am most interested in.
-  - Infinite scroll: As a user, I can keep scrolling through the images on the site that are loaded for me automatically so that I don't have to click on "next page".
+### Dog Health
 
-  **Dog danger details**
+- Add/edit your dog’s health info.
+- View recent health details.
+- Keyword search and infinite scrolling.
 
-  - As a logged-in user, I can create and edit details about how dangerous my dog is.
-  - As a logged-in user, I can view the details of how dangerous other users' dogs are if I am following them.
-  - As a user, I can view the most recent details posted about how dangerous other users' dogs are, ordered by most recently created first so that I am up to date with the newest content.
-  - As a user, I can search for these details with keywords so that I can find the details and user profiles I am most interested in.
-  - Infinite scroll: As a user, I can keep scrolling through the images on the site that are loaded for me automatically so that I don't have to click on "next page".
+### Dog Danger
 
-### [Entity Relationship Diagram](#entity-relationship-diagram)
+- Add/edit information about how dangerous your dog is.
+- View recent posts and search.
+- Infinite scrolling enabled.
 
-- Built-in Django models were used for this project. 
-  
-- The three custom models created were:
-  - DogProfile
-  - DogHealth 
-  - DogDanger
-  
+---
+
+## Entity Relationship Diagram
+
+- Built-in Django models were used with three custom models:
+
+  - `DogProfile`
+  - `DogHealth`
+  - `DogDanger`
+
 ![Entity Relationship Diagram](Media/README.md-images/README.md-ERD.jpg)
 
-### [Technologies](#technologies)
+---
 
-- #### Languages
+## Technologies
 
-  -  [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
+### Languages
 
-- #### Frameworks, Libraries, Programs and Services Used
-  - [Django:](https://www.djangoproject.com/)
+- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-  - [Django Rest Frameworks](https://www.django-rest-framework.org/).
+### Frameworks & Tools
 
-  - [Git:](https://git-scm.com/)
+- [Django](https://www.djangoproject.com/)
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [Git](https://git-scm.com/)
+- [GitHub](https://github.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [ElephantSQL](https://www.elephantsql.com/)
+- [Heroku](https://heroku.com/)
 
-  - [GitHub:](https://github.com/)
+---
 
-  - [PostgreSQL:](https://www.postgresql.org/)
+## Testing
 
-  - [ElephantSQL:](https://www.elephantsql.com/)
+Manual testing was carried out to:
 
-  - [Heroku:](https://heroku.com/)
-  
- ### [Testing](#testing)
+- Restrict user access to protected actions.
+- Verify full CRUD functionality in the API.
+- Validate user story outcomes.
 
-  Comprehensive manual testing was carried out to guarantee that Users without the necessary permissions would not have Write Access. 
-  It was a fundamental priority to restrict Users from having the ability to create, update, or delete data; or perform actions that could jeopardize sensitive data; or modify the system's state through adding new records, editing existing content, or making changes to configuration settings.
+Refer to `/testing.md` for backend testing details.  
+User stories and acceptance criteria are tracked in [GitHub Projects](https://github.com/users/SamOBrienOlinger/projects/3).  
+Frontend testing can be found in the [frontend repo README](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md) and [testing.md](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/testing.md).
 
+### Python Validation
 
-Create, Read, Update and Delete (CRUD) functionality across this API was tested manually. This ensured that the database and handling of data worked as expected when Users manipulated data on the frontend React app.
-All apps passed the tests conducted for verifying the intended backend functionality. For more details on each test visit the **testing.md** file found **[here](/testing.md)**.
-
-Backend manual testing used throughout each stage of development helped guarantee that the acceptance criteria set out in each of the User Stories was achieved. These User Stories can be found **[here](https://github.com/users/SamOBrienOlinger/projects/3)** in Github Projects. 
-
-For further details of testing carried out on the React frontend relevant to verifying the backend functionality, please visit the **[frontend repository README.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md)** and **[frontend repository testing.md file](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/testing.md)**.
-
-
-**Python Validation**
-
-Code Institute's CI Python Linter was used to validate all Python code. Every app passed without errors, except for E501 'line too long' warnings, an example of this can be seen below:
+The Code Institute's CI Python Linter was used to validate all Python code.  
+All apps passed validation except for `E501` long line warnings:
 
 ![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
 
+---
 
-**Fixed Bugs**
+## Fixed Bugs
 
-  Migrated changes to models.py files caused the most problems overall. Although the data did exist in the [database](https://www.elephantsql.com/), the database was corrupted and had to be delete entirely. 
-  A new instance needed to be created and connected to the API. The env.py file and Heroku Config Vars were updated accordingly. The important learning from idenitifying the cause and then the solution to this problem was understanding that the issue was caused by a migration that altered a model -from having an owner = ForeignKey when a OneToOneField was required instead.
+Model changes caused database inconsistencies.  
+A `ForeignKey` field was mistakenly used instead of `OneToOneField`, corrupting migrations.  
+Resolution involved deleting the old ElephantSQL DB, creating a new one, and updating `env.py` and Heroku Config Vars.
 
-### [Deployment](#deployment) 
+---
 
-Creating a database using ElephantSQL was first required. The following steps were taken to do this: 
+## Deployment
 
-- login to ElephantSQL.
+### Original ElephantSQL Setup
 
-- click 'Create new instance' on the dashboard.
+1. Log in to ElephantSQL.
+2. Create a new instance (`Tiny Turtle` plan).
+3. Choose nearest region.
+4. Review and create.
+5. Copy the database URL.
+6. Add it to Heroku config vars.
 
-- name the 'plan' and select the 'Tiny Turtle' option.
+### Heroku Deployment
 
-- select 'select region' and choose the nearest data centre to your location.
+1. Log in to Heroku.
+2. Create a new app.
+3. Set region and app name.
+4. Link GitHub repo under **Deploy** tab.
+5. Install required packages (`psycopg2`, `dj-database-url`, etc.).
+6. Configure JWT, CORS, allowed hosts, etc.
+7. Ignore `env.py`.
+8. Generate `requirements.txt`.
+9. Click **Deploy Branch**.
+10. After build, click **Open App**.
 
-- click 'Review'.
+> ⚠️ The database is currently being migrated to Supabase.
 
-- then go to the ElephantSQL dashboard and click on the 'database instance name' for this project.
+---
 
-- copy the ElephantSQL database URL to your clipboard.
+## Credits
 
-- Return to the Heroku dashboard.
-
-  **Current Bugs**
-
-- There is a temporary change to the Config Vars in Heroku. 
-The DATABASE_URL requires updating to another database provider. The database is being migrated to Supabase drom ElephantSQL. 
-
-This project was deployed through Heroku using the following steps:
-
-- Log into Heroku
-- Select 'Create New App' from your dashboard
-- Choose an app name
-- Select the appropriate region based on your location
-- Click 'Create App'
-
-- On your dashboard, click the 'Deploy' tab
-- Locate 'Deployment Method' and choose 'GitHub'
-- locate your repository then click 'Connect'
-- install psycopg2 and dj-database-urlth libraries to handle database connection.
-- configured dj-rest-auth library for JWTs
-- set allowed hosts
-- configured CORS:
-  - set allowed_origins
-
-- gitignore the env.py file
-- generate a requirements.txt file
-
-once all the variables are in place, choose the main branch and click 'Deploy Branch'.
-Once the build is finished, click 'Open App' located at the top of the page.
-
-### [Credits](#credits)
-
-- [W3Schools](https://www.w3schools.com/) 
+- [W3Schools](https://www.w3schools.com/)
 - [Stack Overflow](https://stackoverflow.com/)
-- Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) module.
-
-- Code Institute Alumnus [Tom Ainsworth](https://github.com/Tom-Ainsworth) was of great support at strategically important stages to tease out certain bugs.
-
-- The [README template](https://github.com/Code-Institute-Solutions/readme-template) provided by Code Institute was very helpful as a model for developing this README file.  
-
-- My mentors, [Naoise Gaffney](https://github.com/NaoiseGaffney) and [Antonio Rodriguez](AntonioRodriguez_mentor), provided invaluable support and I learned a lot from them throughout the development of this project.
-  
-  Last but certainly not least, are the Code Institute's [Student Care Team](https://learn.codeinstitute.net/ci_support/diplomainsoftwaredevelopmentadvancedfrontend/studentcare) and all the Tutors on the [Student Support Team](https://learn.codeinstitute.net/ci_support/specializationsamplecontent/troubleshooting). Regardless of the challenge faced, they have provided invaluable support to me in developing my skills, knowledge and experience. Thank you very much.
+- Code Institute's [Moments Project](https://github.com/Code-Institute-Solutions/moments)
+- [Tom Ainsworth](https://github.com/Tom-Ainsworth) – debugging support
+- [README Template](https://github.com/Code-Institute-Solutions/readme-template) – structure inspiration
+- Mentors: [Naoise Gaffney](https://github.com/NaoiseGaffney), [Antonio Rodriguez](#)
+- CI [Student Care Team](https://learn.codeinstitute.net/ci_support/diplomainsoftwaredevelopmentadvancedfrontend/studentcare) and [Tutors](https://learn.codeinstitute.net/ci_support/specializationsamplecontent/troubleshooting)
