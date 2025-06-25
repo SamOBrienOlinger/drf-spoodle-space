@@ -187,7 +187,7 @@ Creating a database using ElephantSQL was first required. The following steps we
 
 - Return to the Heroku dashboard.
 
-**Current Bugs**
+  **Current Bugs**
 
 - There is a temporary change to the Config Vars in Heroku. 
 The DATABASE_URL requires updating to another database provider. The database is being migrated to Supabase drom ElephantSQL. 
@@ -203,17 +203,6 @@ This project was deployed through Heroku using the following steps:
 - On your dashboard, click the 'Deploy' tab
 - Locate 'Deployment Method' and choose 'GitHub'
 - locate your repository then click 'Connect'
-
-- Click the 'Settings' tab
-- Open the 'Config Vars' and click 'Reveal Config Vars'
-
-- The following environment variables need to be added and match the same values in your env.py file:
-    - CLIENT_ORIGIN
-    - CLOUDINARY_URL
-    - DATABASE_URL
-    - DISABLE_COLLECTSTATIC
-    - SECRET_KEY
-
 - install psycopg2 and dj-database-urlth libraries to handle database connection.
 - configured dj-rest-auth library for JWTs
 - set allowed hosts
@@ -224,18 +213,18 @@ This project was deployed through Heroku using the following steps:
 - generate a requirements.txt file
 
 once all the variables are in place, choose the main branch and click 'Deploy Branch'.
-Once the build is finished, click 'Open App' located at the top of the page. 
+Once the build is finished, click 'Open App' located at the top of the page.
 
 ### [Credits](#credits)
 
-  - [W3Schools](https://www.w3schools.com/) 
-  - [Stack Overflow](https://stackoverflow.com/)
-  - Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) module.
+- [W3Schools](https://www.w3schools.com/) 
+- [Stack Overflow](https://stackoverflow.com/)
+- Code Institute's [Moments](https://github.com/Code-Institute-Solutions/moments) module.
 
-  - Code Institute Alumnus [Tom Ainsworth](https://github.com/Tom-Ainsworth) was of great support at strategically important stages to tease out certain bugs.   
+- Code Institute Alumnus [Tom Ainsworth](https://github.com/Tom-Ainsworth) was of great support at strategically important stages to tease out certain bugs.
 
-  - The [README template](https://github.com/Code-Institute-Solutions/readme-template) provided by Code Institute was very helpful as a model for developing this README file.  
+- The [README template](https://github.com/Code-Institute-Solutions/readme-template) provided by Code Institute was very helpful as a model for developing this README file.  
 
-  - My mentors, [Naoise Gaffney](https://github.com/NaoiseGaffney) and [Antonio Rodriguez](AntonioRodriguez_mentor), provided invaluable support and I learned a lot from them throughout the development of this project. 
+- My mentors, [Naoise Gaffney](https://github.com/NaoiseGaffney) and [Antonio Rodriguez](AntonioRodriguez_mentor), provided invaluable support and I learned a lot from them throughout the development of this project.
   
   Last but certainly not least, are the Code Institute's [Student Care Team](https://learn.codeinstitute.net/ci_support/diplomainsoftwaredevelopmentadvancedfrontend/studentcare) and all the Tutors on the [Student Support Team](https://learn.codeinstitute.net/ci_support/specializationsamplecontent/troubleshooting). Regardless of the challenge faced, they have provided invaluable support to me in developing my skills, knowledge and experience. Thank you very much.
