@@ -4,6 +4,8 @@ core.python*
 env.py
 __pycache__/
 *.py[cod]
+build/
+staticfiles/
 node_modules/
 .github/
 cloudinary_python.txt
