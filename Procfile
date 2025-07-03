@@ -1,2 +1,2 @@
-release: python manage.py collectstatic --noinput
-web: gunicorn spoodle_space.wsgi
+release: python manage.py migrate
+web: gunicorn spoodle_space.wsgi --log-file -
