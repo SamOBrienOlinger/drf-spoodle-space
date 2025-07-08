@@ -9,9 +9,9 @@ Originally inspired by [Cockapoo Club](https://home-cockapoo-club-pp4.herokuapp.
 - 🔗 **[Deployed site](https://spoodlespace.herokuapp.com/)**
 - 💻 **[Frontend GitHub repo](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**
 
-> 🚧 **Site Temporarily Unavailable Due to Database Migration**  
-> I am currently migrating the database from ElephantSQL to a new provider (e.g. Supabase or AWS RDS). This may cause brief downtime. Thank you for your patience!
-
+---
+> 🚧 **Site is Available on Desktop, but Temporarily Unavailable on Mobile Devices. This is due a necessary Database Migration as a result of ElephantSQL's End of Life. The website has since been moved to Heroku's PostgreSQL database service**  
+>
 ---
 
 ## Summary
