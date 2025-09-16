@@ -99,6 +99,12 @@ The backend plays a critical role in linking frontend components and ensuring sm
 
 ![Entity Relationship Diagram](Media/README.md-images/README.md-ERD.jpg)
 
+### Detailed ERD
+
+This PNG-based ERD provides a visually enhanced visualization of the core database relationships in the SpoodleSpace backend, complementing the static diagram above. It highlights the 1:1 and 1:M connections between user profiles, posts, comments, likes, followers, and dog-specific data with improved clarity and aesthetics.
+
+![Detailed Entity Relationship Diagram](Media/README.md-images/ERD%20for%20README.md%20file%20SpoodleSpace.png)
+
 ---
 
 ## Technologies
