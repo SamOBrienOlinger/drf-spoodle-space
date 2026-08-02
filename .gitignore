@@ -1,12 +1,37 @@
-core.Microsoft*
-core.mongo*
-core.python*
+# OS and editor files
+.DS_Store
+Thumbs.db
+
+# Python virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# env files
+.env
 env.py
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*$py.class
+
+# Distribution / packaging
 build/
+dist/
+.eggs/
+*.egg-info/
+
+# Django
 staticfiles/
+media/
+
+# Node
 node_modules/
-.github/
-cloudinary_python.txt
+
+# Misc
+.idea/
+.vscode/
 *.sqlite3
+
