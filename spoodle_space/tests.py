@@ -30,6 +30,18 @@ class JWTCookieAuthenticationTests(APITestCase):
         self.assertIn('my-app-auth', response.cookies)
         self.assertIn('my-refresh-token', response.cookies)
 
+    def test_login_is_not_blocked_by_session_csrf_authentication(self):
+        client = APIClient(enforce_csrf_checks=True)
+        client.login(username=self.username, password=self.password)
+
+        response = client.post(
+            '/dj-rest-auth/login/',
+            {'username': self.username, 'password': self.password},
+            format='json',
+        )
+
+        self.assertEqual(response.status_code, 200)
+
     def test_user_endpoint_accepts_access_cookie(self):
         login_response = self.login()
         client = APIClient()
