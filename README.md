@@ -1,193 +1,89 @@
-# SpoodleSpace–Backend
+# SpoodleSpace · Backend API
 
-![SpoodleSPACE](Media/README.md-images/README.md-paulpuppy.jpg)
+The Django REST Framework backend for SpoodleSpace, a social platform for dog owners.
 
-[**SpoodleSpace**](https://spoodle-space-pp5.herokuapp.com) is a Django REST Framework API that powers the frontend React app, delivering a full social platform for Cockapoo dog owners and enthusiasts.
+**Python · Django · Django REST Framework**
 
-Originally inspired by [Cockapoo Club](https://home-cockapoo-club-pp4.herokuapp.com), this project expands the idea into a more engaging, interactive, and scalable experience using **HTML**, **CSS**, **JavaScript**, **Python**, **React**, **Bootstrap**, and **Django REST Framework**.
+[Getting started](#getting-started) · [Repository guide](#repository-guide) · [Checks](#checks-and-review) · [Credits](#credits-and-reuse)
 
-- 🔗 **[Deployed site](https://spoodlespace.herokuapp.com/)**
-- 💻 **[Frontend GitHub repo](https://github.com/SamOBrienOlinger/spoodle-space-pp5)**
+## What you can explore
 
----
-> 🚧 **Site is Available on Desktop, but Temporarily Unavailable on Mobile Devices. This is due a necessary Database Migration as a result of ElephantSQL's End of Life. The website has since been moved to Heroku's PostgreSQL database service**
+- Member profiles, posts, comments, likes and following.
+- Serializers, permissions and API views built with Django REST Framework.
+- Authentication and Cloudinary media configuration.
+- Dog profiles, health posts and danger reports.
 
-> I am actively working to restore full functionality for use on mobile devices as quickly as possible. I am also evaluating a wide range of other relational database management systems to ensure the website has a robust and scalable infrastructure for the future.
+## Getting started
 
-> **Thank you for your patience. I appreciate your understanding.**
->
----
+Requires Python, pip and a virtual environment. The repository records `3.10` in [.python-version](.python-version). Dependency pins in older projects may need a compatible Python environment; this README does not upgrade them.
 
-## Summary
+```bash
+git clone https://github.com/SamOBrienOlinger/drf-spoodle-space.git
+cd drf-spoodle-space
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```
 
-This social platform allows users to connect, share photographs, and exchange information about caring for Cockapoos — one of Ireland’s most beloved dog breeds.
+On Windows, activate the environment with `.venv\Scripts\Activate.ps1` instead.
 
-Unlike typical social networks, this project fosters a shared identity and belonging within a niche community. It is designed to attract:
+After resolving the project notes and configuring the local environment, use:
 
-- Families, couples, or individuals who already own Cockapoos.
-- People seeking guidance on training, health, or behaviour.
-- Potential owners researching the breed.
-- Owners wanting to share photos, stories, and adventures.
-- Anyone looking for peer support from fellow dog lovers.
+```bash
+python manage.py check
+python manage.py migrate
+python manage.py runserver
+```
 
-The backend plays a critical role in linking frontend components and ensuring smooth user experiences.
+Open [localhost:8000](http://localhost:8000). Stop the server with **Ctrl+C**. Use `python manage.py createsuperuser` in the same project directory if you need access to Django admin.
 
----
+## Configuration
 
-## Contents
+Settings are defined in [spoodle_space/settings.py](spoodle_space/settings.py). Set the values used by your chosen local configuration before running Django. A `.env` file is only read when the project explicitly loads it; most of these projects read the process environment or an optional `env.py`.
 
-- [User Stories](#user-stories)
-- [Entity Relationship Diagram](#entity-relationship-diagram)
-- [Technologies](#technologies)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Credits](#credits)
+| Variable | Purpose |
+| --- | --- |
+| `ALLOWED_HOST` | An additional hostname accepted by Django, without a scheme. |
+| `CLIENT_ORIGIN` | Frontend origin allowed by the backend, including scheme and port. |
+| `CLIENT_ORIGIN_DEV` | Development frontend origin; check the settings logic before using a cloud-workspace URL. |
+| `CLOUDINARY_URL` | Cloudinary connection URL used for media storage. Keep the value private. |
+| `DATABASE_URL` | Connection URL for your own development database. Required where settings parse it without a fallback. |
+| `DEV` | Development-mode switch. Inspect whether the settings test its presence or its value. |
+| `REACT_FRONTEND_PROD_URL` | Frontend production origin used for cross-origin and CSRF configuration. |
+| `SECRET_KEY` | Django signing key. Use a locally generated value and keep it out of Git. |
 
----
+Use a disposable development database for migrations and tests. Keep service credentials and local configuration out of commits.
 
-## User Stories
+## Repository guide
 
-### Navigation and Authentication
+| Path | Purpose |
+| --- | --- |
+| [spoodle_space/settings.py](spoodle_space/settings.py) | Django configuration |
+| [requirements.txt](requirements.txt) | Python dependency versions |
+| [manage.py](manage.py) | Django management commands |
 
-- Users can access a navigation bar on all pages.
-- Users can sign up, log in, and stay logged in using JWT.
-- Users can tell whether they're logged in and view avatars.
-- Conditional rendering: signed-in vs. signed-out views.
+## Checks and review
 
-### Profile Features
+From the directory containing `manage.py`, run `python manage.py check` and `python manage.py test` after configuring an isolated development database. Inspect the test modules: scaffold `tests.py` files may contain no actual tests.
 
-- View other users' profiles.
-- See most followed profiles.
-- View profile stats: post count, followers, etc.
-- Follow/unfollow users.
-- Update username and password.
-
-### Posts, Likes, and Comments
-
-- Create, view, edit, and delete posts.
-- Like/unlike posts.
-- Comment on posts, view timestamps, and edit/delete comments.
-- Infinite scrolling for all post lists.
-
-### Dog Profile
-
-- Add and edit your dog's profile and photo.
-- View recent and searchable dog profiles.
-- View others’ dog profiles (if following).
-
-### Dog Health
-
-- Add/edit your dog’s health info.
-- View recent health details.
-- Keyword search and infinite scrolling.
-
-### Dog Danger
-
-- Add/edit information about how dangerous your dog is.
-- View recent posts and search.
-- Infinite scrolling enabled.
-
----
-
-## Entity Relationship Diagram
-
-- Built-in Django models were used with three custom models:
-
-  - `DogProfile`
-  - `DogHealth`
-  - `DogDanger`
-
-![Entity Relationship Diagram](Media/README.md-images/README.md-ERD.jpg)
-
-### Detailed ERD
-
-This ERD details the core database relationships in the SpoodleSpace backend. It highlights the 1:1 and 1:M connections between user profiles, posts, comments, likes, followers, and data Users can CRUD that is specific to their Dog Profile.
-
-![Detailed Entity Relationship Diagram](Media/README.md-images/ERD%20for%20README.md%20file%20SpoodleSpace.png)
-
----
-
-## Technologies
-
-### Languages
-
-- [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
-
-### Frameworks & Tools
-
-- [Django](https://www.djangoproject.com/)
-- [Django REST Framework](https://www.django-rest-framework.org/)
-- [Git](https://git-scm.com/)
-- [GitHub](https://github.com/)
-- [PostgreSQL](https://www.postgresql.org/)
-- [ElephantSQL](https://www.elephantsql.com/)
-- [Heroku](https://heroku.com/)
-
----
-
-## Testing
-
-Manual testing was carried out to:
-
-- Restrict user access to protected actions.
-- Verify full CRUD functionality in the API.
-- Validate user story outcomes.
-
-Refer to `/testing.md` for backend testing details.  
-User stories and acceptance criteria are tracked in [GitHub Projects](https://github.com/users/SamOBrienOlinger/projects/3).  
-Frontend testing can be found in the [frontend repo README](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/README.md) and [testing.md](https://github.com/SamOBrienOlinger/spoodle-space-pp5/blob/main/testing.md).
-
-### Python Validation
-
-The Code Institute's CI Python Linter was used to validate all Python code.  
-All apps passed validation except for `E501` long line warnings:
-
-![Python validator](Media/README.md-images/README.md-ci-linter.jpg)
-
----
-
-## Fixed Bugs
-
-Model changes caused database inconsistencies.  
-A `ForeignKey` field was mistakenly used instead of `OneToOneField`, corrupting migrations.  
-Resolution involved deleting the old ElephantSQL DB, creating a new one, and updating `env.py` and Heroku Config Vars.
-
----
+Generate fresh results from the revision you are working on; historical test reports describe earlier runs.
 
 ## Deployment
 
-### Original ElephantSQL Setup
+Hosting entry points are recorded in [Procfile](Procfile). Configure the runtime, database, allowed origins and static/media handling for the chosen host. Historical deployment records may describe services that are no longer available.
 
-1. Log in to ElephantSQL.
-2. Create a new instance (`Tiny Turtle` plan).
-3. Choose nearest region.
-4. Review and create.
-5. Copy the database URL.
-6. Add it to Heroku config vars.
+## Credits and reuse
 
-### Heroku Deployment
+Design decisions, original feature notes, historical testing evidence and detailed acknowledgements remain available in the preserved project record:
 
-1. Log in to Heroku.
-2. Create a new app.
-3. Set region and app name.
-4. Link GitHub repo under **Deploy** tab.
-5. Install required packages (`psycopg2`, `dj-database-url`, etc.).
-6. Configure JWT, CORS, allowed hosts, etc.
-7. Ignore `env.py`.
-8. Generate `requirements.txt`.
-9. Click **Deploy Branch**.
-10. After build, click **Open App**.
+- [README.md · original project record](https://github.com/SamOBrienOlinger/drf-spoodle-space/blob/47cd7ab367a54787b9116e04e4bd6a4afd90fe9f/README.md)
 
-> ⚠️ The database is currently being migrated to Supabase.
+Learning resources and starter material: [Code Institute](https://codeinstitute.net/).
 
----
+No repository-level licence file is present in this snapshot. This README does not grant additional reuse permissions. Check with the relevant rights holders before reusing code, written content or assets.
 
-## Credits
+## Support
 
-- [W3Schools](https://www.w3schools.com/)
-- [Stack Overflow](https://stackoverflow.com/)
-- Code Institute's [Moments Project](https://github.com/Code-Institute-Solutions/moments)
-- [Tom Ainsworth](https://github.com/Tom-Ainsworth) – debugging support
-- [README Template](https://github.com/Code-Institute-Solutions/readme-template) – structure inspiration
-- Mentors: [Naoise Gaffney](https://github.com/NaoiseGaffney), [Antonio Rodriguez](#)
-- CI [Student Care Team](https://learn.codeinstitute.net/ci_support/diplomainsoftwaredevelopmentadvancedfrontend/studentcare) and [Tutors](https://learn.codeinstitute.net/ci_support/specializationsamplecontent/troubleshooting)
+Repository maintained in [Sam O’Brien-Olinger’s GitHub account](https://github.com/SamOBrienOlinger). For a problem or suggested improvement, [open an issue](https://github.com/SamOBrienOlinger/drf-spoodle-space/issues) with the affected page or command, steps to reproduce, and expected behaviour.
+
+[Back to top](#spoodlespace--backend-api)
