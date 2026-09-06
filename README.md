@@ -6,6 +6,8 @@ The Django REST Framework backend for SpoodleSpace, a social platform for dog ow
 
 [Getting started](#getting-started) · [Repository guide](#repository-guide) · [Checks](#checks-and-review) · [Credits](#credits-and-reuse)
 
+**Paired frontend:** [spoodle-space-pp5](https://github.com/SamOBrienOlinger/spoodle-space-pp5).
+
 ## What you can explore
 
 - Member profiles, posts, comments, likes and following.
@@ -15,44 +17,102 @@ The Django REST Framework backend for SpoodleSpace, a social platform for dog ow
 
 ## Getting started
 
-Requires Python, pip and a virtual environment. The repository records `3.10` in [.python-version](.python-version). Dependency pins in older projects may need a compatible Python environment; this README does not upgrade them.
+Requires Git, Python `3.10`, pip and a virtual environment. The Python version is recorded in [.python-version](.python-version).
 
 ```bash
 git clone https://github.com/SamOBrienOlinger/drf-spoodle-space.git
 cd drf-spoodle-space
-python3 -m venv .venv
+python3.10 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-On Windows, activate the environment with `.venv\Scripts\Activate.ps1` instead.
+On Windows, use `py -3.10 -m venv .venv` and activate with `.venv\Scripts\Activate.ps1`. Keep the pinned dependency versions when reproducing this revision. If pip needs to build `psycopg2` or Pillow from source, install the compiler, Python development headers and the corresponding PostgreSQL/image-library development packages for your operating system first.
 
-After resolving the project notes and configuring the local environment, use:
+### Isolated local setup
 
-```bash
-python manage.py check
-python manage.py migrate
-python manage.py runserver
+Use a separate local SQLite database for development instead of the committed `db.sqlite3` or a hosted database. The following override applies only when explicitly selected with `--settings=local_settings`.
+
+Add these paths to this checkout's `.git/info/exclude` so the local files cannot be included accidentally by an ordinary `git add`:
+
+```text
+/local_settings.py
+/local-development.sqlite3
 ```
 
-Open [localhost:8000](http://localhost:8000). Stop the server with **Ctrl+C**. Use `python manage.py createsuperuser` in the same project directory if you need access to Django admin.
+In the repository root, create `local_settings.py` with:
+
+```python
+import os
+
+from spoodle_space.settings import *
+
+SECRET_KEY = os.environ["SECRET_KEY"]
+DEBUG = True
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "local-development.sqlite3",
+    }
+}
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+CORS_ALLOW_CREDENTIALS = True
+
+# Local HTTP development only; production keeps its secure-cookie settings.
+JWT_AUTH_SECURE = False
+JWT_AUTH_SAMESITE = "Lax"
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SAMESITE = "Lax"
+```
+
+Set a local signing key and the exact development flag in the same terminal. Keep that terminal open so the key remains stable during the session.
+
+```bash
+export SECRET_KEY="$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')"
+export DEV=True
+```
+
+PowerShell equivalent:
+
+```powershell
+$env:SECRET_KEY = python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+$env:DEV = "True"
+```
+
+Then run:
+
+```bash
+python manage.py check --settings=local_settings
+python manage.py migrate --settings=local_settings
+python manage.py runserver localhost:8000 --settings=local_settings
+```
+
+Open [localhost:8000](http://localhost:8000), and follow the frontend's [local API instructions](https://github.com/SamOBrienOlinger/spoodle-space-pp5#run-with-a-local-api). Use the same `localhost` hostname on both ports. Stop the server with **Ctrl+C**. To create an admin user, run `python manage.py createsuperuser --settings=local_settings` in the configured terminal.
+
+The local override and frontend development URL are not deployment settings. The production entry point continues to use `spoodle_space.settings`. A fresh end-to-end authentication run is still required before treating a local or hosted setup as verified.
 
 ## Configuration
 
-Settings are defined in [spoodle_space/settings.py](spoodle_space/settings.py). Set the values used by your chosen local configuration before running Django. A `.env` file is only read when the project explicitly loads it; most of these projects read the process environment or an optional `env.py`.
+Production settings are in [spoodle_space/settings.py](spoodle_space/settings.py). They read process environment variables and optionally import an `env.py` file from the project root. They do not automatically load a `.env` file.
 
-| Variable | Purpose |
+| Variable | Actual use in this revision |
 | --- | --- |
-| `ALLOWED_HOST` | An additional hostname accepted by Django, without a scheme. |
-| `CLIENT_ORIGIN` | Frontend origin allowed by the backend, including scheme and port. |
-| `CLIENT_ORIGIN_DEV` | Development frontend origin; check the settings logic before using a cloud-workspace URL. |
-| `CLOUDINARY_URL` | Cloudinary connection URL used for media storage. Keep the value private. |
-| `DATABASE_URL` | Connection URL for your own development database. Required where settings parse it without a fallback. |
-| `DEV` | Development-mode switch. Inspect whether the settings test its presence or its value. |
-| `REACT_FRONTEND_PROD_URL` | Frontend production origin used for cross-origin and CSRF configuration. |
-| `SECRET_KEY` | Django signing key. Use a locally generated value and keep it out of Git. |
+| `SECRET_KEY` | Required Django signing key; supply your own value. |
+| `DEV` | Must equal the literal string `True` to enable debug mode and the browsable API. Other values, including `true` and `False`, do not enable them. |
+| `DATABASE_URL` | Optional. If absent, base settings use the repository's `db.sqlite3`; the local override above instead selects `local-development.sqlite3`. |
+| `CLOUDINARY_URL` | Your own development Cloudinary connection URL for upload/media testing. Do not use production credentials for local tests. |
+| `ALLOWED_HOST` | Additional accepted backend hostname, without scheme or path. |
+| `CLIENT_ORIGIN` | Additional frontend origin, including scheme and port. |
+| `CLIENT_ORIGIN_DEV` | Additional CORS origin; its parsed hostname also contributes to allowed hosts and an HTTPS CSRF origin. It is not a general local-development switch. |
+| `REACT_FRONTEND_PROD_URL` | Additional CORS origin. The current code does not automatically add this value to `CSRF_TRUSTED_ORIGINS`. |
 
-Use a disposable development database for migrations and tests. Keep service credentials and local configuration out of commits.
+The base settings keep secure JWT, session and CSRF cookies with `SameSite=None` even when `DEV=True`. The explicit local override above supplies HTTP-compatible settings for localhost. Hosted deployments must retain appropriate HTTPS cookie settings and configure their exact frontend origin.
+
+For media testing, set `CLOUDINARY_URL` to the connection URL from a Cloudinary account you control before starting Django. Without it, limit the review to endpoints that do not upload media; an authentication check is not a successful upload check. Keep secrets, local settings and databases out of commits.
 
 ## Repository guide
 
@@ -64,7 +124,9 @@ Use a disposable development database for migrations and tests. Keep service cre
 
 ## Checks and review
 
-From the directory containing `manage.py`, run `python manage.py check` and `python manage.py test` after configuring an isolated development database. Inspect the test modules: scaffold `tests.py` files may contain no actual tests.
+From the configured local terminal, run `python manage.py check --settings=local_settings` and `python manage.py test --settings=local_settings`. Both explicitly select the isolated local configuration above. Inspect the test modules: scaffold `tests.py` files may contain no actual tests.
+
+Manual checks: create a local test account, sign in through the paired frontend, create a text post, sign out, and confirm a protected action requires sign-in. Test uploads separately with development media credentials.
 
 Generate fresh results from the revision you are working on; historical test reports describe earlier runs.
 
@@ -73,6 +135,10 @@ Generate fresh results from the revision you are working on; historical test rep
 Hosting entry points are recorded in [Procfile](Procfile). Configure the runtime, database, allowed origins and static/media handling for the chosen host. Historical deployment records may describe services that are no longer available.
 
 ## Credits and reuse
+
+Created by Sam O'Brien-Olinger, with learning and starter material from Code Institute's [Moments project](https://github.com/Code-Institute-Solutions/moments). Thanks to Tom Ainsworth for debugging support, mentors Naoise Gaffney and Antonio Rodriguez, and the Code Institute tutors and Student Care Team.
+
+The original acknowledgements also recognise W3Schools, Stack Overflow and Code Institute's [README template](https://github.com/Code-Institute-Solutions/readme-template).
 
 Design decisions, original feature notes, historical testing evidence and detailed acknowledgements remain available in the preserved project record:
 
