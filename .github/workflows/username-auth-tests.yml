@@ -3,7 +3,7 @@ name: Username and authentication tests
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, "fix/flexible-usernames"]
   workflow_dispatch:
 
 permissions:
