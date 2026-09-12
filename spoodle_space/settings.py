@@ -41,6 +41,10 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'spoodle_space.serializers.CurrentUserSerializer'
 }
 
+# Let account names include spaces, punctuation and Unicode characters.
+# Allauth 0.54 expects a dotted path to a list, rather than the list itself.
+ACCOUNT_USERNAME_VALIDATORS = 'spoodle_space.validators.username_validators'
+
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # --- DEBUG SETTING ---
