@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from spoodle_space.image_validation import CommunityImageField
 from dogprofiles.models import DogProfile
 from profiles.models import Profile
 from django.contrib.humanize.templatetags.humanize import naturaltime
@@ -6,11 +7,12 @@ from followers.models import Follower
 
 
 class DogProfileSerializer(serializers.ModelSerializer):
+    dog_profile_image = CommunityImageField(required=False)
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_id = serializers.ReadOnlyField(source='owner.id')
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
-    profile_id = serializers.SerializerMethodField(source='owner.profile.id')
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     dogprofile_id = serializers.SerializerMethodField(
         source='owner.dogprofile.id')
@@ -33,10 +35,6 @@ class DogProfileSerializer(serializers.ModelSerializer):
             dogprofile = DogProfile.objects.filter(owner=user).first()
             return dogprofile.id if dogprofile else None
         return None
-
-    def get_profile_id(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
 
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)

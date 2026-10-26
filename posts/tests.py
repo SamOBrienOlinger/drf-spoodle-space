@@ -13,11 +13,11 @@ class PostListViewTests(APITestCase):
         Post.objects.create(owner=adam, title='a title')
         response = self.client.get('/posts/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        print(response.data)
-        print(len(response.data))
+        self.assertEqual(response.data['count'], 1)
 
     def test_logged_in_user_can_create_post(self):
-        self.client.login(username='adam', password='pass')
+        login = self.client.post('/dj-rest-auth/login/', {'username': 'adam', 'password': 'pass'})
+        self.assertEqual(login.status_code, status.HTTP_200_OK)
         response = self.client.post('/posts/', {'title': 'a title'})
         count = Post.objects.count()
         self.assertEqual(count, 1)
@@ -25,7 +25,7 @@ class PostListViewTests(APITestCase):
 
     def test_user_not_logged_in_cant_create_post(self):
         response = self.client.post('/posts/', {'title': 'a title'})
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
 class PostDetailViewTests(APITestCase):
@@ -49,13 +49,15 @@ class PostDetailViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_user_can_update_own_post(self):
-        self.client.login(username='adam', password='pass')
+        login = self.client.post('/dj-rest-auth/login/', {'username': 'adam', 'password': 'pass'})
+        self.assertEqual(login.status_code, status.HTTP_200_OK)
         response = self.client.put('/posts/1/', {'title': 'a new title'})
         post = Post.objects.filter(pk=1).first()
         self.assertEqual(post.title, 'a new title')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_user_cant_update_another_users_post(self):
-        self.client.login(username='adam', password='pass')
+        login = self.client.post('/dj-rest-auth/login/', {'username': 'adam', 'password': 'pass'})
+        self.assertEqual(login.status_code, status.HTTP_200_OK)
         response = self.client.put('/posts/2/', {'title': 'a new title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

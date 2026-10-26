@@ -4,17 +4,14 @@ from .models import DogHealth
 
 
 class DogHealthSerializer(serializers.ModelSerializer):
+    vet_email = serializers.EmailField(required=False, allow_blank=True, max_length=255)
     owner = serializers.ReadOnlyField(source='owner.username')
     owner_id = serializers.ReadOnlyField(source='owner.id')
     is_owner = serializers.SerializerMethodField()
-    profile_id = serializers.SerializerMethodField(source='owner.profile.id')
+    profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     def get_is_owner(self, obj):
-        request = self.context['request']
-        return request.user == obj.owner
-
-    def get_profile_id(self, obj):
         request = self.context['request']
         return request.user == obj.owner
 

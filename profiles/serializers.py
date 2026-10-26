@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from spoodle_space.image_validation import CommunityImageField
 from .models import Profile
 from dogprofiles.models import DogProfile
 from doghealth.models import DogHealth
@@ -7,6 +8,7 @@ from followers.models import Follower
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    image = CommunityImageField(required=False)
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
@@ -32,20 +34,20 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def get_dog_profile(self, obj):
         try:
-            return DogProfile.objects.get(owner=obj.pk).pk
-        except Exception as e:
+            return DogProfile.objects.get(owner_id=obj.owner_id).pk
+        except (DogProfile.DoesNotExist, DogHealth.DoesNotExist, DogDanger.DoesNotExist):
             return None
 
     def get_dog_health(self, obj):
         try:
-            return DogHealth.objects.get(owner=obj.pk).pk
-        except Exception as e:
+            return DogHealth.objects.get(owner_id=obj.owner_id).pk
+        except (DogProfile.DoesNotExist, DogHealth.DoesNotExist, DogDanger.DoesNotExist):
             return None
 
     def get_dog_danger(self, obj):
         try:
-            return DogDanger.objects.get(owner=obj.pk).pk
-        except Exception as e:
+            return DogDanger.objects.get(owner_id=obj.owner_id).pk
+        except (DogProfile.DoesNotExist, DogHealth.DoesNotExist, DogDanger.DoesNotExist):
             return None
 
     class Meta:

@@ -1,3 +1,4 @@
+from spoodle_space.dog_records import OneDogRecordMixin
 from django.shortcuts import render
 from rest_framework import generics, permissions, filters
 from spoodle_space.permissions import IsOwnerOrReadOnly
@@ -6,7 +7,7 @@ from dogdanger.serializers import DogDangerSerializer, DogDangerDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-class DogDangerList(generics.ListCreateAPIView):
+class DogDangerList(OneDogRecordMixin, generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DogDangerSerializer
     queryset = DogDanger.objects.all()
@@ -29,9 +30,6 @@ class DogDangerList(generics.ListCreateAPIView):
         '-created_at'
     ]
 
-    def perform_create(self, serializer):
-        print("running?")
-        serializer.save(owner=self.request.user)
 
 
 class DogDangerDetail(generics.RetrieveUpdateDestroyAPIView):
