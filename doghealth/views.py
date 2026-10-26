@@ -1,3 +1,4 @@
+from spoodle_space.dog_records import OneDogRecordMixin
 from rest_framework import generics, permissions, filters
 from spoodle_space.permissions import IsOwnerOrReadOnly
 from .models import DogHealth
@@ -6,7 +7,7 @@ from doghealth.serializers import DogHealthDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
 
-class DogHealthList(generics.ListCreateAPIView):
+class DogHealthList(OneDogRecordMixin, generics.ListCreateAPIView):
 
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = DogHealthSerializer
@@ -30,9 +31,6 @@ class DogHealthList(generics.ListCreateAPIView):
         '-created_at'
     ]
 
-    def perform_create(self, serializer):
-        print("running?")
-        serializer.save(owner=self.request.user)
 
 
 class DogHealthDetail(generics.RetrieveUpdateDestroyAPIView):

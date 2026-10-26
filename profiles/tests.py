@@ -1,3 +1,1 @@
-from django.test import TestCase
-
-.
+"""API regression coverage is in spoodle_space.test_uploads."""
