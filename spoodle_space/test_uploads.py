@@ -69,16 +69,17 @@ class CommunityUploadTests(APITestCase):
             self.assertEqual(model.objects.filter(owner=self.owner).count(), 1)
 
     def test_profile_ids_do_not_depend_on_user_ids(self):
-        Profile.objects.filter(owner=self.owner).update(id=50)
+        profile_id = self.other.profile.pk + 50
+        Profile.objects.filter(owner=self.owner).update(id=profile_id)
         dog = DogProfile.objects.create(owner=self.owner, dog_name='Riley')
         health = DogHealth.objects.create(owner=self.owner)
         behaviour = DogDanger.objects.create(owner=self.owner)
-        response = self.client.get('/profiles/50/')
+        response = self.client.get(f'/profiles/{profile_id}/')
         self.assertEqual(response.data['dog_profile'], dog.pk)
         self.assertEqual(response.data['dog_health'], health.pk)
         self.assertEqual(response.data['dog_danger'], behaviour.pk)
         for endpoint, record in [('dogprofiles', dog), ('doghealth', health), ('dogdanger', behaviour)]:
-            self.assertEqual(self.client.get(f'/{endpoint}/{record.pk}/').data['profile_id'], 50)
+            self.assertEqual(self.client.get(f'/{endpoint}/{record.pk}/').data['profile_id'], profile_id)
 
     def test_permissions_not_found_and_validation_keep_json_errors(self):
         post = Post.objects.create(owner=self.other, title='Another member')

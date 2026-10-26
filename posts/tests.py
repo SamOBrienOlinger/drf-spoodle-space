@@ -32,15 +32,15 @@ class PostDetailViewTests(APITestCase):
     def setUp(self):
         adam = User.objects.create_user(username='adam', password='pass')
         brian = User.objects.create_user(username='brian', password='pass')
-        Post.objects.create(
+        self.adams_post = Post.objects.create(
             owner=adam, title='a title', content='adams content'
         )
-        Post.objects.create(
+        self.brians_post = Post.objects.create(
             owner=brian, title='another title', content='brians content'
         )
 
     def test_can_retrieve_post_using_valid_id(self):
-        response = self.client.get('/posts/1/')
+        response = self.client.get(f'/posts/{self.adams_post.pk}/')
         self.assertEqual(response.data['title'], 'a title')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -51,13 +51,13 @@ class PostDetailViewTests(APITestCase):
     def test_user_can_update_own_post(self):
         login = self.client.post('/dj-rest-auth/login/', {'username': 'adam', 'password': 'pass'})
         self.assertEqual(login.status_code, status.HTTP_200_OK)
-        response = self.client.put('/posts/1/', {'title': 'a new title'})
-        post = Post.objects.filter(pk=1).first()
+        response = self.client.put(f'/posts/{self.adams_post.pk}/', {'title': 'a new title'})
+        post = Post.objects.get(pk=self.adams_post.pk)
         self.assertEqual(post.title, 'a new title')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_user_cant_update_another_users_post(self):
         login = self.client.post('/dj-rest-auth/login/', {'username': 'adam', 'password': 'pass'})
         self.assertEqual(login.status_code, status.HTTP_200_OK)
-        response = self.client.put('/posts/2/', {'title': 'a new title'})
+        response = self.client.put(f'/posts/{self.brians_post.pk}/', {'title': 'a new title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
