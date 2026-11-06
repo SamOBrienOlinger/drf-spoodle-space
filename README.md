@@ -4,7 +4,7 @@ The Django REST Framework backend for SpoodleSpace, a social platform for dog ow
 
 **Python · Django · Django REST Framework**
 
-[Getting started](#getting-started) · [Repository guide](#repository-guide) · [Checks](#checks-and-review) · [Credits](#credits-and-reuse)
+[Getting started](#getting-started) · [Data model](#entity-relationship-diagrams) · [Repository guide](#repository-guide) · [Checks](#checks-and-review) · [Credits](#credits-and-reuse)
 
 **Paired frontend:** [spoodle-space-pp5](https://github.com/SamOBrienOlinger/spoodle-space-pp5).
 
@@ -14,6 +14,90 @@ The Django REST Framework backend for SpoodleSpace, a social platform for dog ow
 - Serializers, permissions and API views built with Django REST Framework.
 - Authentication and Cloudinary media configuration.
 - Dog profiles, health posts and danger reports.
+
+## Entity relationship diagrams
+
+### Community and feed
+
+Posts and comments have user owners. A like connects a user to a post, with at most one like per pair. A follow connects two users in a direction, with at most one record for each owner and followed-user pair. [Posts](posts/models.py) · [Comments](comments/models.py) · [Likes](likes/models.py) · [Following](followers/models.py)
+
+```mermaid
+erDiagram
+    accTitle: SpoodleSpace community and feed schema
+    accDescr: Users author posts and comments, can like each post once, and follow other users. Each comment and like belongs to one post.
+    User ||..o{ Post : writes
+    User ||..o{ Comment : authors
+    User ||..o{ Like : adds
+    Follower }o..|| User : "from user"
+    Follower }o..|| User : "to user"
+    Post ||..o{ Comment : receives
+    Post ||..o{ Like : receives
+
+    User {
+        int id PK
+        string username UK
+    }
+    Post {
+        bigint id PK
+        int owner_id FK
+        string title
+    }
+    Comment {
+        bigint id PK
+        int owner_id FK
+        bigint post_id FK
+        text content
+    }
+    Like {
+        bigint id PK
+        int owner_id FK
+        bigint post_id FK
+    }
+    Follower {
+        bigint id PK
+        int owner_id FK
+        int followed_id FK
+    }
+```
+
+### Member and dog records
+
+A user can have one member profile and at most one record of each dog type. The member profile is normally created when a user account is created. Dog profile, health and behaviour records each link directly to the user. The profile API exposes their IDs by matching that shared owner. [Member profile](profiles/models.py) · [Dog profile](dogprofiles/models.py) · [Health](doghealth/models.py) · [Behaviour](dogdanger/models.py) · [Profile serializer](profiles/serializers.py)
+
+```mermaid
+erDiagram
+    accTitle: SpoodleSpace member and dog record schema
+    accDescr: Each member profile or dog record belongs to one user. A user can have at most one of each record.
+    Profile |o..|| User : "belongs to"
+    "Dog Profile" |o..|| User : "belongs to"
+    User ||..o| "Dog Health" : owns
+    User ||..o| "Dog Danger" : owns
+
+    User {
+        int id PK
+        string username UK
+    }
+    Profile {
+        bigint id PK
+        int owner_id FK,UK
+        string name
+    }
+    "Dog Profile" {
+        bigint id PK
+        int owner_id FK,UK
+        text dog_name
+    }
+    "Dog Health" {
+        bigint id PK
+        int owner_id FK,UK
+        string vet_name
+    }
+    "Dog Danger" {
+        bigint id PK
+        int owner_id FK,UK
+        text bites_kids
+    }
+```
 
 ## Getting started
 
